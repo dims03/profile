@@ -47,3 +47,42 @@ allNavLinks.forEach((navLink) => {
     }
   });
 });
+
+// Contact google spreadsheet
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbzXPqG0188luPVF5A8l0i_dGnDnUHHdpCeUjuY0QjfBoVvOOPWiwewFXCgalaaXR_iT/exec";
+const form = document.forms["submit-to-google-sheet"];
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  fetch(scriptURL, { method: "POST", body: new FormData(form) })
+    .then((response) => console.log("Success!", response))
+    .catch((error) => console.error("Error!", error.message));
+});
+
+// Contact form refresh and pop up
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Simulate form submission to Google Sheets
+    // You can add your own logic here to send the form data to your desired destination
+
+    // Show a popup message
+    alert("Form has been sent!");
+
+    // Clear form fields
+    form.reset();
+  });
+});
+
+//  Click above hamburger
+window.addEventListener("click", function (e) {
+  if (e.target != hamburger && e.target != navMenu) {
+    hamburger.classList.remove("hamburger-active");
+    navMenu.classList.add("hidden");
+  }
+});
