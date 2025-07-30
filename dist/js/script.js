@@ -32,11 +32,12 @@ window.onscroll = function () {
 const navLinks = document.querySelectorAll('nav a[href^="#home"]');
 const aboutLinks = document.querySelectorAll('nav a[href^="#about"]');
 const portfolioLinks = document.querySelectorAll('nav a[href^="#portfolio"]');
+const locationLinks = document.querySelectorAll('nav a[href^="#location"]');
 const techLinks = document.querySelectorAll('nav a[href^="#tech"]');
 const contactLinks = document.querySelectorAll('nav a[href^="#contact"]');
 
 // Combine all navigation links into a single array
-const allNavLinks = [...navLinks, ...aboutLinks, ...techLinks, ...portfolioLinks, ...contactLinks];
+const allNavLinks = [...navLinks, ...aboutLinks, ...techLinks, ...portfolioLinks, ...contactLinks, ...locationLinks];
 
 // Add click event listener to each navigation link
 allNavLinks.forEach((navLink) => {
