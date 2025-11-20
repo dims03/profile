@@ -8,6 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 
@@ -336,61 +337,57 @@
       </div>
       <div class="w-full px-4 flex flex-wrap justify-center">
         <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shadow-md overflow-hidden">
-            <a href="dist/img/portfolio/p3.PNG" data-lightbox="RahmadCopy" data-title="RahmadCopy">
-              <img src="dist/img/portfolio/p3.PNG" alt="RahmadCopy" class="w-full" />
-            </a>
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/p3.PNG" alt="Form Collection" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/p3.PNG','RahmadCopy Inventory System','A custom inventory system for RahmadCopy built using Laravel 7, Bootstrap, and MySQL to manage stock, transactions, and reporting.')" />
           </div>
           <h3 class="font-semibold text-xl text-dark mt-5 mb-3">RahmadCopy Inventory System</h3>
-          <p class="font-medium text-base text-secondary">Build an RahmadCopy Inventory System using laravel 7,
-            bootstrap & mysql databases.
-            10.</p>
+          <p class="font-medium text-base text-secondary">
+            Build an RahmadCopy Inventory System using laravel 7, bootstrap & mysql databases.
+          </p>
         </div>
+
+
         <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shadow-md overflow-hidden">
-            <a href="dist/img/portfolio/adm_mnm_quiz.PNG" data-lightbox="portfolio" data-title="E-Learning">
-              <img src="dist/img/portfolio/adm_mnm_quiz.PNG" alt="Elearning" class="w-full" />
-            </a>
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/adm_mnm_quiz.PNG" alt="Form Collection" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/adm_mnm_quiz.PNG', 'Elearning', 'A complete e-learning platform built for STMIK WICIDA using CodeIgniter. This system manages online quizzes, assignments, course materials, lecturers, and student data. It includes automated scoring, topic management, user roles, real-time updates, and a clean admin dashboard. Designed to support academic activities efficiently and streamline the digital learning workflow.')" />
           </div>
-          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">E-Learning</h3>
+          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Elearning Sistem Informasi STMIK WICIDA</h3>
           <p class="font-medium text-base text-secondary">Build e-learning using CI (Code Igniter) for the final project
             of a college thesis.</p>
         </div>
         <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shadow-md overflow-hidden">
-            <a href="dist/img/portfolio/p2.PNG" data-lightbox="portfolio" data-title="Laut Timur Form Collection">
-              <img src="dist/img/portfolio/p2.PNG" alt="LTA Form Collection" class="w-full" />
-            </a>
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/p2.png" alt="Form Collection" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/p2.png', 'PT Laut Timur Form Collection', 'A centralized form management system designed for PT Laut Timur Ardiprima. Built using Laravel 8 and Bootstrap 5, this platform streamlines internal form submissions across multiple departments. It includes a dashboard for tracking approved, pending, and rejected forms, along with modules such as purchase requests, customer updates, stock opname, COGS adjustments, audits, and more. The system improves operational efficiency by digitizing manual workflows and providing real-time processing status.')" />
           </div>
-          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Laut Timur Form Collection</h3>
+          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">PT Laut Timur Form Collection</h3>
           <p class="font-medium text-base text-secondary">Build an UI for LTA form collection use bootstrap 5 & laravel
             8 framework.</p>
         </div>
         <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shadow-md overflow-hidden">
-            <a href="dist/img/portfolio/my.png" data-lightbox="portfolio" data-title="PT Laut Timur IT Portal">
-              <img src="dist/img/portfolio/my.png" alt="IT Portal Web" class="w-full" />
-            </a>
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/my.png" alt="IT Portal Web" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/my.png', 'PT Laut Timur IT Portal', 'An internal IT portal developed for PT Laut Timur Ardiprima using Laravel 10, Livewire, and Filament. This portal centralizes IT-related operations such as project documentation, asset management, infrastructure requests, feature submissions, and automated workflows. Designed with a modern UI, the portal improves coordination between the IT team and other departments, making internal communication clearer, faster, and more organized. It serves as the main hub for all IT activities within the company.')" />
           </div>
           <h3 class="font-semibold text-xl text-dark mt-5 mb-3">PT Laut Timur IT Portal</h3>
           <p class="font-medium text-base text-secondary">Build an IT portal website using Filament, Livewire & Laravel
             10.</p>
         </div>
         <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shadow-md overflow-hidden">
-            <a href="dist/img/portfolio/dfa.png" data-lightbox="portfolio" data-title="Delivery Force Automation">
-              <img src="dist/img/portfolio/dfa.png" alt="DFA Web" class="w-full" />
-            </a>
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/dfa.png" alt="DFA" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/dfa.png', 'Delivery Force Automation', 'A delivery team management portal built with Laravel 10, Filament, and SQL databases. The system provides real-time dashboards for daily operations, delivery order tracking, task analytics, vehicle movement, and team performance across branches. Designed to help supervisors monitor activities more efficiently and make data-driven decisions.')" />
           </div>
           <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Delivery Force Automation</h3>
           <p class="font-medium text-base text-secondary">Maintain an delivery team web portal use laravel 10 Framework,
             filament library & sql databases.</p>
         </div>
         <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shadow-md overflow-hidden">
-            <a href="dist/img/portfolio/gala.png" data-lightbox="portfolio" data-title="Laut Timur Form Collection">
-              <img src="dist/img/portfolio/gala.png" alt="GalacticosV2" class="w-full" />
-            </a>
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/gala.png" alt="GalacticosV2" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/gala.png', 'GalacticosV2 (Auditor Portal)', 'An internal auditor portal built using the TALL Stack (Tailwind, Alpine, Laravel, Livewire). It includes core features such as CRA management, audit scheduling, historical fraud tracking, action plan recap, and auditor data management. Designed with a modern dark interface for better focus and clarity, the system enhances audit workflow efficiency and internal collaboration.')" />
           </div>
           <h3 class="font-semibold text-xl text-dark mt-5 mb-3">GalacticosV2 (Auditor Portal)</h3>
           <p class="font-medium text-base text-secondary">Build an Auditor portal website using TALL Stack.</p>
@@ -514,22 +511,22 @@
         <div class="flex items-center justify-center mb-5">
           <!-- Facebook -->
           <a href="https://www.facebook.com/Appolo17" target="_blank"
-              class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition transform hover:scale-110 shadow-sm">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M22.675 0H1.325C.593 0 0 .594 0 1.326v21.348C0 
+            class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition transform hover:scale-110 shadow-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M22.675 0H1.325C.593 0 0 .594 0 1.326v21.348C0 
                   23.406.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 
                   1.893-4.788 4.659-4.788 1.325 0 2.464.099 
                   2.797.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 
                   1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116C23.406 
                   24 24 23.406 24 22.674V1.326C24 .594 23.406 0 22.675 0z" />
-              </svg>
-            </a>
+            </svg>
+          </a>
 
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/den.dimss/" target="_blank"
-              class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-pink-500 hover:text-white hover:border-pink-500 transition transform hover:scale-110 shadow-sm">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.849.07 
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/den.dimss/" target="_blank"
+            class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-pink-500 hover:text-white hover:border-pink-500 transition transform hover:scale-110 shadow-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.849.07 
                   1.366.062 2.633.34 3.608 1.316.975.975 
                   1.254 2.242 1.316 3.608.058 1.265.069 
                   1.645.069 4.849s-.012 3.584-.07 4.849c-.062 
@@ -551,19 +548,19 @@
                   1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 
                   1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 
                   15.26 0 12 0z" />
-                <path d="M12 5.838A6.162 6.162 0 1 0 12 
+              <path d="M12 5.838A6.162 6.162 0 1 0 12 
                   18.162 6.162 6.162 0 1 0 12 5.838zm0 
                   10.162A3.999 3.999 0 1 1 12 
                   8.001a3.999 3.999 0 0 1 0 7.999z" />
-                <circle cx="18.406" cy="5.595" r="1.44" />
-              </svg>
-            </a>
+              <circle cx="18.406" cy="5.595" r="1.44" />
+            </svg>
+          </a>
 
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/dimas-prayogi-4628111b2/" target="_blank"
-              class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-blue-700 hover:text-white hover:border-blue-700 transition transform hover:scale-110 shadow-sm">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/dimas-prayogi-4628111b2/" target="_blank"
+            class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-blue-700 hover:text-white hover:border-blue-700 transition transform hover:scale-110 shadow-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
                   0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 
                   1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 
                   4.267 5.455v6.286zM5.337 7.433c-1.144 
@@ -571,14 +568,14 @@
                   2.063-2.063 1.14 0 2.064.925 
                   2.064 2.063 0 1.139-.925 2.065-2.064 
                   2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
-              </svg>
-            </a>
+            </svg>
+          </a>
 
-            <!-- Dribbble -->
-            <a href="https://dribbble.com/BananaF" target="_blank"
-              class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-pink-400 hover:text-white hover:border-pink-400 transition transform hover:scale-110 shadow-sm">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M12 0C5.373 0 0 5.372 0 12c0 
+          <!-- Dribbble -->
+          <a href="https://dribbble.com/BananaF" target="_blank"
+            class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-pink-400 hover:text-white hover:border-pink-400 transition transform hover:scale-110 shadow-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M12 0C5.373 0 0 5.372 0 12c0 
                   6.627 5.373 12 12 12s12-5.373 
                   12-12c0-6.628-5.373-12-12-12zm7.51 
                   5.732c2.035 2.364 2.526 5.527 
@@ -601,17 +598,17 @@
                   21.811zm7.129-3.065c-.16-.892-.648-3.31-1.541-5.768 
                   1.315.229 2.548.719 3.648 1.462a9.727 9.727 0 0 1-2.107 
                   4.306z" />
-              </svg>
-            </a>
-            <!-- Strava -->
-            <a href="https://www.strava.com/athletes/59715584" target="_blank"
-              class="w-10 h-10 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-orange-500 hover:text-white hover:border-orange-500 transition transform hover:scale-110 shadow-sm">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <title>Strava</title>
-                <path
-                  d="M16.812 1.3l6.929 12.044H18.82l-2.008-3.692-2.007 3.692h-2.92L16.812 1.3zM7.894 7.59l-4.867 8.96h3.413l1.448-2.666 1.454 2.666h3.407L7.894 7.59z" />
-              </svg>
-            </a>
+            </svg>
+          </a>
+          <!-- Strava -->
+          <a href="https://www.strava.com/athletes/59715584" target="_blank"
+            class="w-10 h-10 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-orange-500 hover:text-white hover:border-orange-500 transition transform hover:scale-110 shadow-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <title>Strava</title>
+              <path
+                d="M16.812 1.3l6.929 12.044H18.82l-2.008-3.692-2.007 3.692h-2.92L16.812 1.3zM7.894 7.59l-4.867 8.96h3.413l1.448-2.666 1.454 2.666h3.407L7.894 7.59z" />
+            </svg>
+          </a>
         </div>
         <p class="font-medium text-sm text-slate-500 text-center">Created By Dims with some 💙, Use Tailwind CSS.</p>
       </div>
@@ -625,6 +622,37 @@
     id="to-top">
     <span class="mt-2 block h-5 w-5 rotate-45 border-t-2 border-l-2"></span>
   </a>
+
+  <script>
+    function openPortfolioModal(imageSrc, title, description) {
+      Swal.fire({
+        title: title,
+        imageUrl: imageSrc,
+        background: '#1e1e1e',
+        color: "#fff",
+        showCloseButton: false,
+        showConfirmButton: false,
+        closeButtonHtml: '&times;',
+        customClass: {
+          popup: 'rounded-xl shadow-xl',
+          image: 'rounded-lg',
+          closeButton: 'swal2-close-btn-custom',
+          title: 'text-xl font-semibold text-white mb-4'
+        },
+        backdrop: `
+      rgba(0,0,0,0.85)
+    `,
+        width: "80%",
+        padding: "1rem",
+        html: `
+        <p style="margin-top; font-size: 15px; color: #e5e5e5;">
+          ${description}
+        </p>
+        `,
+      });
+    }
+  </script>
+
   <!-- Back To Top End -->
   <script>
     AOS.init();
