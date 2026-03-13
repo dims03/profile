@@ -19,30 +19,37 @@
       scroll-behavior: smooth;
     }
 
-      .logo-brand {
-        display: inline-block;
-        color: white;
-        font-weight: 700;
-        font-size: 1.25rem;
-        letter-spacing: 0.05em;
-        overflow: hidden;
-        white-space: nowrap;
-        padding-right: 4px;
-        border-right: 2px solid white;
+    .logo-brand {
+      display: inline-block;
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.05em;
+      overflow: hidden;
+      white-space: nowrap;
+      padding-right: 4px;
+      border-right: 2px solid white;
+      width: 0;
+      animation:
+        typing 1.8s steps(8, end) forwards,
+        hideCursor 0.1s linear 1.8s forwards;
+    }
+
+    @keyframes typing {
+      from {
         width: 0;
-        animation:
-          typing 1.8s steps(8, end) forwards,
-          hideCursor 0.1s linear 1.8s forwards;
       }
 
-      @keyframes typing {
-        from { width: 0; }
-        to { width: 8.5ch; }
+      to {
+        width: 8.5ch;
       }
+    }
 
-      @keyframes hideCursor {
-        to { border-right-color: transparent; }
+    @keyframes hideCursor {
+      to {
+        border-right-color: transparent;
       }
+    }
 
     :root {
       --bg: #030712;
@@ -264,13 +271,45 @@
     }
 
     .nav-link {
+      position: relative;
+      z-index: 2;
+      display: block;
       color: #cbd5e1;
+      border: 1px solid transparent;
+      background: transparent;
+      transition:
+        color 0.3s ease,
+        transform 0.25s ease,
+        opacity 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: white;
+      transform: translateY(-1px);
     }
 
     .nav-link.active {
-      background: rgba(96, 165, 250, 0.14);
       color: white;
+    }
+
+    #nav-indicator {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      border-radius: 999px;
+      pointer-events: none;
+      opacity: 0;
+      background: rgba(96, 165, 250, 0.14);
       border: 1px solid rgba(96, 165, 250, 0.2);
+      box-shadow:
+        0 8px 20px rgba(59, 130, 246, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      transition:
+        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.25s ease;
     }
 
     .footer-panel {
@@ -310,6 +349,12 @@
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(148, 163, 184, 0.14), transparent);
     }
+
+    @media (max-width: 1023px) {
+      #nav-indicator {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -332,24 +377,26 @@
 
           <nav id="nav-menu"
             class="hidden absolute top-full right-4 mt-2 bg-[#091122]/95 shadow-2xl rounded-2xl p-4 w-64 border border-white/10 lg:w-auto lg:p-0 lg:bg-transparent lg:shadow-none lg:border-0 lg:static lg:block">
-            <ul class="flex flex-col lg:flex-row gap-2 lg:gap-0">
-              <li><a href="#home"
-                  class="nav-link block px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Home</a>
+            <ul id="nav-list" class="relative flex flex-col lg:flex-row gap-2 lg:gap-0">
+              <span id="nav-indicator"></span>
+
+              <li>
+                <a href="#home" class="nav-link px-4 py-2 rounded-full transition-all duration-300">Home</a>
               </li>
-              <li><a href="#about"
-                  class="nav-link block px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">About</a>
+              <li>
+                <a href="#about" class="nav-link px-4 py-2 rounded-full transition-all duration-300">About</a>
               </li>
-              <li><a href="#tech"
-                  class="nav-link block px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Tech</a>
+              <li>
+                <a href="#tech" class="nav-link px-4 py-2 rounded-full transition-all duration-300">Tech</a>
               </li>
-              <li><a href="#portfolio"
-                  class="nav-link block px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Portfolio</a>
+              <li>
+                <a href="#portfolio" class="nav-link px-4 py-2 rounded-full transition-all duration-300">Portfolio</a>
               </li>
-              <li><a href="#location"
-                  class="nav-link block px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Location</a>
+              <li>
+                <a href="#location" class="nav-link px-4 py-2 rounded-full transition-all duration-300">Location</a>
               </li>
-              <li><a href="#contact"
-                  class="nav-link block px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Contact</a>
+              <li>
+                <a href="#contact" class="nav-link px-4 py-2 rounded-full transition-all duration-300">Contact</a>
               </li>
             </ul>
           </nav>
@@ -931,14 +978,69 @@
 
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
+    const header = document.getElementById('header');
+    const toTop = document.getElementById('to-top');
+    const navIndicator = document.getElementById("nav-indicator");
+    const navList = document.getElementById("nav-list");
 
     hamburger.addEventListener('click', function () {
       hamburger.classList.toggle('hamburger-active');
       navMenu.classList.toggle('hidden');
     });
 
-    const header = document.getElementById('header');
-    const toTop = document.getElementById('to-top');
+    function moveNavIndicator() {
+      if (!navIndicator || !navList) return;
+
+      const activeLink = navList.querySelector(".nav-link.active");
+      if (!activeLink) {
+        navIndicator.style.opacity = "0";
+        return;
+      }
+
+      if (window.innerWidth < 1024) {
+        navIndicator.style.opacity = "0";
+        return;
+      }
+
+      const linkRect = activeLink.getBoundingClientRect();
+      const listRect = navList.getBoundingClientRect();
+
+      const offsetLeft = linkRect.left - listRect.left;
+      const offsetTop = linkRect.top - listRect.top;
+
+      navIndicator.style.width = `${linkRect.width}px`;
+      navIndicator.style.height = `${linkRect.height}px`;
+      navIndicator.style.transform = `translate(${offsetLeft}px, ${offsetTop}px)`;
+      navIndicator.style.opacity = "1";
+    }
+
+    function updateActiveNav() {
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+      let current = "";
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 160;
+        const sectionHeight = section.offsetHeight;
+
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      if (!current && sections.length) {
+        current = sections[0].getAttribute("id");
+      }
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+
+      moveNavIndicator();
+    }
 
     window.addEventListener('scroll', function () {
       if (window.scrollY > 50) {
@@ -956,26 +1058,14 @@
       updateActiveNav();
     });
 
-    function updateActiveNav() {
-      const sections = document.querySelectorAll("section[id]");
-      const navLinks = document.querySelectorAll(".nav-link");
-      let current = "";
+    window.addEventListener("load", () => {
+      updateActiveNav();
+      moveNavIndicator();
+    });
 
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 140;
-        const sectionHeight = section.offsetHeight;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-          current = section.getAttribute("id");
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
-        }
-      });
-    }
+    window.addEventListener("resize", () => {
+      moveNavIndicator();
+    });
 
     const scriptURL =
       "https://script.google.com/macros/s/AKfycbzXPqG0188luPVF5A8l0i_dGnDnUHHdpCeUjuY0QjfBoVvOOPWiwewFXCgalaaXR_iT/exec";
