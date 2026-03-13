@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="dist/output.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+  <title>Dims Web Profile</title>
+  <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+</head>
+
+<body>
+  <!-- Header Start -->
+  <header class="backdrop-blur fixed top-0 left-0 w-full flex items-center z-10">
+    <div class="container">
+      <div class="flex items-center justify-between relative">
+        <div class="px-4" id="smooth-scroll-nav">
+          <a href="#home"
+            class="font-bold text-lg text-slate-700 block py-6 transform transition duration-300 hover:scale-110">
+            <pre>&lt;DIMS/&gt;</pre>
+          </a>
+        </div>
+        <div class="flex items-center px-4">
+          <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+            <span class="hamburger-line transition duration-300 ease-in-out"></span>
+            <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
+          </button>
+          <nav id="nav-menu"
+            class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+            <ul class="block lg:flex">
+              <li class="group">
+                <a href="#home"
+                  class="nav-link text-base text-dark py-2 px-4 mx-2 flex rounded-full transition duration-300 hover:bg-slate-700 hover:text-white">Home</a>
+              </li>
+              <li class="group">
+                <a href="#about"
+                  class="nav-link text-base text-dark py-2 px-4 mx-2 flex rounded-full transition duration-300 hover:bg-slate-700 hover:text-white">About</a>
+              </li>
+              <li class="group">
+                <a href="#tech"
+                  class="nav-link text-base text-dark py-2 px-4 mx-2 flex rounded-full transition duration-300 hover:bg-slate-700 hover:text-white">Tech</a>
+              </li>
+              <li class="group">
+                <a href="#portfolio"
+                  class="nav-link text-base text-dark py-2 px-4 mx-2 flex rounded-full transition duration-300 hover:bg-slate-700 hover:text-white">Portfolio</a>
+              </li>
+              <li class="group">
+                <a href="#location"
+                  class="nav-link text-base text-dark py-2 px-4 mx-2 flex rounded-full transition duration-300 hover:bg-slate-700 hover:text-white">Location</a>
+              </li>
+              <li class="group">
+                <a href="#contact"
+                  class="nav-link text-base text-dark py-2 px-4 mx-2 flex rounded-full transition duration-300 hover:bg-slate-700 hover:text-white">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header End -->
+  <!-- Hero Section Start -->
+  <section id="home" class="pt-36">
+    <div class="absolute inset-0 overflow-hidden -z-10">
+      <!-- Shape 1 -->
+      <div class="floating-shape bg-slate-300/40 w-72 h-72 rounded-full blur-3xl absolute top-10 left-10"></div>
+
+      <!-- Shape 2 -->
+      <div class="floating-shape bg-blue-300/30 w-96 h-96 rounded-full blur-3xl absolute bottom-20 right-20"></div>
+
+      <!-- Shape 3 -->
+      <div class="floating-shape bg-purple-300/30 w-56 h-56 rounded-full blur-3xl absolute top-1/3 right-1/4"></div>
+    </div>
+
+    <div class="container">
+      <div class="flex flex-wrap">
+        <div class="w-full self-center px-4 lg:w-1/2">
+          <h1 class="text-base font-semibold text-secondary md:text-xl">Hello Everyone 👋<span
+              class="block font-bold text-dark text-4xl mt-1 lg:text-5xl">Dimas Prayogi</span></h1>
+          <h2 class="font-medium text-secondary text-lg mb-5 lg:text-2xl">Programmer |<span class="text-dark"> Cyclist &
+              Runner</span></h2>
+          <p class="font-medium text-secondary mb-10 leading-relaxed">A bit about me;</p>
+          <a href="mailto:dimasp95@icloud.com"
+            class="text-base font-semibold text-white bg-slate-700 py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">Contact
+            Me</a>
+        </div>
+        <div class="w-full self-end px-4 lg:w-1/2">
+          <div class="relative mt-10 lg:mt-9 lg:right-0">
+            <img src="dist/img/dims.png" alt="dims" class="max-w-full mx-auto" />
+            <span class="absolute bottom-20 -z-10 left-1/2 -translate-x-1/2 md:scale-125">
+              <svg width="400" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#334155"
+                  d="M62.1,-48.9C77.3,-30.5,84.2,-4.9,79.4,19C74.6,42.8,58.2,64.7,36.1,75.7C14,86.6,-13.8,86.5,-35.3,75.4C-56.9,64.3,-72.1,42.1,-77.2,18.1C-82.2,-5.8,-77.1,-31.6,-62.5,-49.9C-48,-68.2,-24,-79.1,-0.3,-78.9C23.5,-78.7,46.9,-67.4,62.1,-48.9Z"
+                  transform="translate(100 100)" />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Hero Section End -->
+
+  <!-- About Section Start -->
+  <section id="about" class="pt-36 pb-64 bg-slate-100" data-aos="fade-up">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap lg:items-center">
+
+        <!-- Left Column -->
+        <div class="w-full lg:w-1/2 mb-10 lg:mb-0 px-4">
+          <h4 class="text-lg text-slate-700 font-bold uppercase mb-3">About Me</h4>
+          <h2 class="text-3xl lg:text-4xl font-bold text-dark mb-5 max-w-md">A Quick Introduction</h2>
+          <p class="text-base lg:text-lg text-secondary font-medium text-justify max-w-xl">
+            I’m a passionate IT professional currently working as a programmer at one of the largest distribution
+            companies in Borneo, Indonesia. With a strong background in web development, I help optimize internal
+            systems and support business operations.
+            <br><br>
+            Outside of my professional role, I explore creativity through photography, graphic design, and content
+            creation. I’m also a cycling and running enthusiast — staying active fuels my energy and mindset. Known for
+            being highly motivated and eager to learn, I'm always open to collaboration and new opportunities.
+          </p>
+          <a href="https://drive.google.com/file/d/1zH1-Egh_owX8jKuWERONKU3ESXNLL7Y8/view?usp=sharing" target="_blank"
+            class="inline-block mt-6 px-6 py-2 bg-slate-700 text-white rounded-lg font-semibold hover:bg-slate-800 transition">
+            📄 Download Resume
+          </a>
+        </div>
+
+        <!-- Right Column -->
+        <div class="w-full lg:w-1/2 px-4 flex flex-col self-start mt-10">
+
+          <h3 class="text-2xl lg:text-3xl font-semibold text-dark mb-4">Stay Connected</h3>
+          <p class="text-base lg:text-lg text-secondary font-medium mb-6 max-w-md">
+            Feel free to connect or follow me on social media. I’d love to share ideas, collaborate, or simply chat!
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/Appolo17" target="_blank"
+              class="w-10 h-10 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition transform hover:scale-110 shadow-sm">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M22.675 0H1.325C.593 0 0 .594 0 1.326v21.348C0 
+                  23.406.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 
+                  1.893-4.788 4.659-4.788 1.325 0 2.464.099 
+                  2.797.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 
+                  1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116C23.406 
+                  24 24 23.406 24 22.674V1.326C24 .594 23.406 0 22.675 0z" />
+              </svg>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/den.dimss/" target="_blank"
+              class="w-10 h-10 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-pink-500 hover:text-white hover:border-pink-500 transition transform hover:scale-110 shadow-sm">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.849.07 
+                  1.366.062 2.633.34 3.608 1.316.975.975 
+                  1.254 2.242 1.316 3.608.058 1.265.069 
+                  1.645.069 4.849s-.012 3.584-.07 4.849c-.062 
+                  1.366-.34 2.633-1.316 3.608-.975.975-2.242 
+                  1.254-3.608 1.316-1.265.058-1.645.069-4.849.069s-3.584-.012-4.849-.07c-1.366-.062-2.633-.34-3.608-1.316-.975-.975-1.254-2.242-1.316-3.608C2.175 
+                  15.647 2.163 15.267 2.163 12s.012-3.584.07-4.849c.062-1.366.34-2.633 
+                  1.316-3.608C4.524 2.503 5.791 2.224 7.157 
+                  2.162 8.422 2.104 8.802 2.093 12 2.093zm0-2.163C8.741 
+                  0 8.332.014 7.052.072 5.775.132 4.905.333 
+                  4.14.63c-.789.306-1.459.717-2.126 1.384S.935 
+                  3.35.63 4.14C.333 4.905.131 5.775.072 
+                  7.053.012 8.333 0 8.74 0 12s.015 3.667.072 
+                  4.947c.06 1.277.261 2.148.558 2.913.306.788.717 
+                  1.459 1.384 2.126.667.666 1.336 1.079 2.126 
+                  1.384.766.296 1.636.499 2.913.558C8.333 
+                  23.988 8.74 24 12 24s3.667-.015 
+                  4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 
+                  1.459-.718 2.126-1.384.666-.667 1.079-1.335 
+                  1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 
+                  1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 
+                  15.26 0 12 0z" />
+                <path d="M12 5.838A6.162 6.162 0 1 0 12 
+                  18.162 6.162 6.162 0 1 0 12 5.838zm0 
+                  10.162A3.999 3.999 0 1 1 12 
+                  8.001a3.999 3.999 0 0 1 0 7.999z" />
+                <circle cx="18.406" cy="5.595" r="1.44" />
+              </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/dimas-prayogi-4628111b2/" target="_blank"
+              class="w-10 h-10 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-blue-700 hover:text-white hover:border-blue-700 transition transform hover:scale-110 shadow-sm">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                  0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 
+                  1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 
+                  4.267 5.455v6.286zM5.337 7.433c-1.144 
+                  0-2.063-.926-2.063-2.065 0-1.138.92-2.063 
+                  2.063-2.063 1.14 0 2.064.925 
+                  2.064 2.063 0 1.139-.925 2.065-2.064 
+                  2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
+              </svg>
+            </a>
+
+            <!-- Dribbble -->
+            <a href="https://dribbble.com/BananaF" target="_blank"
+              class="w-10 h-10 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-pink-400 hover:text-white hover:border-pink-400 transition transform hover:scale-110 shadow-sm">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.372 0 12c0 
+                  6.627 5.373 12 12 12s12-5.373 
+                  12-12c0-6.628-5.373-12-12-12zm7.51 
+                  5.732c2.035 2.364 2.526 5.527 
+                  1.43 8.253a11.38 11.38 0 0 0-6.52-.544c-.176-.426-.363-.844-.561-1.255 
+                  2.858-1.33 4.584-3.17 5.651-4.546zM12 
+                  2.2c2.412 0 4.61.927 6.248 
+                  2.448-.969 1.304-2.561 2.86-5.093 
+                  4.006-1.431-2.633-3.014-4.814-3.414-5.331A9.707 
+                  9.707 0 0 1 12 2.2zM7.287 
+                  3.72c.325.42 1.979 2.548 3.481 
+                  5.057-4.264 1.276-8.007 1.304-8.48 
+                  1.304C2.915 6.922 4.764 4.725 7.287 
+                  3.72zM2.188 12.001v-.155c.579.006 
+                  4.623.006 9.392-1.524.221.428.434.859.641 
+                  1.29-4.09 1.225-6.601 4.234-7.8 6.023A9.79 
+                  9.79 0 0 1 2.188 12zM12 
+                  21.811a9.765 9.765 0 0 1-5.647-1.807c.933-1.55 
+                  3.075-4.361 7.225-5.65.83 2.164 1.395 
+                  4.346 1.641 5.447A9.71 9.71 0 0 1 12 
+                  21.811zm7.129-3.065c-.16-.892-.648-3.31-1.541-5.768 
+                  1.315.229 2.548.719 3.648 1.462a9.727 9.727 0 0 1-2.107 
+                  4.306z" />
+              </svg>
+            </a>
+            <!-- Strava -->
+            <a href="https://www.strava.com/athletes/59715584" target="_blank"
+              class="w-10 h-10 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-orange-500 hover:text-white hover:border-orange-500 transition transform hover:scale-110 shadow-sm">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <title>Strava</title>
+                <path
+                  d="M16.812 1.3l6.929 12.044H18.82l-2.008-3.692-2.007 3.692h-2.92L16.812 1.3zM7.894 7.59l-4.867 8.96h3.413l1.448-2.666 1.454 2.666h3.407L7.894 7.59z" />
+              </svg>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- About Section End -->
+  <!-- Tech Stack Start-->
+  <section class="py-16" data-aos="fade-up">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center">
+      <h2 class="text-2xl font-bold tracking-wide">TECH STACK</h2>
+      <p class="mt-2 text-gray-500">👨🏻‍💻 What Technology I Used</p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 place-items-center">
+      <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/tailwind-css.png" alt="TailwindCSS" title="TailwindCSS"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          TailwindCSS
+        </p>
+      </a>
+
+      <a href="https://alpinejs.dev/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/alpine.png" alt="AlpineJS" title="AlpineJS"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          AlpineJS
+        </p>
+      </a>
+
+      <a href="https://laravel.com/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/laravel.png" alt="Laravel" title="Laravel"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          Laravel
+        </p>
+      </a>
+
+      <a href="https://laravel-livewire.com/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/livewire.png" alt="Livewire" title="Livewire"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          Livewire
+        </p>
+      </a>
+
+      <a href="https://www.w3schools.com/js/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/java-script.png" alt="JavaScript" title="JavaScript"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          JavaScript
+        </p>
+      </a>
+
+      <a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/mysql.png" alt="MySQL" title="MySQL"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          MySQL
+        </p>
+      </a>
+
+      <a href="https://www.php.net/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/php.png" alt="PHP" title="PHP"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          PHP
+        </p>
+      </a>
+
+      <a href="https://en.wikipedia.org/wiki/HTML" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/html5.png" alt="HTML5" title="HTML5"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          HTML5
+        </p>
+      </a>
+
+      <a href="https://en.wikipedia.org/wiki/CSS" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/css3.png" alt="CSS3" title="CSS3"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          CSS3
+        </p>
+      </a>
+
+      <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/figma.png" alt="Figma" title="Figma"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          Figma
+        </p>
+      </a>
+
+      <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/npm.png" alt="NPM" title="NPM"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          NPM
+        </p>
+      </a>
+
+      <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/bootstrap.png" alt="Bootstrap" title="Bootstrap"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          Bootstrap
+        </p>
+      </a>
+
+      <a href="https://filezilla-project.org/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/file-zilla.png" alt="FileZilla" title="FileZilla"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          FileZilla
+        </p>
+      </a>
+
+      <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/git.png" alt="Git" title="Git"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          Git
+        </p>
+      </a>
+
+      <a href="https://www.postman.com/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/postman.png" alt="Postman" title="Postman"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          Postman
+        </p>
+      </a>
+
+      <a href="https://github.com/PowerShell/PowerShell" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/power-sheel.png" alt="PowerShell" title="PowerShell"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          PowerShell
+        </p>
+      </a>
+
+      <a href="https://vite.dev/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/vite.png" alt="Vite" title="Vite"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          Vite
+        </p>
+      </a>
+
+      <a href="https://www.json.org/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/json.png" alt="JSON" title="JSON"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          JSON
+        </p>
+      </a>
+      <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl md:col-span-2">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/ollama.png" alt="Ollama" title="Ollama"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          Ollama
+        </p>
+      </a>
+
+      <a href="https://openai.com/" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl md:col-span-2">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/openai.png" alt="OpenAI" title="OpenAI"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          OpenAI
+        </p>
+      </a>
+
+      <a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer"
+        class="group w-24 rounded-2xl md:col-span-2">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/60 ring-1 ring-black/5 shadow-sm
+                    flex items-center justify-center mx-auto
+                    transition hover:shadow-md hover:-translate-y-0.5">
+          <img src="img/gemini-color.png" alt="Gemini" title="Gemini"
+            class="w-12 h-12 sm:w-14 sm:h-14 object-contain transition duration-300 group-hover:scale-110" />
+        </div>
+        <p class="mt-2 text-center text-xs text-gray-600
+                  opacity-0 translate-y-1 transition duration-300
+                  group-hover:opacity-100 group-hover:translate-y-0">
+          Gemini
+        </p>
+      </a>
+
+    </div>
+  </div>
+</section>
+  <!-- Tech Stack End-->
+  <!-- Portfolio Start -->
+  <section id="portfolio" class="pt-36 pb-16 bg-slate-100" data-aos="fade-up">
+    <div class="container">
+      <div class="w-full px-4">
+        <div class="max-w-xl mx-auto text-center mb-16">
+          <h4 class="font-semibold text-lg text-slate-700 mb-2 uppercase">Portfolio</h4>
+          <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">My Recent Works</h2>
+          <p class="font-medium text-md text-secondary md:text-lg">You can see my recent works down below ✌</p>
+        </div>
+      </div>
+      <div class="w-full px-4 flex flex-wrap justify-center">
+        <div class="mb-12 p-4 md:w-1/2">
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/p3.PNG" alt="Form Collection" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/p3.PNG','RahmadCopy Inventory System','A custom inventory system for RahmadCopy built using Laravel 7, Bootstrap, and MySQL to manage stock, transactions, and reporting.')" />
+          </div>
+          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">RahmadCopy Inventory System</h3>
+          <p class="font-medium text-base text-secondary">
+            Build an RahmadCopy Inventory System using laravel 7, bootstrap & mysql databases.
+          </p>
+        </div>
+
+
+        <div class="mb-12 p-4 md:w-1/2">
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/adm_mnm_quiz.PNG" alt="Form Collection" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/adm_mnm_quiz.PNG', 'Elearning', 'A complete e-learning platform built for STMIK WICIDA using CodeIgniter. This system manages online quizzes, assignments, course materials, lecturers, and student data. It includes automated scoring, topic management, user roles, real-time updates, and a clean admin dashboard. Designed to support academic activities efficiently and streamline the digital learning workflow.')" />
+          </div>
+          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Elearning Sistem Informasi STMIK WICIDA</h3>
+          <p class="font-medium text-base text-secondary">Build e-learning using CI (Code Igniter) for the final project
+            of a college thesis.</p>
+        </div>
+        <div class="mb-12 p-4 md:w-1/2">
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/p2.PNG" alt="Form Collection" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/p2.PNG', 'PT Laut Timur Form Collection', 'A centralized form management system designed for PT Laut Timur Ardiprima. Built using Laravel 8 and Bootstrap 5, this platform streamlines internal form submissions across multiple departments. It includes a dashboard for tracking approved, pending, and rejected forms, along with modules such as purchase requests, customer updates, stock opname, COGS adjustments, audits, and more. The system improves operational efficiency by digitizing manual workflows and providing real-time processing status.')" />
+          </div>
+          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">PT Laut Timur Form Collection</h3>
+          <p class="font-medium text-base text-secondary">Build an UI for LTA form collection use bootstrap 5 & laravel
+            8 framework.</p>
+        </div>
+        <div class="mb-12 p-4 md:w-1/2">
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/myit.png" alt="IT Portal Web" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/myit.png', 'PT Laut Timur IT Portal', 'An internal IT portal developed for PT Laut Timur Ardiprima using Laravel 10, Livewire, and Filament. This portal centralizes IT-related operations such as project documentation, asset management, infrastructure requests, feature submissions, and automated workflows. Designed with a modern UI, the portal improves coordination between the IT team and other departments, making internal communication clearer, faster, and more organized. It serves as the main hub for all IT activities within the company.')" />
+          </div>
+          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">PT Laut Timur IT Portal</h3>
+          <p class="font-medium text-base text-secondary">Build an IT portal website using Filament, Livewire & Laravel
+            10.</p>
+        </div>
+        <div class="mb-12 p-4 md:w-1/2">
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/dfa.png" alt="DFA" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/dfa.png', 'Delivery Force Automation', 'A delivery team management portal built with Laravel 10, Filament, and SQL databases. The system provides real-time dashboards for daily operations, delivery order tracking, task analytics, vehicle movement, and team performance across branches. Designed to help supervisors monitor activities more efficiently and make data-driven decisions.')" />
+          </div>
+          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Delivery Force Automation</h3>
+          <p class="font-medium text-base text-secondary">Maintain an delivery team web portal use laravel 10 Framework,
+            filament library & sql databases.</p>
+        </div>
+        <div class="mb-12 p-4 md:w-1/2">
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/gala.png" alt="GalacticosV2" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/gala.png', 'GalacticosV2 (Auditor Portal)', 'An internal auditor portal built using the TALL Stack (Tailwind, Alpine, Laravel, Livewire). It includes core features such as CRA management, audit scheduling, historical fraud tracking, action plan recap, and auditor data management. Designed with a modern dark interface for better focus and clarity, the system enhances audit workflow efficiency and internal collaboration.')" />
+          </div>
+          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">GalacticosV2 (Auditor Portal)</h3>
+          <p class="font-medium text-base text-secondary">Build an Auditor portal website using TALL Stack.</p>
+        </div>
+        <div class="mb-12 p-4 md:w-1/2">
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/asetv2.png" alt="Asset" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/asetv2.png', 'Asset Dashboard', 'An asset dashboard portal built using the TALL Stack (Tailwind, Alpine, Laravel, Livewire). It includes features such generate QR barcode for see detail and historical asset like table, chair & etc for PT Laut Timur Ardiprima.')" />
+          </div>
+          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Asset Dashboard</h3>
+          <p class="font-medium text-base text-secondary">Build an Asset Dashboard using Framework laravel 12, talwindcss 4, Alpine JS, livewire 3.5 & filament v4.</p>
+        </div>
+        <div class="mb-12 p-4 md:w-1/2">
+          <div class="rounded-md shadow-md overflow-hidden cursor-pointer">
+            <img src="dist/img/portfolio/aibi.png" alt="AI Assistant" class="w-full"
+              onclick="openPortfolioModal('dist/img/portfolio/aibi.png', 'AI Assistant', 'Integrate & Develope an AI Asistant for analyst data from csv & xlsx. Integrated with Ollama and Gemini for testing purpose.')" />
+          </div>
+          <h3 class="font-semibold text-xl text-dark mt-5 mb-3">AI Assistant</h3>
+          <p class="font-medium text-base text-secondary">Build an AI Assistant using TALL Stack - AI Model Ollama3.1 & Gemini 2.5 Flash.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Portfolio End -->
+  <!-- Location Section Start -->
+  <section id="location" class="pt-36 pb-32" data-aos="fade-up">
+    <div class="container">
+      <div class="w-full px-4 text-center mb-12">
+        <h4 class="font-semibold text-lg text-slate-700 mb-2 uppercase">My Location</h4>
+        <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">📍 Where I Live</h2>
+        <p class="font-medium text-md text-secondary md:text-lg">Jl. Lambung Mangkurat Gg 10 RT 10 No 58, Samarinda,
+          Kalimantan Timur, Indonesia</p>
+      </div>
+      <div class="w-full px-4">
+        <div class="rounded-lg overflow-hidden shadow-lg aspect-w-16 aspect-h-9">
+          <iframe class="w-full h-[400px] rounded-md"
+            src="https://maps.google.com/maps?q=-0.490365,117.161426&z=17&output=embed" width="100%" height="400"
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Location Section End -->
+
+  <!-- Contact Start -->
+  <section id="contact" class="pt-36 pb-32 bg-slate-100" data-aos="fade-up">
+    <div class="container">
+      <div class="w-full px-4">
+        <div class="max-w-xl mx-auto text-center mb-16">
+          <h4 class="font-semibold text-lg text-slate-700 mb-2 uppercase">Contact</h4>
+          <h2 class="font-bold text-dark text-3xl uppercase mb-4 sm:text-4xl lg:text-5xl">Send Me A Message</h2>
+          <p class="font-medium text-md text-secondary md:text-lg">You can send me a message by fill form down bellow.
+          </p>
+        </div>
+      </div>
+      <form name="submit-to-google-sheet" id="contact-form" onsubmit="return validateForm()">
+        <div class="w-full lg:w-2/3 lg:mx-auto">
+          <div class="w-full px-4 mb-8">
+            <label for="name" class="text-base font-bold text-slate-700">Name</label>
+            <input type="text" id="name"
+              class="w-full bg-white text-dark p-3 rounded-md outline-none focus:ring-slate-700 focus:ring-1 focus:border-slate-700"
+              name="name" />
+          </div>
+          <div class="w-full px-4 mb-8">
+            <label for="email" class="text-base font-bold text-slate-700">Email</label>
+            <input type="text" id="email"
+              class="w-full bg-white text-dark p-3 rounded-md outline-none focus:ring-slate-700 focus:ring-1 focus:border-slate-700"
+              name="email" />
+          </div>
+          <div class="w-full px-4 mb-8">
+            <label for="message" class="text-base font-bold text-slate-700">Message</label>
+            <textarea type="text" id="message"
+              class="w-full bg-white text-dark p-3 rounded-md outline-none focus:ring-slate-700 focus:ring-1 focus:border-slate-700 h-32"
+              name="message"></textarea>
+          </div>
+          <div class="w-full px-4" style="margin-bottom: 20px">
+            <button
+              class="text-base font-semibold text-white bg-slate-700 py-3 px-8 rounded-full w-full hover:opacity-80 hover:shadow-lg transition duration-500">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <!-- Contact End -->
+
+  <!-- Footer Start -->
+  <footer class="bg-dark pt-24 pb-12">
+    <div class="container">
+      <div class="flex flex-wrap">
+        <div class="w-full px-4 mb-12 text-slate-300 font-medium md:w-1/3">
+          <h2 class="font-bold text-4xl text-white mb-5">🇮🇩 | East Borneo</h2>
+          <h3 class="font-bold text-2xl mb-2">Email</h3>
+          <p>dimasp95@icloud.com</p>
+        </div>
+        <div class="w-full px-4 mb-12 md:w-1/3">
+          <h3 class="font-semibold text-xl text-white mb-5">Category</h3>
+          <ul class="text-slate-300">
+            <li>
+              <a href="javascript:void(0)" class="inline-block text-base hover:text-blue-400 mb-3">Programming</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="inline-block text-base hover:text-blue-400 mb-3">Technology</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="inline-block text-base hover:text-blue-400 mb-3">Content Creator</a>
+            </li>
+          </ul>
+        </div>
+        <div class="w-full px-4 mb-12 md:w-1/3">
+          <h3 class="font-semibold text-xl text-white mb-5">Link</h3>
+          <nav id="smooth-scroll-nav">
+            <ul class="text-slate-300">
+              <li>
+                <a href="#home" class="inline-block text-base hover:text-blue-400 mb-3">Home</a>
+              </li>
+              <li>
+                <a href="#about" class="inline-block text-base hover:text-blue-400 mb-3">About</a>
+              </li>
+              <li>
+                <a href="#tech" class="inline-block text-base hover:text-blue-400 mb-3">Tech</a>
+              </li>
+              <li>
+                <a href="#portfolio" class="inline-block text-base hover:text-blue-400 mb-3">Portfolio</a>
+              </li>
+              <li>
+                <a href="#location" class="inline-block text-base hover:text-blue-400 mb-3">Location</a>
+              </li>
+              <li>
+                <a href="#contact" class="inline-block text-base hover:text-blue-400 mb-3">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="w-full pt-10 border-t border-slate-700">
+        <div class="flex items-center justify-center mb-5">
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/Appolo17" target="_blank"
+            class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition transform hover:scale-110 shadow-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M22.675 0H1.325C.593 0 0 .594 0 1.326v21.348C0 
+                  23.406.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 
+                  1.893-4.788 4.659-4.788 1.325 0 2.464.099 
+                  2.797.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 
+                  1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116C23.406 
+                  24 24 23.406 24 22.674V1.326C24 .594 23.406 0 22.675 0z" />
+            </svg>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/den.dimss/" target="_blank"
+            class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-pink-500 hover:text-white hover:border-pink-500 transition transform hover:scale-110 shadow-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.849.07 
+                  1.366.062 2.633.34 3.608 1.316.975.975 
+                  1.254 2.242 1.316 3.608.058 1.265.069 
+                  1.645.069 4.849s-.012 3.584-.07 4.849c-.062 
+                  1.366-.34 2.633-1.316 3.608-.975.975-2.242 
+                  1.254-3.608 1.316-1.265.058-1.645.069-4.849.069s-3.584-.012-4.849-.07c-1.366-.062-2.633-.34-3.608-1.316-.975-.975-1.254-2.242-1.316-3.608C2.175 
+                  15.647 2.163 15.267 2.163 12s.012-3.584.07-4.849c.062-1.366.34-2.633 
+                  1.316-3.608C4.524 2.503 5.791 2.224 7.157 
+                  2.162 8.422 2.104 8.802 2.093 12 2.093zm0-2.163C8.741 
+                  0 8.332.014 7.052.072 5.775.132 4.905.333 
+                  4.14.63c-.789.306-1.459.717-2.126 1.384S.935 
+                  3.35.63 4.14C.333 4.905.131 5.775.072 
+                  7.053.012 8.333 0 8.74 0 12s.015 3.667.072 
+                  4.947c.06 1.277.261 2.148.558 2.913.306.788.717 
+                  1.459 1.384 2.126.667.666 1.336 1.079 2.126 
+                  1.384.766.296 1.636.499 2.913.558C8.333 
+                  23.988 8.74 24 12 24s3.667-.015 
+                  4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 
+                  1.459-.718 2.126-1.384.666-.667 1.079-1.335 
+                  1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 
+                  1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 
+                  15.26 0 12 0z" />
+              <path d="M12 5.838A6.162 6.162 0 1 0 12 
+                  18.162 6.162 6.162 0 1 0 12 5.838zm0 
+                  10.162A3.999 3.999 0 1 1 12 
+                  8.001a3.999 3.999 0 0 1 0 7.999z" />
+              <circle cx="18.406" cy="5.595" r="1.44" />
+            </svg>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/dimas-prayogi-4628111b2/" target="_blank"
+            class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-blue-700 hover:text-white hover:border-blue-700 transition transform hover:scale-110 shadow-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                  0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 
+                  1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 
+                  4.267 5.455v6.286zM5.337 7.433c-1.144 
+                  0-2.063-.926-2.063-2.065 0-1.138.92-2.063 
+                  2.063-2.063 1.14 0 2.064.925 
+                  2.064 2.063 0 1.139-.925 2.065-2.064 
+                  2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
+            </svg>
+          </a>
+
+          <!-- Dribbble -->
+          <a href="https://dribbble.com/BananaF" target="_blank"
+            class="w-10 h-10 mr-3 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-pink-400 hover:text-white hover:border-pink-400 transition transform hover:scale-110 shadow-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M12 0C5.373 0 0 5.372 0 12c0 
+                  6.627 5.373 12 12 12s12-5.373 
+                  12-12c0-6.628-5.373-12-12-12zm7.51 
+                  5.732c2.035 2.364 2.526 5.527 
+                  1.43 8.253a11.38 11.38 0 0 0-6.52-.544c-.176-.426-.363-.844-.561-1.255 
+                  2.858-1.33 4.584-3.17 5.651-4.546zM12 
+                  2.2c2.412 0 4.61.927 6.248 
+                  2.448-.969 1.304-2.561 2.86-5.093 
+                  4.006-1.431-2.633-3.014-4.814-3.414-5.331A9.707 
+                  9.707 0 0 1 12 2.2zM7.287 
+                  3.72c.325.42 1.979 2.548 3.481 
+                  5.057-4.264 1.276-8.007 1.304-8.48 
+                  1.304C2.915 6.922 4.764 4.725 7.287 
+                  3.72zM2.188 12.001v-.155c.579.006 
+                  4.623.006 9.392-1.524.221.428.434.859.641 
+                  1.29-4.09 1.225-6.601 4.234-7.8 6.023A9.79 
+                  9.79 0 0 1 2.188 12zM12 
+                  21.811a9.765 9.765 0 0 1-5.647-1.807c.933-1.55 
+                  3.075-4.361 7.225-5.65.83 2.164 1.395 
+                  4.346 1.641 5.447A9.71 9.71 0 0 1 12 
+                  21.811zm7.129-3.065c-.16-.892-.648-3.31-1.541-5.768 
+                  1.315.229 2.548.719 3.648 1.462a9.727 9.727 0 0 1-2.107 
+                  4.306z" />
+            </svg>
+          </a>
+          <!-- Strava -->
+          <a href="https://www.strava.com/athletes/59715584" target="_blank"
+            class="w-10 h-10 rounded-full border border-slate-300 text-slate-500 flex items-center justify-center hover:bg-orange-500 hover:text-white hover:border-orange-500 transition transform hover:scale-110 shadow-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <title>Strava</title>
+              <path
+                d="M16.812 1.3l6.929 12.044H18.82l-2.008-3.692-2.007 3.692h-2.92L16.812 1.3zM7.894 7.59l-4.867 8.96h3.413l1.448-2.666 1.454 2.666h3.407L7.894 7.59z" />
+            </svg>
+          </a>
+        </div>
+        <p class="font-medium text-sm text-slate-500 text-center">Created By Dims with some 💙, Use Tailwind CSS.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer End -->
+
+  <!-- Back To Top Start -->
+  <a href="#home"
+    class="fixed bottom-4 right-4 z-[9999] hidden h-14 w-14 items-center justify-center rounded-full bg-slate-700 p-4 hover:animate-pulse"
+    id="to-top">
+    <span class="mt-2 block h-5 w-5 rotate-45 border-t-2 border-l-2"></span>
+  </a>
+
+  <script>
+    function openPortfolioModal(imageSrc, title, description) {
+      Swal.fire({
+        title: title,
+        imageUrl: imageSrc,
+        background: '#1e1e1e',
+        color: "#fff",
+        showCloseButton: false,
+        showConfirmButton: false,
+        closeButtonHtml: '&times;',
+        customClass: {
+          popup: 'rounded-xl shadow-xl',
+          image: 'rounded-lg',
+          closeButton: 'swal2-close-btn-custom',
+          title: 'text-xl font-semibold text-white mb-4'
+        },
+        backdrop: `
+      rgba(0,0,0,0.85)
+    `,
+        width: "80%",
+        padding: "1rem",
+        html: `
+        <p style="margin-top; font-size: 15px; color: #e5e5e5;">
+          ${description}
+        </p>
+        `,
+      });
+    }
+  </script>
+
+  <!-- Back To Top End -->
+  <script>
+    AOS.init();
+  </script>
+  <script src="dist/js/script.js"></script>
+
+  <style>
+    @keyframes floaty {
+      0% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(30px, -40px) scale(1.1); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+
+    .floating-shape {
+      animation: floaty 12s ease-in-out infinite;
+    }
+  </style>
+
+</body>
+
+</html>
