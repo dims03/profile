@@ -19,6 +19,31 @@
       scroll-behavior: smooth;
     }
 
+      .logo-brand {
+        display: inline-block;
+        color: white;
+        font-weight: 700;
+        font-size: 1.25rem;
+        letter-spacing: 0.05em;
+        overflow: hidden;
+        white-space: nowrap;
+        padding-right: 4px;
+        border-right: 2px solid white;
+        width: 0;
+        animation:
+          typing 1.8s steps(8, end) forwards,
+          hideCursor 0.1s linear 1.8s forwards;
+      }
+
+      @keyframes typing {
+        from { width: 0; }
+        to { width: 8.5ch; }
+      }
+
+      @keyframes hideCursor {
+        to { border-right-color: transparent; }
+      }
+
     :root {
       --bg: #030712;
       --bg-soft: #081120;
@@ -294,7 +319,7 @@
   <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
     <div class="container-custom">
       <div class="flex items-center justify-between py-4">
-        <a href="#home" class="font-bold text-xl text-white tracking-wide">
+        <a href="#home" class="logo-brand">
           &lt;DIMS/&gt;
         </a>
 
@@ -696,11 +721,11 @@
         <div class="portfolio-card p-4 rounded-[1.6rem]">
           <div class="rounded-2xl overflow-hidden cursor-pointer">
             <img src="dist/img/portfolio/adm_mnm_quiz.PNG" alt="E-Learning" class="w-full"
-              onclick="openPortfolioModal('dist/img/portfolio/adm_mnm_quiz.PNG','E-Learning Platform','A complete e-learning platform built for STMIK WICIDA using CodeIgniter. This system manages online quizzes, assignments, course materials, lecturers, and student data. It includes automated scoring, topic management, user roles, real-time updates, and a clean admin dashboard. Designed to support academic activities efficiently and streamline the digital learning workflow.')" />
+              onclick="openPortfolioModal('dist/img/portfolio/adm_mnm_quiz.PNG','E-Learning Platform','A complete e-learning platform built for STMIK WICIDA use CodeIgniter. This system manages online quizzes, assignments, course materials, lecturers, and student data. It includes automated scoring, topic management, user roles, real-time updates, and a clean admin dashboard. Designed to support academic activities efficiently and streamline the digital learning workflow.')" />
           </div>
           <h3 class="font-semibold text-2xl text-white mt-5 mb-3">E-Learning Platform</h3>
           <p class="font-medium text-base text-slate-400 leading-relaxed">
-            A complete e-learning platform built for STMIK WICIDA using CodeIgniter.
+            A complete e-learning platform built for STMIK WICIDA use CodeIgniter.
           </p>
         </div>
 
