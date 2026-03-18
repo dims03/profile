@@ -406,137 +406,168 @@
   </header>
 
   <!-- Hero -->
-  <section id="home" class="relative h-screen min-h-[780px] overflow-hidden pt-20 lg:pt-24">
-    <!-- Background -->
-    <div id="hero-three-bg" class="absolute inset-0 z-0"></div>
-    <div class="hero-grid absolute inset-0 z-[1]"></div>
-    <div class="hero-overlay-glow absolute inset-0 z-[2]"></div>
+ <!-- Hero -->
+<section id="home" class="relative h-screen min-h-[780px] overflow-hidden pt-20 lg:pt-24">
+  <!-- Background -->
+  <div id="hero-three-bg" class="absolute inset-0 z-0"></div>
+  <div class="hero-grid absolute inset-0 z-[1]"></div>
+  <div class="hero-overlay-glow absolute inset-0 z-[2]"></div>
 
-    <div class="container-custom relative z-10 h-[calc(100vh-80px)] lg:h-[calc(100vh-96px)]">
-      <div class="relative h-full">
+  <div class="container-custom relative z-10 h-[calc(100vh-80px)] lg:h-[calc(100vh-96px)]">
+    <div class="relative h-full">
 
-        <!-- LEFT TEXT DESKTOP -->
-        <div class="hidden lg:block absolute left-0 top-[32%] max-w-[260px]">
-          <h2 class="text-white font-light leading-tight text-4xl xl:text-5xl">
-            Web Developer
-          </h2>
-          <span class="block text-sky-300">Cyclist & Runner</span>
+      <!-- LEFT TEXT DESKTOP -->
+      <div
+        class="hidden lg:block absolute left-0 top-[32%] max-w-[260px]"
+        data-aos="fade-right"
+        data-aos-duration="1000"
+        data-aos-delay="150">
+        <h2 class="text-white font-light leading-tight text-4xl xl:text-5xl">
+          Web Developer
+        </h2>
+        <span class="block text-sky-300">Cyclist & Runner</span>
+      </div>
+
+      <!-- RIGHT TEXT DESKTOP -->
+      <div
+        class="hidden lg:block absolute right-0 top-[25%] max-w-[320px]"
+        data-aos="fade-left"
+        data-aos-duration="1000"
+        data-aos-delay="300">
+        <p class="text-slate-300 text-lg leading-8">
+          Hi, I’m Dimas, a programmer focused on internal system, modern web experiences, and business tools with a futuristic visual touch.
+        </p>
+
+        <div class="mt-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+          <a href="mailto:dimasp95@icloud.com"
+            class="inline-flex items-center gap-2 justify-center rounded-full border border-sky-400/30 bg-sky-500/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition duration-300 hover:bg-sky-500/20 hover:border-sky-300/40">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+            </svg>
+            Contact Me
+          </a>
         </div>
+      </div>
 
-        <!-- RIGHT TEXT DESKTOP -->
-        <div class="hidden lg:block absolute right-0 top-[25%] max-w-[320px]">
-          <p class="text-slate-300 text-lg leading-8">
-            Hi, I’m Dimas, a programmer focused on internal system, modern web experiences, and business tools with a futuristic visual touch.
-          </p>
+      <!-- DECORATIONS DESKTOP -->
+      <div class="hidden lg:block absolute left-[22%] top-[44%] w-[140px] h-[140px] rounded-full border border-sky-300/15 opacity-70 rotate-[-25deg]"></div>
+      <div class="hidden lg:block absolute right-[18%] top-[20%] w-[240px] h-[240px] opacity-50">
+        <svg viewBox="0 0 200 200" class="w-full h-full">
+          <polygon points="100,10 170,50 170,130 100,190 30,130 30,50"
+                  fill="none" stroke="rgba(56,189,248,0.22)" stroke-width="1.2" />
+          <polygon points="100,30 150,60 150,120 100,170 50,120 50,60"
+                  fill="none" stroke="rgba(56,189,248,0.18)" stroke-width="1" />
+          <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(56,189,248,0.16)" stroke-width="1" />
+          <line x1="30" y1="50" x2="170" y2="50" stroke="rgba(56,189,248,0.16)" stroke-width="1" />
+          <line x1="30" y1="130" x2="170" y2="130" stroke="rgba(56,189,248,0.16)" stroke-width="1" />
+          <line x1="30" y1="50" x2="100" y2="170" stroke="rgba(56,189,248,0.14)" stroke-width="1" />
+          <line x1="170" y1="50" x2="100" y2="170" stroke="rgba(56,189,248,0.14)" stroke-width="1" />
+          <line x1="30" y1="130" x2="100" y2="30" stroke="rgba(56,189,248,0.14)" stroke-width="1" />
+          <line x1="170" y1="130" x2="100" y2="30" stroke="rgba(56,189,248,0.14)" stroke-width="1" />
+        </svg>
+      </div>
 
-          <div class="mt-8">
-            <a href="mailto:dimasp95@icloud.com"
-              class="inline-flex items-center gap-2 justify-center rounded-full border border-sky-400/30 bg-sky-500/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition duration-300 hover:bg-sky-500/20 hover:border-sky-300/40">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                </svg>
-               Contact Me
-            </a>
-          </div>
-        </div>
+      <!-- MOBILE DECORATIONS -->
+      <div class="lg:hidden absolute left-[-10px] top-[56%] w-[90px] h-[22px] rounded-full border border-sky-300/10 bg-sky-300/5 rotate-[55deg] opacity-50"></div>
+      <div class="lg:hidden absolute right-[-20px] top-[28%] w-[150px] h-[150px] opacity-40">
+        <svg viewBox="0 0 200 200" class="w-full h-full">
+          <polygon points="100,10 170,50 170,130 100,190 30,130 30,50"
+                  fill="none" stroke="rgba(56,189,248,0.18)" stroke-width="1.2" />
+          <polygon points="100,30 150,60 150,120 100,170 50,120 50,60"
+                  fill="none" stroke="rgba(56,189,248,0.14)" stroke-width="1" />
+          <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(56,189,248,0.12)" stroke-width="1" />
+          <line x1="30" y1="50" x2="170" y2="50" stroke="rgba(56,189,248,0.12)" stroke-width="1" />
+          <line x1="30" y1="130" x2="170" y2="130" stroke="rgba(56,189,248,0.12)" stroke-width="1" />
+        </svg>
+      </div>
+      <div class="lg:hidden absolute left-1/2 top-[34%] -translate-x-1/2 w-[90px] h-[90px] rounded-full border border-cyan-300/20 opacity-50"></div>
 
-        <!-- DECORATIONS DESKTOP -->
-        <div class="hidden lg:block absolute left-[22%] top-[44%] w-[140px] h-[140px] rounded-full border border-sky-300/15 opacity-70 rotate-[-25deg]"></div>
-        <div class="hidden lg:block absolute right-[18%] top-[20%] w-[240px] h-[240px] opacity-50">
-          <svg viewBox="0 0 200 200" class="w-full h-full">
-            <polygon points="100,10 170,50 170,130 100,190 30,130 30,50"
-                    fill="none" stroke="rgba(56,189,248,0.22)" stroke-width="1.2" />
-            <polygon points="100,30 150,60 150,120 100,170 50,120 50,60"
-                    fill="none" stroke="rgba(56,189,248,0.18)" stroke-width="1" />
-            <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(56,189,248,0.16)" stroke-width="1" />
-            <line x1="30" y1="50" x2="170" y2="50" stroke="rgba(56,189,248,0.16)" stroke-width="1" />
-            <line x1="30" y1="130" x2="170" y2="130" stroke="rgba(56,189,248,0.16)" stroke-width="1" />
-            <line x1="30" y1="50" x2="100" y2="170" stroke="rgba(56,189,248,0.14)" stroke-width="1" />
-            <line x1="170" y1="50" x2="100" y2="170" stroke="rgba(56,189,248,0.14)" stroke-width="1" />
-            <line x1="30" y1="130" x2="100" y2="30" stroke="rgba(56,189,248,0.14)" stroke-width="1" />
-            <line x1="170" y1="130" x2="100" y2="30" stroke="rgba(56,189,248,0.14)" stroke-width="1" />
-          </svg>
-        </div>
+      <!-- CHARACTER DESKTOP -->
+      <div
+        class="hidden lg:flex absolute inset-x-0 bottom-[0px] justify-center items-end pointer-events-none"
+        data-aos="zoom-in-up"
+        data-aos-duration="1200"
+        data-aos-delay="200">
+        <div class="relative flex items-end justify-center">
+          <div class="absolute bottom-28 w-[420px] h-[420px] rounded-full bg-sky-400/15 blur-[90px]"></div>
 
-        <!-- MOBILE DECORATIONS -->
-        <div class="lg:hidden absolute left-[-10px] top-[56%] w-[90px] h-[22px] rounded-full border border-sky-300/10 bg-sky-300/5 rotate-[55deg] opacity-50"></div>
-        <div class="lg:hidden absolute right-[-20px] top-[28%] w-[150px] h-[150px] opacity-40">
-          <svg viewBox="0 0 200 200" class="w-full h-full">
-            <polygon points="100,10 170,50 170,130 100,190 30,130 30,50"
-                    fill="none" stroke="rgba(56,189,248,0.18)" stroke-width="1.2" />
-            <polygon points="100,30 150,60 150,120 100,170 50,120 50,60"
-                    fill="none" stroke="rgba(56,189,248,0.14)" stroke-width="1" />
-            <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(56,189,248,0.12)" stroke-width="1" />
-            <line x1="30" y1="50" x2="170" y2="50" stroke="rgba(56,189,248,0.12)" stroke-width="1" />
-            <line x1="30" y1="130" x2="170" y2="130" stroke="rgba(56,189,248,0.12)" stroke-width="1" />
-          </svg>
-        </div>
-        <div class="lg:hidden absolute left-1/2 top-[34%] -translate-x-1/2 w-[90px] h-[90px] rounded-full border border-cyan-300/20 opacity-50"></div>
+          <img
+            src="./img/cartoon.webp"
+            alt="Dimas Avatar"
+            class="relative z-20 w-[400px] xl:w-[450px] object-contain drop-shadow-[0_30px_80px_rgba(0,0,0,0.55)] hero-float">
 
-        <!-- CHARACTER DESKTOP -->
-        <div class="hidden lg:flex absolute inset-x-0 bottom-[0px] justify-center items-end pointer-events-none">
-          <div class="relative flex items-end justify-center">
-            <div class="absolute bottom-28 w-[420px] h-[420px] rounded-full bg-sky-400/15 blur-[90px]"></div>
-
-            <img
-              src="./img/cartoon.webp"
-              alt="Dimas Avatar"
-              class="relative z-20 w-[400px] xl:w-[450px] object-contain drop-shadow-[0_30px_80px_rgba(0,0,0,0.55)] hero-float"
-            >
-
-            <div class="absolute bottom-10 z-30 text-center">
-              <span class="block text-lg tracking-[0.55em] text-black/80 mb-3 uppercase">
-                Dimas
-              </span>
-              <h1 class="text-white font-bold leading-none text-[90px] xl:text-[110px] drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
-                Prayogi
-              </h1>
-            </div>
-          </div>
-        </div>
-
-        <!-- MOBILE CONTENT -->
-        <div class="lg:hidden relative h-full flex flex-col items-center justify-end text-center px-5 pb-10">
-          <div class="absolute top-[14%] left-1/2 -translate-x-1/2 w-[220px] h-[220px] rounded-full bg-sky-400/15 blur-[70px]"></div>
-
-          <div class="relative z-20 mb-2">
-            <img
-              src="./img/cartoon.webp"
-              alt="Dimas Avatar"
-              class="w-[210px] sm:w-[240px] mx-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.45)]"
-            >
-          </div>
-
-          <div class="relative z-30 -mt-2">
-            <span class="block text-[11px] tracking-[0.45em] text-gray-300/80 mt-2 uppercase">
+          <div
+            class="absolute bottom-10 z-30 text-center"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="500">
+            <span class="block text-lg tracking-[0.55em] text-black/80 mb-3 uppercase">
               Dimas
             </span>
-            <h1 class="text-white font-bold leading-none text-5xl sm:text-6xl drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
+            <h1 class="text-white font-bold leading-none text-[90px] xl:text-[110px] drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
               Prayogi
             </h1>
           </div>
+        </div>
+      </div>
 
-          <div class="relative z-30 mt-6 max-w-[320px]">
-            <h2 class="text-white text-2xl sm:text-3xl font-light leading-tight">
-              Web Developer
-              <span class="block text-sky-300">&amp; UI Builder</span>
-            </h2>
+      <!-- MOBILE CONTENT -->
+      <div
+        class="lg:hidden relative h-full flex flex-col items-center justify-end text-center px-5 pb-10"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="150">
+        <div class="absolute top-[14%] left-1/2 -translate-x-1/2 w-[220px] h-[220px] rounded-full bg-sky-400/15 blur-[70px]"></div>
 
-            <p class="mt-4 text-slate-300 text-sm leading-7">
-              Hi, I’m Dimas, a programmer focused on internal systems, modern web experiences, and business tools with a futuristic visual touch.
-            </p>
-
-            <div class="mt-6">
-              <a href="mailto:dimasp95@icloud.com"
-                class="inline-flex items-center justify-center rounded-full border border-sky-400/30 bg-sky-500/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:bg-sky-500/20">
-                Contact Me
-              </a>
-            </div>
-          </div>
+        <div
+          class="relative z-20 mb-2"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+          data-aos-delay="250">
+          <img
+            src="./img/cartoon.webp"
+            alt="Dimas Avatar"
+            class="w-[210px] sm:w-[240px] mx-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
         </div>
 
+        <div
+          class="relative z-30 -mt-2"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="400">
+          <span class="block text-[11px] tracking-[0.45em] text-gray-300/80 mt-2 uppercase">
+            Dimas
+          </span>
+          <h1 class="text-white font-bold leading-none text-5xl sm:text-6xl drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
+            Prayogi
+          </h1>
+        </div>
+
+        <div
+          class="relative z-30 mt-6 max-w-[320px]"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="550">
+          <h2 class="text-white text-2xl sm:text-3xl font-light leading-tight">
+            Web Developer
+            <span class="block text-sky-300">&amp; UI Builder</span>
+          </h2>
+
+          <p class="mt-4 text-slate-300 text-sm leading-7">
+            Hi, I’m Dimas, a programmer focused on internal systems, modern web experiences, and business tools with a futuristic visual touch.
+          </p>
+
+          <div class="mt-6">
+            <a href="mailto:dimasp95@icloud.com"
+              class="inline-flex items-center justify-center rounded-full border border-sky-400/30 bg-sky-500/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:bg-sky-500/20">
+              Contact Me
+            </a>
+          </div>
+        </div>
       </div>
+
     </div>
+  </div>
 </section>
 
   <div class="section-divider"></div>
