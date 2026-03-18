@@ -1034,7 +1034,7 @@
         </div>
 
         <button type="submit"
-          class="btn-primary text-base font-semibold py-3 px-8 rounded-full w-full transition duration-300">
+          class="btn-primary text-base font-semibold py-3 px-8 rounded-full w-full transition duration-300 disabled:opacity-70 disabled:cursor-not-allowed">
           Send
         </button>
       </form>
@@ -1204,63 +1204,93 @@
     });
 
     const scriptURL =
-      "https://script.google.com/macros/s/AKfycbzXPqG0188luPVF5A8l0i_dGnDnUHHdpCeUjuY0QjfBoVvOOPWiwewFXCgalaaXR_iT/exec";
-    const form = document.forms["submit-to-google-sheet"];
+  "https://script.google.com/macros/s/AKfycbzXPqG0188luPVF5A8l0i_dGnDnUHHdpCeUjuY0QjfBoVvOOPWiwewFXCgalaaXR_iT/exec";
+const form = document.forms["submit-to-google-sheet"];
 
-    if (form) {
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault();
+if (form) {
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const message = document.getElementById("message").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const submitButton = form.querySelector('button[type="submit"]');
 
-        if (!name || !email || !message) {
-          Swal.fire({
-            icon: "warning",
-            title: "Incomplete Form",
-            text: "Please fill in all fields first.",
-            background: "#07111f",
-            color: "#fff"
-          });
-          return;
-        }
-
-        try {
-          const response = await fetch(scriptURL, {
-            method: "POST",
-            body: new FormData(form)
-          });
-
-          const result = await response.json();
-          console.log(result);
-
-          if (result.result === "success") {
-            Swal.fire({
-              icon: "success",
-              title: "Success",
-              text: "Your message has been sent successfully.",
-              background: "#07111f",
-              color: "#fff"
-            });
-
-            form.reset();
-          } else {
-            throw new Error(result.message || "Failed to send form");
-          }
-        } catch (error) {
-          console.error("Error:", error);
-
-          Swal.fire({
-            icon: "error",
-            title: "Failed",
-            text: "Message failed to send. Please try again.",
-            background: "#07111f",
-            color: "#fff"
-          });
-        }
+    if (!name || !email || !message) {
+      Swal.fire({
+        icon: "warning",
+        title: "Incomplete Form",
+        text: "Please fill in all fields first.",
+        background: "#07111f",
+        color: "#fff"
       });
+      return;
     }
+
+    if (!submitButton) return;
+
+    const originalButtonHTML = submitButton.innerHTML;
+
+    submitButton.disabled = true;
+    submitButton.innerHTML = `
+      <span style="display:inline-flex;align-items:center;justify-content:center;gap:10px;">
+        <span class="button-loader"></span>
+        Sending...
+      </span>
+    `;
+
+    Swal.fire({
+      title: "Sending...",
+      text: "Please wait a moment.",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      background: "#07111f",
+      color: "#fff",
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(form)
+      });
+
+      const result = await response.json();
+      console.log(result);
+
+      await new Promise(resolve => setTimeout(resolve, 800));
+
+      if (result.result === "success") {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Your message has been sent successfully.",
+          background: "#07111f",
+          color: "#fff"
+        });
+
+        form.reset();
+      } else {
+        throw new Error(result.message || "Failed to send form");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+
+      Swal.fire({
+        icon: "error",
+        title: "Failed",
+        text: "Message failed to send. Please try again.",
+        background: "#07111f",
+        color: "#fff"
+      });
+    } finally {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalButtonHTML;
+    }
+  });
+}
 
     (function initThreeHero() {
       const container = document.getElementById("hero-three-bg");
