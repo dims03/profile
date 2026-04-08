@@ -1037,6 +1037,36 @@ section[id] {
   margin-top: 2rem;
 }
 
+/* Dark mode */
+:root:not(.light-mode) .btn-download {
+  background: linear-gradient(135deg, var(--text), #cdd9f0);
+  color: var(--bg);
+  border: 1px solid transparent;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
+}
+
+/* Dark mode hover */
+:root:not(.light-mode) .btn-download:hover {
+  opacity: 0.94;
+  transform: translateY(-2px);
+}
+
+/* Light mode */
+:root.light-mode .btn-download {
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #dbe3ec;
+  box-shadow: none;
+}
+
+/* Light mode hover */
+:root.light-mode .btn-download:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+}
+
 .btn-download:hover {
   opacity: 0.94;
   transform: translateY(-2px);
