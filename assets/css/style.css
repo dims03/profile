@@ -1125,6 +1125,16 @@ section[id] {
   transform: scale(1.1) rotate(2deg);
 }
 
+/* Invert black icons in dark mode so they become visible */
+:root:not(.light-mode) .tech-icon.dark-invert {
+  filter: invert(1) brightness(1.2) grayscale(0.3);
+}
+
+:root:not(.light-mode) .tech-item:hover .tech-icon.dark-invert {
+  filter: invert(1) brightness(1.2);
+  transform: scale(1.1) rotate(2deg);
+}
+
 .tech-name {
   font-family: var(--font-mono);
   font-size: 9px;
