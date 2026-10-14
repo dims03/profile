@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -22,7 +22,7 @@
 
   <nav>
     <a href="#hero" class="nav-logo">
-      <span></span>&lt;/dims&gt;
+      &lt;/dims&gt;
     </a>
 
     <ul class="nav-links">
@@ -69,11 +69,23 @@
   </div>
 
   <section id="hero">
+    <!-- CINEMATIC AMBIENT VIDEO LAYER -->
+    <div class="hero-video-wrap" aria-hidden="true">
+      <video id="hero-bg-video" class="hero-bg-video" autoplay loop muted playsinline poster="assets/video/hero-reel-poster.jpg">
+        <!-- Simpan video showreel Anda di assets/video/hero-reel.mp4. -->
+        <source src="assets/video/hero-reel.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+      <div class="hero-video-grid"></div>
+    </div>
+
     <canvas id="hero-canvas"></canvas>
     <div class="hero-line"></div>
 
     <div class="hero-left">
-      <div class="hero-eyebrow" data-parallax="0.12">Samarinda — Indonesia</div>
+      <div class="hero-eyebrow" data-parallax="0.12">
+        Samarinda — Indonesia
+      </div>
       <h1 class="hero-name" data-parallax="0.2">Dimas<br>Prayogi</h1>
       <span class="hero-name-italic" data-parallax="0.15">Software Engineer</span>
       <p class="hero-desc" data-parallax="0.08">
@@ -82,16 +94,26 @@
       </p>
       <div class="hero-tags">
         <span class="tag active">Dev</span>
-        <span class="tag active">Cyclist</span>
-        <span class="tag active">Runner</span>
+        <span class="tag nitro">Cyclist</span>
+        <span class="tag nitro">Runner</span>
       </div>
       <div class="hero-actions">
-        <a href="#portfolio" class="btn-outline">View Work</a>
+        <a href="#portfolio" class="btn-primary-nitro">View Work ↗</a>
       </div>
     </div>
 
     <div class="hero-right">
       <div class="hero-avatar-wrap" data-parallax="0.28">
+        <!-- Frame Telemetri Modern di belakang Avatar -->
+        <div class="avatar-telemetry-frame">
+          <span class="frame-corner tl"></span>
+          <span class="frame-corner tr"></span>
+          <span class="frame-corner bl"></span>
+          <span class="frame-corner br"></span>
+          <div class="telemetry-badge">
+            <span class="pulse-nitro"></span> LIVE TELEMETRY // 00:59.4
+          </div>
+        </div>
         <img src="./img/cartoon.webp" alt="Dimas Prayogi" class="hero-avatar" />
       </div>
     </div>
@@ -102,29 +124,33 @@
         <div class="label">Years Coding</div>
       </div>
       <div class="hero-stat" data-parallax="-0.1">
-        <div class="num" data-count="10">0+</div>
+        <div class="num" data-count="15" data-count-suffix="">0</div>
         <div class="label">Projects Shipped</div>
       </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll Down</span>
     </div>
   </section>
 
   <section id="about" data-section="about">
     <div class="container">
-      <div class="section-label">About</div>
+      <div class="section-label"><span>01 //</span> About</div>
       <div class="about-grid">
         <div>
           <h2 class="section-title reveal">A Quick<br>Introduction</h2>
           <div class="about-text reveal reveal-delay-1" style="margin-top:2.5rem;">
             <p>
-              I'm a passionate IT professional currently working as <span class="highlight">Software Engineer</span> 
-              <!-- at
-              one of the largest distribution companies in Borneo, Indonesia. With a strong background in web
-              development, I help optimize internal systems and support business operations. -->
+              I'm a passionate IT professional currently working as <span class="highlight">Software Engineer</span>.
+              With a strong background in full-stack web development, I build high-reliability internal systems,
+              dashboards, and operational tools.
             </p>
             <p>
               Outside of my professional role, I explore creativity through <span class="highlight">photography, graphic
-                design</span>, and content creation. I'm also a <span class="highlight">cycling and running
-                enthusiast</span> — staying active fuels my energy and mindset.
+                design</span>, and live stadium visual operations. I'm also a <span class="highlight-nitro">cycling and running
+                enthusiast</span> — staying active fuels my energy, discipline, and engineering mindset.
             </p>
             <p>
               Known for being highly motivated and eager to learn, I'm always open to collaboration and new
@@ -142,6 +168,37 @@
         </div>
 
         <div class="about-right reveal reveal-delay-2">
+          <!-- Instagram photo gallery: local photos link to their original posts. -->
+          <div class="cv-card instagram-feature-card">
+            <div class="instagram-photo-grid" aria-label="Photos from Instagram @den.dimss">
+              <a class="instagram-photo" href="https://www.instagram.com/p/DYUQ0jHziE_/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/instagram/feed-01.webp" alt="Golden morning light over misty hills" width="1080" height="1080" loading="lazy" decoding="async">
+              </a>
+              <a class="instagram-photo" href="https://www.instagram.com/p/DWGeg7Yk45r/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/instagram/feed-02.webp" alt="Dimas taking a mirror photo in a cafe" width="1080" height="1441" loading="lazy" decoding="async">
+              </a>
+              <a class="instagram-photo" href="https://www.instagram.com/p/C6giCvtvjg9/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/instagram/feed-03.jpg" alt="Green hills beneath a blue sky" width="1080" height="1080" loading="lazy" decoding="async">
+              </a>
+              <a class="instagram-photo" href="https://www.instagram.com/p/C3DLOaHPQQW/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/instagram/feed-04.jpg" alt="An airplane framed by the curve of a building" width="1080" height="1080" loading="lazy" decoding="async">
+              </a>
+              <a class="instagram-photo" href="https://www.instagram.com/p/C2uIxcIvjpy/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/instagram/feed-05.jpg" alt="Two people standing on a beach beside turquoise water" width="1080" height="1080" loading="lazy" decoding="async">
+              </a>
+              <a class="instagram-photo" href="https://www.instagram.com/p/CsyPDTTPMh4/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/instagram/feed-06.jpg" alt="Yellow running shoes and a black cap on the grass" width="1080" height="1080" loading="lazy" decoding="async">
+              </a>
+            </div>
+            <div class="instagram-card-caption">
+              <div>
+                <h4>Through My Lens</h4>
+                <p>Photography &amp; everyday moments.</p>
+              </div>
+              <a class="instagram-profile-link" href="https://www.instagram.com/den.dimss/" target="_blank" rel="noopener noreferrer">@den.dimss <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
           <div class="cv-card">
             <h4>Current Role</h4>
             <div class="role">Software Engineer</div>
@@ -160,7 +217,7 @@
               <a href="https://dribbble.com/BananaF" target="_blank" rel="noopener noreferrer"
                 class="social-link">Dribbble</a>
               <a href="https://www.strava.com/athletes/59715584" target="_blank" rel="noopener noreferrer"
-                class="social-link">Strava</a>
+                class="social-link strava-pill">Strava ↗</a>
             </div>
           </div>
         </div>
@@ -170,7 +227,7 @@
 
   <section id="tech" data-section="tech">
     <div class="container">
-      <div class="section-label">Tech Stack</div>
+      <div class="section-label"><span>02 //</span> Tech Stack</div>
       <div class="tech-header">
         <h2 class="section-title reveal">Technology<br>I Use</h2>
       </div>
@@ -229,7 +286,7 @@
 
   <section id="experience" data-section="experience">
     <div class="container">
-      <div class="section-label">Experience</div>
+      <div class="section-label"><span>03 //</span> Experience</div>
       <div class="exp-header">
         <h2 class="section-title reveal">Work<br>History</h2>
       </div>
@@ -325,7 +382,6 @@
                   <div class="exp-box-company">PT Laut Timur Ardiprima</div>
                   <div class="exp-box-meta">Full-time · ON-SITE · 4 yrs 3 mos</div>
                 </div>
-                <!-- <span class="exp-box-badge active">Active</span> -->
               </div>
 
               <div class="exp-role-group">
@@ -415,7 +471,7 @@
     <div class="container">
       <div class="portfolio-header">
         <div>
-          <div class="section-label">Portfolio</div>
+          <div class="section-label"><span>04 //</span> Portfolio</div>
           <h2 class="section-title reveal">Recent<br>Works</h2>
         </div>
         <div class="portfolio-count reveal">15 Projects</div>
@@ -467,7 +523,7 @@
           <div class="work-arrow">↗</div>
         </div>
 
-        <div class="work-card" data-img="dist/img/portfolio/p1.PNG" data-title="Project P1"
+        <div class="work-card" data-img="dist/img/portfolio/p1.PNG" data-title="Wedding Invitation Website"
           data-desc="Build wedding website with custom design and functionality, using basic html, css & javascript.">
           <div class="work-img-wrap"><img src="dist/img/portfolio/p1.PNG" alt="Project P1"></div>
           <div class="work-info">
@@ -532,6 +588,7 @@
           </div>
           <div class="work-arrow">↗</div>
         </div>
+
         <div class="work-card" data-img="dist/img/portfolio/learningPlatform.png" data-title="Learning Platform"
           data-desc="An online learning platform for managing courses, students, and assessments, built with TALL Stack (Tailwind, Alpine, Laravel, Livewire).">
           <div class="work-img-wrap"><img src="dist/img/portfolio/learningPlatform.png" alt="Learning Platform"></div>
@@ -542,9 +599,10 @@
           </div>
           <div class="work-arrow">↗</div>
         </div>
-        <div class="work-card" data-img="dist/img/portfolio/digital_signature.png" data-title="Learning Platform"
-          data-desc="An digital signature pad for managing company digital signature like approval and etc.">
-          <div class="work-img-wrap"><img src="dist/img/portfolio/digital_signature.png" alt="Learning Platform"></div>
+
+        <div class="work-card" data-img="dist/img/portfolio/digital_signature.png" data-title="Digital Signature Pad"
+          data-desc="A digital signature pad for managing company digital signature approvals and document validation.">
+          <div class="work-img-wrap"><img src="dist/img/portfolio/digital_signature.png" alt="Digital Signature Pad"></div>
           <div class="work-info">
             <div class="work-num">12</div>
             <div class="work-title">Digital Signature Pad</div>
@@ -552,8 +610,9 @@
           </div>
           <div class="work-arrow">↗</div>
         </div>
+
         <div class="work-card" data-img="dist/img/portfolio/vars.png" data-title="VARS"
-          data-desc="A dashboard & PWA system for managing and monitoring company aset data and vehicle operational activities include p2h, refueling and vehicle maintenance.">
+          data-desc="A dashboard & PWA system for managing and monitoring company asset data and vehicle operational activities including P2H, refueling, and vehicle maintenance.">
           <div class="work-img-wrap"><img src="dist/img/portfolio/vars.png" alt="VARS"></div>
           <div class="work-info">
             <div class="work-num">13</div>
@@ -562,8 +621,9 @@
           </div>
           <div class="work-arrow">↗</div>
         </div>
+
         <div class="work-card" data-img="dist/img/portfolio/hris.png" data-title="HRIS"
-          data-desc="A human resources information system for managing employee data, payroll, and other HR-related tasks. Built with TALL Stack (Tailwind, Alpine, Laravel, Livewire) and Vue.js with Capacitor for mobile support.">
+          data-desc="A human resources information system for managing employee data, payroll, and HR workflows. Built with TALL Stack and Vue.js with Capacitor for mobile support.">
           <div class="work-img-wrap"><img src="dist/img/portfolio/hris.png" alt="HRIS"></div>
           <div class="work-info">
             <div class="work-num">14</div>
@@ -572,6 +632,7 @@
           </div>
           <div class="work-arrow">↗</div>
         </div>
+
         <div class="work-card" data-img="dist/img/portfolio/pos.png" data-title="POS"
           data-desc="A point-of-sale system for managing sales transactions and inventory. Built with TALL Stack (Tailwind, Alpine, Laravel, Livewire).">
           <div class="work-img-wrap"><img src="dist/img/portfolio/pos.png" alt="POS"></div>
@@ -588,11 +649,12 @@
 
   <section id="location" data-section="location">
     <div class="container">
-      <div class="section-label">Location</div>
+      <div class="section-label"><span>05 //</span> Location</div>
       <div class="location-grid">
         <div class="location-info reveal">
           <h2 class="section-title">Where<br>I Live</h2>
           <div class="location-address">
+            <div class="coord-tag">0°29'25.3"S 117°09'41.1"E — UTC+8</div>
             <p>Jl. Lambung Mangkurat Gg 10 RT 10 No 58<br>Samarinda, Kalimantan Timur<br>Indonesia</p>
           </div>
         </div>
@@ -606,15 +668,15 @@
 
   <section id="contact" data-section="contact">
     <div class="container">
-      <div class="section-label">Contact</div>
+      <div class="section-label"><span>06 //</span> Contact</div>
       <div class="contact-grid">
         <div class="contact-info reveal">
           <h2 class="section-title">Let's<br>Work<br>Together</h2>
           <p class="contact-info-title">Say hello anytime.</p>
           <p>Have a project in mind or just want to chat? Drop me a message and I'll get back to you as soon as
             possible.</p>
-          <a href="mailto:dimasp95@icloud.com" class="social-link" style="display:inline-flex;margin-top:0;">
-            dimasp95@icloud.com
+          <a href="mailto:dimasp95@icloud.com" class="social-link strava-pill" style="display:inline-flex;margin-top:0;">
+            dimasp95@icloud.com ↗
           </a>
         </div>
 
@@ -633,7 +695,7 @@
               <textarea id="message" name="message" class="form-input" placeholder="Tell me about your project..."
                 required></textarea>
             </div>
-            <button type="submit" class="btn-send">Send Message</button>
+            <button type="submit" class="btn-send">Send Message ↗</button>
           </form>
         </div>
       </div>
@@ -643,13 +705,15 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-copy">Made with 💙 by Dims &copy; 2026</div>
+        <div class="footer-logo">&lt;/dims&gt;</div>
+        <div class="footer-copy">Engineered by Dims &copy; 2023 - <span id="footer-year">2026</span> — Samarinda, ID</div>
       </div>
     </div>
   </footer>
 
   <a href="#hero" id="btt" title="Back to top" aria-label="Back to top">↑</a>
 
+  <!-- MODAL PORTFOLIO DETAIL -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal" style="position:relative;">
       <button class="modal-close" id="modal-close" type="button" aria-label="Close project modal">✕</button>
@@ -660,6 +724,7 @@
       </div>
     </div>
   </div>
+
 </body>
 
 </html>

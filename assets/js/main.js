@@ -53,8 +53,12 @@
   };
 
   function init() {
+    const footerYear = document.getElementById("footer-year");
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+
     initHeroReady();
     initThreeHero();
+    initVideoControls();
     initThemeToggle();
     initReveal();
     initBackToTop();
@@ -77,6 +81,9 @@
     });
   }
 
+  /* =========================================================
+     THREE.JS HERO: ROYAL BLUE & NITRO ORANGE TELEMETRY
+     ========================================================= */
   function initThreeHero() {
     if (!window.THREE || !SELECTORS.heroCanvas) return;
 
@@ -98,50 +105,64 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    const geo = new THREE.BufferGeometry();
-    const count = 1200;
-    const pos = new Float32Array(count * 3);
-
-    for (let i = 0; i < count * 3; i += 1) {
-      pos[i] = (Math.random() - 0.5) * 24;
+    // Royal Blue Particles
+    const geoRoyal = new THREE.BufferGeometry();
+    const countRoyal = 950;
+    const posRoyal = new Float32Array(countRoyal * 3);
+    for (let i = 0; i < countRoyal * 3; i += 1) {
+      posRoyal[i] = (Math.random() - 0.5) * 24;
     }
+    geoRoyal.setAttribute("position", new THREE.BufferAttribute(posRoyal, 3));
 
-    geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-
-    const particleMat = new THREE.PointsMaterial({
-      color: 0x4a9eff,
-      size: 0.035,
+    const matRoyal = new THREE.PointsMaterial({
+      color: 0x2563eb, // Royal Blue
+      size: 0.036,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.72,
       depthWrite: false,
     });
+    const ptsRoyal = new THREE.Points(geoRoyal, matRoyal);
+    scene.add(ptsRoyal);
 
-    const pts = new THREE.Points(geo, particleMat);
-    scene.add(pts);
+    // Nitro Orange Accent Sparks
+    const geoNitro = new THREE.BufferGeometry();
+    const countNitro = 260;
+    const posNitro = new Float32Array(countNitro * 3);
+    for (let i = 0; i < countNitro * 3; i += 1) {
+      posNitro[i] = (Math.random() - 0.5) * 20;
+    }
+    geoNitro.setAttribute("position", new THREE.BufferAttribute(posNitro, 3));
 
+    const matNitro = new THREE.PointsMaterial({
+      color: 0xff5500, // Nitro Orange
+      size: 0.048,
+      transparent: true,
+      opacity: 0.85,
+      depthWrite: false,
+    });
+    const ptsNitro = new THREE.Points(geoNitro, matNitro);
+    scene.add(ptsNitro);
+
+    // Wireframe Geometry 1: Royal Blue Icosahedron
     const wireMat = new THREE.MeshBasicMaterial({
-      color: 0x4a9eff,
+      color: 0x2563eb,
       wireframe: true,
       transparent: true,
-      opacity: 0.12,
+      opacity: 0.14,
     });
-
-    const ico = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(2, 1),
-      wireMat
-    );
+    const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(2, 1), wireMat);
     ico.position.set(3, 0.5, -2);
     scene.add(ico);
 
+    // Wireframe Geometry 2: Nitro Orange Torus
     const torMat = new THREE.MeshBasicMaterial({
-      color: 0x7dd3fc,
+      color: 0xff5500,
       wireframe: true,
       transparent: true,
-      opacity: 0.1,
+      opacity: 0.13,
     });
-
     const tor = new THREE.Mesh(
-      new THREE.TorusGeometry(1.2, 0.15, 12, 60),
+      new THREE.TorusGeometry(1.25, 0.14, 12, 60),
       torMat
     );
     tor.position.set(-3.5, -1, -3);
@@ -157,11 +178,14 @@
 
     function animate() {
       window.requestAnimationFrame(animate);
-
       const t = clock.getElapsedTime();
 
-      pts.rotation.y = t * 0.018;
-      pts.rotation.x = t * 0.006;
+      ptsRoyal.rotation.y = t * 0.016;
+      ptsRoyal.rotation.x = t * 0.005;
+
+      ptsNitro.rotation.y = -t * 0.022;
+      ptsNitro.rotation.z = t * 0.008;
+
       ico.rotation.x += 0.002;
       ico.rotation.y += 0.003;
       tor.rotation.z += 0.004;
@@ -180,6 +204,38 @@
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
+  }
+
+  /* =========================================================
+     VIDEO BACKGROUND LOADING
+     ========================================================= */
+  function initVideoControls() {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // Show a poster and a clear status when the local media cannot load.
+    document.querySelectorAll("video").forEach((video) => {
+      if (reducedMotion.matches && video.autoplay) {
+        video.autoplay = false;
+        video.pause();
+      }
+      const status = video.parentElement.querySelector(".video-load-status");
+      const markUnavailable = () => {
+        video.dataset.unavailable = "true";
+        if (status) status.hidden = false;
+      };
+
+      video.addEventListener("error", markUnavailable);
+      video.querySelectorAll("source").forEach((source) => {
+        source.addEventListener("error", markUnavailable);
+      });
+      video.addEventListener("loadeddata", () => {
+        delete video.dataset.unavailable;
+        if (status) status.hidden = true;
+      });
+      if (video.error || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
+        markUnavailable();
+      }
+    });
+
   }
 
   function initThemeToggle() {
@@ -280,6 +336,7 @@
 
     SELECTORS.counterEls.forEach((el) => {
       const target = Number.parseInt(el.dataset.count || "0", 10);
+      const suffix = el.dataset.countSuffix ?? "+";
       const duration = 1200;
       const start = performance.now();
 
@@ -288,7 +345,7 @@
         const eased = 1 - Math.pow(1 - progress, 3);
         const value = Math.floor(eased * target);
 
-        el.textContent = `${value}+`;
+        el.textContent = `${value}${suffix}`;
 
         if (progress < 1) {
           window.requestAnimationFrame(update);
@@ -307,8 +364,8 @@
         const rect = card.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
-        const rx = (y / rect.height - 0.5) * -8;
-        const ry = (x / rect.width - 0.5) * 10;
+        const rx = (y / rect.height - 0.5) * -6;
+        const ry = (x / rect.width - 0.5) * 8;
 
         card.style.transform =
           `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
@@ -422,36 +479,52 @@
   }
 
   function initSmoothAnchorScroll() {
-    if (!SELECTORS.allNavAnchors.length) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function scrollToTarget(target, behavior) {
+      const navHeight = SELECTORS.nav ? SELECTORS.nav.offsetHeight : 68;
+      // Preserve the section boundary; its own padding provides the content gap.
+      const top = target.id === "hero" ? 0 :
+        target.getBoundingClientRect().top + window.scrollY - navHeight;
+
+      window.scrollTo({ top: Math.max(0, top), behavior });
+    }
+
+    function targetFromHash(hash) {
+      if (!hash || hash === "#") return null;
+      try {
+        return document.getElementById(decodeURIComponent(hash.slice(1)));
+      } catch {
+        return null;
+      }
+    }
+
+    function alignCurrentHash() {
+      const target = targetFromHash(window.location.hash);
+      if (target) scrollToTarget(target, "instant");
+    }
 
     SELECTORS.allNavAnchors.forEach((link) => {
       link.addEventListener("click", (event) => {
+        if (event.defaultPrevented || event.button > 0 || event.metaKey ||
+            event.ctrlKey || event.shiftKey || event.altKey) return;
         const href = link.getAttribute("href");
 
         if (!href || !href.startsWith("#")) return;
 
-        const target = document.querySelector(href);
+        const target = targetFromHash(href);
         if (!target) return;
 
         event.preventDefault();
 
-        const navHeight = SELECTORS.nav ? SELECTORS.nav.offsetHeight : 64;
-        const extraOffset = window.innerWidth <= 900 ? 12 : 18;
-
-        const targetTop =
-          target.getBoundingClientRect().top +
-          window.pageYOffset -
-          navHeight -
-          extraOffset;
-
-        window.scrollTo({
-          top: targetTop,
-          behavior: "smooth",
-        });
+        scrollToTarget(target, reducedMotion.matches ? "instant" : "smooth");
 
         history.replaceState(null, "", href);
       });
     });
+
+    window.addEventListener("load", alignCurrentHash, { once: true });
+    window.addEventListener("hashchange", alignCurrentHash);
   }
 
   function initActiveSections() {
@@ -461,8 +534,8 @@
 
   function updateActiveSections() {
     let current = "";
-    const navHeight = SELECTORS.nav ? SELECTORS.nav.offsetHeight : 64;
-    const triggerLine = navHeight + 40;
+    const navHeight = SELECTORS.nav ? SELECTORS.nav.offsetHeight : 68;
+    const triggerLine = navHeight + (window.innerHeight - navHeight) * 0.25;
 
     SECTIONS.forEach((section) => {
       const rect = section.el.getBoundingClientRect();
@@ -471,6 +544,12 @@
         current = section.id;
       }
     });
+
+    // The last section may be too short to reach the trigger line.
+    if (SECTIONS.length && window.scrollY > 0 &&
+        window.scrollY + window.innerHeight >= SELECTORS.html.scrollHeight - 2) {
+      current = SECTIONS[SECTIONS.length - 1].id;
+    }
 
     if (!current && window.scrollY < window.innerHeight * 0.4) {
       current = "";
@@ -516,7 +595,7 @@
 
         if (data.result === "success") {
           btn.textContent = "Message Sent ✓";
-          btn.style.background = "#22c55e";
+          btn.style.background = "#10b981";
           SELECTORS.contactForm.reset();
 
           window.setTimeout(() => resetContactButton(btn), 4000);
@@ -534,7 +613,7 @@
   }
 
   function resetContactButton(btn) {
-    btn.textContent = "Send Message";
+    btn.textContent = "Send Message ↗";
     btn.style.background = "";
     btn.disabled = false;
   }
