@@ -2,28 +2,28 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { X } from 'lucide-react';
 import portrait from './assets/cartoon.png';
 import resume from './assets/resume.pdf?url';
-import projectData from './data/projects.json';
+import ProjectShowcase from './components/ProjectShowcase';
+import ContactPanel from './components/ContactPanel';
 import techStack from './data/tech-stack.json';
 import { workHistory } from './data/work-history';
 
-type Panel = 'story' | 'tech' | 'history' | 'work' | null;
+type Panel = 'story' | 'tech' | 'history' | 'work' | 'contact' | null;
+const contactEmail = 'dimasp95@icloud.com';
+const linkedinUrl = 'https://www.linkedin.com/in/dimas-prayogi-4628111b2/';
 const navigation = [
   { label: 'Story', panel: 'story' },
   { label: 'Tech Stack', panel: 'tech' },
   { label: 'Experience', panel: 'history' },
   { label: 'Project', panel: 'work' },
-  { label: 'Message', panel: null },
+  { label: 'Message', panel: 'contact' },
 ] as const;
-const panelLabels = { story: 'A bit about me', tech: 'Tech stack', history: 'Experience', work: 'Project' };
-const projectImages = import.meta.glob<string>('./assets/projects/*.webp', {
-  eager: true, query: '?url', import: 'default',
-});
+const panelLabels = { story: 'A bit about me', tech: 'Tech stack', history: 'Experience', work: 'Project', contact: 'Get in touch' };
 const techImages = import.meta.glob<string>('./assets/tech/*.{png,svg}', {
   eager: true, query: '?url', import: 'default',
 });
 const socials = [
   { label: 'Instagram', href: 'https://www.instagram.com/den.dimss/' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/dimas-prayogi-4628111b2/' },
+  { label: 'LinkedIn', href: linkedinUrl },
   { label: 'Strava', href: 'https://www.strava.com/athletes/59715584' },
 ];
 const delay = (ms: number): CSSProperties => ({ animationDelay: `${ms}ms` });
@@ -98,14 +98,12 @@ export default function App() {
     return navigation.map(({ label, panel: targetPanel }, index) => (
       <a
         key={label}
-        href={targetPanel ? `#${targetPanel}` : 'mailto:dimasp95@icloud.com'}
+        href={`#${targetPanel}`}
         className={mobile ? 'drawer-link' : 'anim-fade-up transition-opacity duration-300 hover:!opacity-60'}
         style={mobile ? { transitionDelay: menuOpen ? `${300 + index * 80}ms` : '0ms' } : delay(1000 + index * 80)}
         onClick={(event) => {
-          if (targetPanel) {
-            event.preventDefault();
-            openPanel(targetPanel);
-          } else if (mobile) closeMenu();
+          event.preventDefault();
+          openPanel(targetPanel);
         }}
       >{label}</a>
     ));
@@ -119,7 +117,7 @@ export default function App() {
           <div className="hero-shade absolute inset-0" aria-hidden="true" />
 
           <header className="absolute inset-x-0 top-0 z-30 flex items-start justify-between px-6 pt-6 sm:px-10 sm:pt-8">
-            <a href="./" className="anim-fade-up font-hn text-lg tracking-wide" style={delay(800)} aria-label="Dimas Prayogi — home">{'</dims>'}</a>
+            <a href="./" className="anim-fade-up font-display text-lg font-medium tracking-tight" style={delay(800)} aria-label="Dimas Prayogi — home">{'</dims>'}</a>
             <div className="hidden items-start gap-16 sm:flex lg:gap-24">
               <span className="anim-fade-up text-sm" style={delay(900)}>&copy; 2026</span>
               <nav className="flex flex-col gap-0.5 text-sm" aria-label="Site index">{navLinks()}</nav>
@@ -133,10 +131,15 @@ export default function App() {
 
           <h1 className="sr-only">Dimas Prayogi — Software Engineer</h1>
           <div className="hero-marquee anim-fade-up absolute inset-x-0 top-[16vh] z-10 overflow-hidden sm:top-[14vh]" style={delay(500)} aria-hidden="true">
-            <div className="marquee flex w-max whitespace-nowrap font-hn text-[16vh] leading-none text-cream sm:text-[26vh]">
+            <div className="marquee flex w-max whitespace-nowrap font-display text-[16vh] leading-none text-cream sm:text-[26vh]">
               <span className="pr-[6vw]">Dimas &mdash; Prayogi&nbsp;</span>
               <span className="pr-[6vw]">Dimas &mdash; Prayogi&nbsp;</span>
             </div>
+          </div>
+
+          <div className="mobile-identity anim-fade-up" style={delay(500)} aria-hidden="true">
+            <p className="mobile-name">Dimas &mdash; Prayogi</p>
+            <p className="eyebrow">Software Engineer</p>
           </div>
 
           <div className="cartoon-stage anim-rise-in" style={delay(300)}>
@@ -144,8 +147,17 @@ export default function App() {
           </div>
           <div className="mobile-shade pointer-events-none absolute inset-0 z-20 sm:hidden" aria-hidden="true" />
 
+          <div className="hero-intro anim-fade-up" style={delay(1350)}>
+            <p className="eyebrow">Software Engineer</p>
+            <p className="hero-statement">Building reliable web applications and internal tools.</p>
+            <div className="hero-actions">
+              <a href="#work" onClick={(event) => { event.preventDefault(); openPanel('work'); }}>View Projects <span aria-hidden="true">↗</span></a>
+              <a href="#contact" onClick={(event) => { event.preventDefault(); openPanel('contact'); }}>Let's talk <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
           <div className="hero-rule anim-line absolute inset-x-6 bottom-[5.5rem] z-10 h-0.5 bg-cream sm:inset-x-10 sm:bottom-28" style={delay(1200)} aria-hidden="true" />
-          <footer className="hero-footer absolute inset-x-0 bottom-0 z-30 flex items-end justify-between px-6 pb-5 font-hn text-xs leading-relaxed sm:z-10 sm:px-10 sm:pb-8 sm:text-sm">
+          <footer className="hero-footer absolute inset-x-0 bottom-0 z-30 flex items-end justify-between px-6 pb-5 text-xs leading-relaxed sm:z-10 sm:px-10 sm:pb-8 sm:text-sm">
             <p className="anim-fade-up" style={delay(1400)}>
               Software Engineer<br />Digital Crafter<br />Runner &amp; Cyclist
             </p>
@@ -238,19 +250,11 @@ export default function App() {
               </div>
             </article>
           ) : panel === 'work' ? (
-            <article className="work-content">
-              <div className="work-heading"><h2 id="panel-title">Project.</h2><span>{projectData.length} projects</span></div>
-              <div className="project-list">
-                {[...projectData].reverse().map((project, index) => (
-                  <details className="project" key={project.title}>
-                    <summary><span className="project-number">{String(index + 1).padStart(2, '0')}</span><h3>{project.title}</h3><span className="project-symbol" aria-hidden="true">+</span></summary>
-                    <div className="project-detail"><img src={projectImages[`./assets/projects/${project.image}`]} alt={`${project.title} project screenshot`} loading="lazy" /><p>{project.description}</p></div>
-                  </details>
-                ))}
-              </div>
-            </article>
+            <ProjectShowcase />
+          ) : panel === 'contact' ? (
+            <ContactPanel email={contactEmail} linkedinUrl={linkedinUrl} resumeUrl={resume} />
           ) : null}
-          <div className="panel-bottomline"><span>Dimas Prayogi</span><a href="mailto:dimasp95@icloud.com">dimasp95@icloud.com ↗</a></div>
+          <div className="panel-bottomline"><span>Dimas Prayogi</span><a href={`mailto:${contactEmail}`}>{contactEmail} ↗</a></div>
         </div>
       </dialog>
     </>

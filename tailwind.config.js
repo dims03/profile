@@ -7,8 +7,8 @@ module.exports = {
         cream: "#efeee9",
       },
       fontFamily: {
-        hn: ['"Helvetica Neue ME"', 'Helvetica', 'Arial', 'sans-serif'],
-        sans: ['"Helvetica Neue ME"', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: ['Manrope', 'Arial', 'sans-serif'],
+        display: ['"Space Grotesk"', 'Arial', 'sans-serif'],
       },
     },
   },

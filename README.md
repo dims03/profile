@@ -33,6 +33,9 @@ src/
     projects.json            Project titles, descriptions, and image filenames
     tech-stack.json          Technology names and icon filenames
     work-history.ts          Companies, roles, dates, and responsibilities
+  components/
+    ProjectShowcase.tsx      Featured projects and the remaining project archive
+    ContactPanel.tsx         Email, copy action, LinkedIn, and resume
   styles/main.css            Layout, responsive styles, and animations
   App.tsx                    Portfolio layout and interactive panels
   main.tsx                   React entry point
@@ -42,10 +45,13 @@ index.html                   Vite HTML entry point
 ## Editing content
 
 - Edit `src/data/projects.json` for projects. Place screenshots in `src/assets/projects/` and use the filename in the `image` field.
+- Featured projects have a numeric `featuredOrder`, plus `category`, `role`, `stack`, and `highlights`. The three selected projects show the confirmed Lead Developer role. Other projects remain in the expandable list.
 - Edit `src/data/tech-stack.json` for technologies. Place icons in `src/assets/tech/` and use the filename in the `image` field.
 - Edit `src/data/work-history.ts` for experience.
 - Edit `src/App.tsx` for profile text, navigation, and social links.
+- The hero's View Projects and Let's talk links open the corresponding panels. Message opens the contact panel, where visitors can copy the email address, open email or LinkedIn, or view the resume.
 - Edit `src/styles/main.css` for styling. The cartoon is displayed in black and white through CSS; its original image is preserved.
+- Typography uses Space Grotesk for names/headings and Manrope for body text, loaded from Google Fonts with `display=swap`. Mobile uses a complete, stationary name above the portrait and two clear action buttons; the scrolling name remains on larger screens.
 
 ## GitHub Pages
 

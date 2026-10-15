@@ -62,16 +62,31 @@
   {
     "title": "VARS",
     "description": "A dashboard & PWA system for managing and monitoring company asset data and vehicle operational activities including P2H, refueling, and vehicle maintenance.",
-    "image": "vars.webp"
+    "image": "vars.webp",
+    "featuredOrder": 2,
+    "category": "Assets & vehicle operations",
+    "role": "Developer",
+    "stack": ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "PWA"],
+    "highlights": ["Company asset data and operational dashboard", "Vehicle checks (P2H) and refueling records", "Vehicle maintenance tracking"]
   },
   {
     "title": "HRIS",
     "description": "A human resources information system for managing employee data, payroll, and HR workflows. Built with TALL Stack and Vue.js with Capacitor for mobile support.",
-    "image": "hris.webp"
+    "image": "hris.webp",
+    "featuredOrder": 1,
+    "category": "People & HR operations",
+    "role": "Developer",
+    "stack": ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "Vue.js", "Capacitor"],
+    "highlights": ["Employee data and HR workflows", "Payroll management", "Mobile support with Vue.js and Capacitor"]
   },
   {
     "title": "POS",
     "description": "A point-of-sale system for managing sales transactions and inventory. Built with TALL Stack (Tailwind, Alpine, Laravel, Livewire).",
-    "image": "pos.webp"
+    "image": "pos.webp",
+    "featuredOrder": 3,
+    "category": "Sales & inventory",
+    "role": "Developer",
+    "stack": ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS"],
+    "highlights": ["Point-of-sale transactions", "Inventory management", "Built with the TALL Stack"]
   }
 ]
