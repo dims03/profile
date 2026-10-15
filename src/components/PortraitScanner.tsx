@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
 import portrait from '../assets/cartoon.webp';
 import portraitSmall from '../assets/cartoon-640.webp';
-import portraitXray from '../assets/cartoon-xray-brain.webp';
+import portraitXray from '../assets/cartoon-xray-anatomy.webp';
 
 const scannerMedia = '(min-width: 640px) and (hover: hover) and (pointer: fine)';
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { X } from 'lucide-react';
 import resume from './assets/resume.pdf?url';
 import ProjectShowcase from './components/ProjectShowcase';
@@ -36,14 +36,26 @@ export default function App() {
   const menuRef = useRef<HTMLDivElement>(null);
   const menuToggle = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const panelCloseRef = useRef<HTMLButtonElement>(null);
   const panelScrollRef = useRef<HTMLDivElement>(null);
   const lastTrigger = useRef<HTMLElement | null>(null);
+  const overlayOpen = menuOpen || panel !== null;
 
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    if (menuOpen || panel) document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = previousOverflow; };
-  }, [menuOpen, panel]);
+  useLayoutEffect(() => {
+    if (!overlayOpen) return;
+    const { scrollX, scrollY } = window;
+    const body = document.body;
+    const root = document.documentElement;
+    const previousBodyOverflow = body.style.overflow;
+    const previousRootOverflow = root.style.overflow;
+    body.style.overflow = 'hidden';
+    root.style.overflow = 'hidden';
+    return () => {
+      body.style.overflow = previousBodyOverflow;
+      root.style.overflow = previousRootOverflow;
+      window.scrollTo({ left: scrollX, top: scrollY, behavior: 'instant' });
+    };
+  }, [overlayOpen]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -52,7 +64,7 @@ export default function App() {
     function handleKeys(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         setMenuOpen(false);
-        menuToggle.current?.focus();
+        menuToggle.current?.focus({ preventScroll: true });
       }
       if (event.key !== 'Tab') return;
       const links = Array.from(menuRef.current?.querySelectorAll<HTMLElement>('a') ?? []);
@@ -72,11 +84,19 @@ export default function App() {
     };
   }, [menuOpen]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const dialog = dialogRef.current;
-    if (panel && panelScrollRef.current) panelScrollRef.current.scrollTop = 0;
-    if (panel && !dialog?.open) dialog?.showModal();
-    if (!panel && dialog?.open) dialog.close();
+    if (!dialog) return;
+    if (panel) {
+      if (!dialog.open) dialog.showModal();
+      // Reset after showModal's native focus handling, before the first paint.
+      panelCloseRef.current?.focus({ preventScroll: true });
+      dialog.scrollTop = 0;
+      dialog.scrollLeft = 0;
+      panelScrollRef.current?.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    } else if (dialog.open) {
+      dialog.close();
+    }
   }, [panel]);
 
   function openPanel(next: Exclude<Panel, null>) {
@@ -220,8 +240,8 @@ export default function App() {
       </div>
 
       <dialog ref={dialogRef} className="content-dialog" aria-labelledby="panel-title" onCancel={(event) => { event.preventDefault(); closePanel(); }} onClick={(event) => { if (event.target === event.currentTarget) closePanel(); }}>
-        <div className="panel-topline"><span>Dims / {panel ? panelLabels[panel] : ''}</span><button type="button" onClick={closePanel} className="panel-close" aria-label="Close panel"><span aria-hidden="true">×</span></button></div>
-        <div ref={panelScrollRef} className="content-panel" role="region" aria-label={panel ? `${panelLabels[panel]} content` : 'Panel content'} tabIndex={0}>
+        <div className="panel-topline"><span>Dims / {panel ? panelLabels[panel] : ''}</span><button ref={panelCloseRef} type="button" onClick={closePanel} className="panel-close" aria-label="Close panel"><span aria-hidden="true">×</span></button></div>
+        <div key={panel ?? 'closed'} ref={panelScrollRef} className="content-panel" role="region" aria-label={panel ? `${panelLabels[panel]} content` : 'Panel content'} tabIndex={0}>
           {panel === 'story' ? (
             <article className="story-content">
               <p className="eyebrow">Samarinda, Indonesia</p>
