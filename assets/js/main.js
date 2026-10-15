@@ -46,6 +46,7 @@
   const state = {
     countersAnimated: false,
     activeSection: null,
+    galaxyFallback: null,
     threeMouseX: 0,
     threeMouseY: 0,
     spotlightMouseX: window.innerWidth / 2,
@@ -60,7 +61,6 @@
 
     initHeroReady();
     initThreeHero();
-    initVideoControls();
     initThemeToggle();
     initReveal();
     initTimelineFlow();
@@ -81,10 +81,12 @@
   }
 
   /* =========================================================
-     THREE.JS HERO: ROYAL BLUE & NITRO ORANGE TELEMETRY
+     THREE.JS HERO: SPIRAL GALAXY & DISTANT STARS
      ========================================================= */
   function initThreeHero() {
-    if (!SELECTORS.heroCanvas) return;
+    if (!SELECTORS.heroCanvas || !SELECTORS.hero) return;
+    // Visible immediately, including when the CDN or GPU is unavailable.
+    if (!state.galaxyFallback) state.galaxyFallback = initGalaxyFallback();
     if (!window.THREE) {
       // The optional background must not delay content or page controls.
       const script = document.getElementById("three-script");
@@ -98,12 +100,12 @@
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      70,
-      window.innerWidth / window.innerHeight,
+      60,
+      SELECTORS.hero.clientWidth / SELECTORS.hero.clientHeight,
       0.1,
       1000
     );
-    camera.position.z = 6.5;
+    camera.position.z = 11;
 
     let renderer;
     try {
@@ -118,72 +120,74 @@
       return;
     }
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, compact ? 1 : 1.5));
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, compact ? 1 : 1.5);
+    renderer.setPixelRatio(pixelRatio);
+    renderer.setSize(SELECTORS.hero.clientWidth, SELECTORS.hero.clientHeight);
 
-    // Royal Blue Particles
-    const geoRoyal = new THREE.BufferGeometry();
-    const countRoyal = compact ? 260 : 600;
-    const posRoyal = new Float32Array(countRoyal * 3);
-    for (let i = 0; i < countRoyal * 3; i += 1) {
-      posRoyal[i] = (Math.random() - 0.5) * 24;
+    // Use Three's tested particle shader and a small, locally generated sprite.
+    const sprite = document.createElement("canvas");
+    sprite.width = sprite.height = 32;
+    const spriteContext = sprite.getContext("2d");
+    if (!spriteContext) {
+      renderer.dispose();
+      return;
     }
-    geoRoyal.setAttribute("position", new THREE.BufferAttribute(posRoyal, 3));
-
-    const matRoyal = new THREE.PointsMaterial({
-      color: 0x2563eb, // Royal Blue
-      size: 0.036,
+    const glow = spriteContext.createRadialGradient(16, 16, 0, 16, 16, 16);
+    glow.addColorStop(0, "rgba(255,255,255,1)");
+    glow.addColorStop(0.25, "rgba(255,255,255,0.9)");
+    glow.addColorStop(0.6, "rgba(255,255,255,0.3)");
+    glow.addColorStop(1, "rgba(255,255,255,0)");
+    spriteContext.fillStyle = glow;
+    spriteContext.fillRect(0, 0, 32, 32);
+    const starTexture = new THREE.CanvasTexture(sprite);
+    const starMaterial = new THREE.PointsMaterial({
+      map: starTexture,
+      size: compact ? 0.1 : 0.13,
+      vertexColors: true,
       transparent: true,
-      opacity: 0.72,
       depthWrite: false,
+      blending: THREE.AdditiveBlending,
     });
-    const ptsRoyal = new THREE.Points(geoRoyal, matRoyal);
-    scene.add(ptsRoyal);
+    const galaxyMaterial = starMaterial.clone();
+    galaxyMaterial.size = compact ? 0.085 : 0.11;
+    const materials = [starMaterial, galaxyMaterial];
 
-    // Nitro Orange Accent Sparks
-    const geoNitro = new THREE.BufferGeometry();
-    const countNitro = compact ? 70 : 160;
-    const posNitro = new Float32Array(countNitro * 3);
-    for (let i = 0; i < countNitro * 3; i += 1) {
-      posNitro[i] = (Math.random() - 0.5) * 20;
+    function createStarField(count, spiral, material) {
+      const positions = new Float32Array(count * 3);
+      const colors = new Float32Array(count * 3);
+      for (let i = 0; i < count; i++) {
+        const offset = i * 3;
+        const radius = Math.pow(Math.random(), 1.5) * 8;
+        const angle = (i % 4) * Math.PI / 2 + radius * 0.75;
+        const spread = 0.16 + radius * 0.12;
+        if (spiral) {
+          positions[offset] = Math.cos(angle) * radius + (Math.random() - 0.5) * spread;
+          positions[offset + 1] = Math.sin(angle) * radius + (Math.random() - 0.5) * spread;
+          positions[offset + 2] = (Math.random() - 0.5) * (0.35 + radius * 0.08);
+        } else {
+          positions[offset] = (Math.random() - 0.5) * 36;
+          positions[offset + 1] = (Math.random() - 0.5) * 24;
+          positions[offset + 2] = -4 - Math.random() * 18;
+        }
+        const mix = spiral ? radius / 8 : Math.random();
+        const lavender = Math.random() > 0.7;
+        colors[offset] = 1 - mix * (lavender ? 0.4 : 0.65);
+        colors[offset + 1] = 0.88 - mix * 0.38;
+        colors[offset + 2] = 0.74 + mix * 0.26;
+      }
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+      const field = new THREE.Points(geometry, material);
+      scene.add(field);
+      return field;
     }
-    geoNitro.setAttribute("position", new THREE.BufferAttribute(posNitro, 3));
 
-    const matNitro = new THREE.PointsMaterial({
-      color: 0xff5500, // Nitro Orange
-      size: 0.048,
-      transparent: true,
-      opacity: 0.85,
-      depthWrite: false,
-    });
-    const ptsNitro = new THREE.Points(geoNitro, matNitro);
-    scene.add(ptsNitro);
-
-    // Wireframe Geometry 1: Royal Blue Icosahedron
-    const wireMat = new THREE.MeshBasicMaterial({
-      color: 0x2563eb,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.14,
-    });
-    const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(2, 1), wireMat);
-    ico.position.set(3, 0.5, -2);
-    scene.add(ico);
-
-    // Wireframe Geometry 2: Nitro Orange Torus
-    const torMat = new THREE.MeshBasicMaterial({
-      color: 0xff5500,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.13,
-    });
-    const tor = new THREE.Mesh(
-      new THREE.TorusGeometry(1.25, 0.14, compact ? 6 : 12, compact ? 32 : 60),
-      torMat
-    );
-    tor.position.set(-3.5, -1, -3);
-    tor.rotation.x = 0.8;
-    scene.add(tor);
+    const stars = createStarField(compact ? 200 : 450, false, starMaterial);
+    const galaxy = createStarField(compact ? 500 : 1400, true, galaxyMaterial);
+    galaxy.position.set(compact ? 0 : 1, 1, -2);
+    galaxy.rotation.x = -0.65;
+    galaxy.rotation.z = 0.25;
 
     SELECTORS.hero.addEventListener("mousemove", (event) => {
       state.threeMouseX = (event.clientX / window.innerWidth) * 2 - 1;
@@ -194,38 +198,61 @@
     let inView = true;
     let lastFrame = null;
     let elapsed = 0;
+    let firstDraw = true;
+    let webglAvailable = true;
     const frameInterval = 1000 / (compact ? 30 : 60);
 
     function render(delta) {
       elapsed += delta;
       const t = elapsed;
 
-      ptsRoyal.rotation.y = t * 0.016;
-      ptsRoyal.rotation.x = t * 0.005;
+      stars.rotation.y = t * 0.003;
+      galaxy.rotation.z = 0.25 + t * 0.04;
+      const lightMode = SELECTORS.html.classList.contains("light-mode");
+      for (const material of materials) {
+        material.color.set(lightMode ? 0x1d4ed8 : 0xffffff);
+        material.blending = lightMode ? THREE.NormalBlending : THREE.AdditiveBlending;
+      }
+      starMaterial.opacity = 0.85 + Math.sin(t * 0.8) * 0.15;
 
-      ptsNitro.rotation.y = -t * 0.022;
-      ptsNitro.rotation.z = t * 0.008;
-
-      ico.rotation.x += delta * 0.12;
-      ico.rotation.y += delta * 0.18;
-      tor.rotation.z += delta * 0.24;
-
-      camera.position.x += (state.threeMouseX * 0.3 - camera.position.x) * 0.03;
-      camera.position.y += (state.threeMouseY * 0.15 - camera.position.y) * 0.03;
+      const ease = 1 - Math.exp(-delta * 2.5);
+      camera.position.x += (state.threeMouseX * 0.22 - camera.position.x) * ease;
+      camera.position.y += (state.threeMouseY * 0.12 - camera.position.y) * ease;
       camera.lookAt(scene.position);
 
-      renderer.render(scene, camera);
+      try {
+        renderer.render(scene, camera);
+        if (firstDraw) {
+          firstDraw = false;
+          const failed = renderer.info.programs.some(program => program.diagnostics?.runnable === false);
+          if (failed || renderer.info.render.points === 0) {
+            useFallback();
+            return;
+          }
+          state.galaxyFallback?.stop();
+        }
+      } catch (error) {
+        console.warn("Galaxy render unavailable; using canvas fallback:", error);
+        useFallback();
+      }
+    }
+
+    function useFallback() {
+      webglAvailable = false;
+      SELECTORS.heroCanvas.style.visibility = "hidden";
+      state.galaxyFallback?.start();
+      syncAnimation();
     }
 
     function animate(now) {
       frameId = null;
-      if (!inView || document.hidden) return;
+      if (!webglAvailable || !inView || document.hidden) return;
       const delta = lastFrame === null ? frameInterval : now - lastFrame;
       if (delta >= frameInterval - 0.5) {
         render(Math.min(delta / 1000, 0.1));
         lastFrame = now;
       }
-      if (!reducedMotion.matches && !saveData) {
+      if (webglAvailable && !reducedMotion.matches && !saveData) {
         frameId = window.requestAnimationFrame(animate);
       }
     }
@@ -234,7 +261,7 @@
       if (frameId !== null) window.cancelAnimationFrame(frameId);
       frameId = null;
       lastFrame = null;
-      if (inView && !document.hidden) {
+      if (webglAvailable && inView && !document.hidden) {
         frameId = window.requestAnimationFrame(animate);
       }
     }
@@ -248,46 +275,131 @@
     }
     document.addEventListener("visibilitychange", syncAnimation);
     reducedMotion.addEventListener?.("change", syncAnimation);
+    SELECTORS.themeToggle?.addEventListener("click", syncAnimation);
+    SELECTORS.heroCanvas.addEventListener("webglcontextlost", (event) => {
+      event.preventDefault();
+      useFallback();
+    });
     syncAnimation();
 
     window.addEventListener("resize", () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.aspect = SELECTORS.hero.clientWidth / SELECTORS.hero.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(SELECTORS.hero.clientWidth, SELECTORS.hero.clientHeight);
       syncAnimation();
     });
   }
 
-  /* =========================================================
-     VIDEO BACKGROUND LOADING
-     ========================================================= */
-  function initVideoControls() {
+  function initGalaxyFallback() {
+    const canvas = document.getElementById("hero-galaxy-fallback");
+    const ctx = canvas?.getContext("2d");
+    if (!ctx) return null;
+
+    const compact = window.matchMedia("(max-width: 900px), (pointer: coarse)").matches;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    // Show a poster and a clear status when the local media cannot load.
-    document.querySelectorAll("video").forEach((video) => {
-      if (reducedMotion.matches && video.autoplay) {
-        video.autoplay = false;
-        video.pause();
-      }
-      const status = video.parentElement.querySelector(".video-load-status");
-      const markUnavailable = () => {
-        video.dataset.unavailable = "true";
-        if (status) status.hidden = false;
+    const saveData = navigator.connection?.saveData === true;
+    const colors = ["#dbeafe", "#93c5fd", "#c4b5fd", "#fff0d9"];
+    const stars = Array.from({ length: compact ? 100 : 220 }, () => ({
+      x: Math.random(), y: Math.random(), size: 0.65 + Math.random() * 0.9,
+      phase: Math.random() * Math.PI * 2,
+      color: colors[Math.floor(Math.random() * colors.length)],
+    }));
+    const spiral = Array.from({ length: compact ? 280 : 650 }, (_, i) => {
+      const radius = Math.pow(Math.random(), 1.5) * 8;
+      const angle = (i % 4) * Math.PI / 2 + radius * 0.75;
+      const spread = 0.2 + radius * 0.15;
+      return {
+        x: Math.cos(angle) * radius + (Math.random() - 0.5) * spread,
+        y: Math.sin(angle) * radius + (Math.random() - 0.5) * spread,
+        size: 0.55 + Math.random() * 0.85,
+        color: radius < 1.5 ? "#fff0d9" : colors[i % colors.length],
       };
-
-      video.addEventListener("error", markUnavailable);
-      video.querySelectorAll("source").forEach((source) => {
-        source.addEventListener("error", markUnavailable);
-      });
-      video.addEventListener("loadeddata", () => {
-        delete video.dataset.unavailable;
-        if (status) status.hidden = true;
-      });
-      if (video.error || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
-        markUnavailable();
-      }
     });
+    let width, height;
+    let active = true;
+    let inView = true;
+    let frameId = null;
+    let lastFrame = null;
+    let elapsed = 0;
 
+    function resize() {
+      width = SELECTORS.hero.clientWidth;
+      height = SELECTORS.hero.clientHeight;
+      const ratio = Math.min(window.devicePixelRatio || 1, compact ? 1 : 1.5);
+      canvas.width = Math.round(width * ratio);
+      canvas.height = Math.round(height * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+
+    function draw() {
+      const light = SELECTORS.html.classList.contains("light-mode");
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalCompositeOperation = light ? "source-over" : "lighter";
+      for (const star of stars) {
+        ctx.globalAlpha = 0.55 + Math.sin(elapsed * 0.7 + star.phase) * 0.3;
+        ctx.fillStyle = light ? "#2563eb" : star.color;
+        ctx.beginPath();
+        ctx.arc((star.x * width + elapsed * 1.5) % width, star.y * height, star.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.save();
+      ctx.translate(width * (compact ? 0.52 : 0.56), height * 0.43);
+      ctx.rotate(0.25 + elapsed * 0.04);
+      ctx.scale(1, 0.65);
+      const scale = Math.min(width, height) * (compact ? 0.115 : 0.075);
+      const core = ctx.createRadialGradient(0, 0, 0, 0, 0, scale * 1.6);
+      core.addColorStop(0, light ? "rgba(37,99,235,0.14)" : "rgba(219,234,254,0.24)");
+      core.addColorStop(0.35, "rgba(147,131,255,0.08)");
+      core.addColorStop(1, "rgba(147,131,255,0)");
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = core;
+      ctx.fillRect(-scale * 1.6, -scale * 1.6, scale * 3.2, scale * 3.2);
+      for (const star of spiral) {
+        ctx.globalAlpha = light ? 0.65 : 0.85;
+        ctx.fillStyle = light ? "#2563eb" : star.color;
+        ctx.beginPath();
+        ctx.arc(star.x * scale, star.y * scale, star.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+      ctx.globalAlpha = 1;
+    }
+
+    function animate(now) {
+      frameId = null;
+      if (!active || !inView || document.hidden) return;
+      const delta = lastFrame === null ? 0 : now - lastFrame;
+      if (lastFrame === null || delta >= 1000 / 30 - 0.5) {
+        elapsed += Math.min(delta / 1000, 0.1);
+        draw();
+        lastFrame = now;
+      }
+      if (!reducedMotion.matches && !saveData) frameId = window.requestAnimationFrame(animate);
+    }
+
+    function sync() {
+      if (frameId !== null) window.cancelAnimationFrame(frameId);
+      frameId = null;
+      lastFrame = null;
+      if (active && inView && !document.hidden) frameId = window.requestAnimationFrame(animate);
+    }
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+        sync();
+      });
+      observer.observe(SELECTORS.hero);
+    }
+    document.addEventListener("visibilitychange", sync);
+    reducedMotion.addEventListener?.("change", sync);
+    SELECTORS.themeToggle?.addEventListener("click", sync);
+    window.addEventListener("resize", () => { resize(); sync(); });
+    resize();
+    sync();
+    return {
+      start() { active = true; canvas.style.display = ""; sync(); },
+      stop() { active = false; canvas.style.display = "none"; sync(); },
+    };
   }
 
   function initThemeToggle() {

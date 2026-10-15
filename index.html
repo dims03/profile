@@ -12,9 +12,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=portfolio-mobile-1">
   <script async id="three-script" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js?v=galaxy-2"></script>
 </head>
 
 <body>
@@ -69,16 +69,10 @@
   </div>
 
   <section id="hero">
-    <!-- CINEMATIC AMBIENT VIDEO LAYER -->
-    <div class="hero-video-wrap" aria-hidden="true">
-      <video id="hero-bg-video" class="hero-bg-video" preload="none" loop muted playsinline poster="assets/video/hero-reel-poster.jpg">
-        <!-- Add a video source only after the showreel file is available. -->
-      </video>
-      <div class="hero-video-overlay"></div>
-      <div class="hero-video-grid"></div>
-    </div>
+    <div class="hero-space-bg" aria-hidden="true"></div>
 
-    <canvas id="hero-canvas"></canvas>
+    <canvas id="hero-galaxy-fallback" aria-hidden="true"></canvas>
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero-line"></div>
 
     <div class="hero-left">
@@ -103,15 +97,11 @@
 
     <div class="hero-right">
       <div class="hero-avatar-wrap" data-parallax="0.28">
-        <!-- Frame Telemetri Modern di belakang Avatar -->
-        <div class="avatar-telemetry-frame">
+        <div class="avatar-frame" aria-hidden="true">
           <span class="frame-corner tl"></span>
           <span class="frame-corner tr"></span>
           <span class="frame-corner bl"></span>
           <span class="frame-corner br"></span>
-          <div class="telemetry-badge">
-            <span class="pulse-nitro"></span> LIVE TELEMETRY // 00:59.4
-          </div>
         </div>
         <img src="./img/cartoon.webp" alt="Dimas Prayogi" class="hero-avatar" />
       </div>
@@ -705,7 +695,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">&lt;/dims&gt;</div>
-        <div class="footer-copy">Engineered by Dims &copy; 2023 - <span id="footer-year">2026</span> — Samarinda, ID</div>
+        <div class="footer-copy">Engineered by Dims &copy; 2026 — Samarinda, ID</div>
       </div>
     </div>
   </footer>
