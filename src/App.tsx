@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { X } from 'lucide-react';
-import resume from './assets/resume.pdf?url';
+import resume from './assets/Dimas-Prayogi-Resume-ID.pdf?url';
 import ProjectShowcase from './components/ProjectShowcase';
 import ContactPanel from './components/ContactPanel';
 import PortraitScanner from './components/PortraitScanner';
@@ -17,9 +17,9 @@ const navigation = [
   { label: 'Tech Stack', panel: 'tech' },
   { label: 'Experience', panel: 'history' },
   { label: 'Projects', panel: 'work' },
-  { label: 'Contact', panel: 'contact' },
+  { label: "Let's talk", panel: 'contact' },
 ] as const;
-const desktopNavigation = navigation.filter(({ panel }) => panel !== 'work' && panel !== 'contact');
+const desktopNavigation = navigation.filter(({ panel }) => panel !== 'work');
 const panelLabels = { story: 'A bit about me', tech: 'Tech stack', history: 'Experience', work: 'Project', contact: 'Get in touch' };
 const techImages = import.meta.glob<string>('./assets/tech/*.{png,svg}', {
   eager: true, query: '?url', import: 'default',
@@ -182,7 +182,7 @@ export default function App() {
             <p className="hero-statement"><span className="desktop-statement">Building reliable web applications and internal tools.</span><span className="mobile-statement">Thoughtful code.<br />Useful applications.</span></p>
             <div className="hero-actions">
               <a href="#work" onClick={(event) => { event.preventDefault(); openPanel('work'); }}>View Projects <span aria-hidden="true">↗</span></a>
-              <a href="#contact" onClick={(event) => { event.preventDefault(); openPanel('contact'); }}>Let's talk <span aria-hidden="true">↗</span></a>
+              <a href={resume} target="_blank" rel="noopener noreferrer">Resume <span aria-hidden="true">↗</span></a>
             </div>
           </div>
 
@@ -290,7 +290,7 @@ export default function App() {
           ) : panel === 'work' ? (
             <ProjectShowcase />
           ) : panel === 'contact' ? (
-            <ContactPanel email={contactEmail} linkedinUrl={linkedinUrl} resumeUrl={resume} />
+            <ContactPanel email={contactEmail} linkedinUrl={linkedinUrl} />
           ) : null}
           <div className="panel-bottomline"><span>Dimas Prayogi</span><a href={`mailto:${contactEmail}`}>{contactEmail} ↗</a></div>
         </div>

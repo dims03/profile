@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-type Props = { email: string; linkedinUrl: string; resumeUrl: string };
+type Props = { email: string; linkedinUrl: string };
 
-export default function ContactPanel({ email, linkedinUrl, resumeUrl }: Props) {
+export default function ContactPanel({ email, linkedinUrl }: Props) {
   const [copyState, setCopyState] = useState<'idle' | 'copying' | 'copied' | 'error'>('idle');
 
   useEffect(() => {
@@ -34,7 +34,6 @@ export default function ContactPanel({ email, linkedinUrl, resumeUrl }: Props) {
       <div className="contact-links">
         <a className="editorial-link" href={`mailto:${email}`}>Write an email <span aria-hidden="true">↗</span></a>
         <a className="editorial-link" href={linkedinUrl} target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a>
-        <a className="editorial-link" href={resumeUrl} target="_blank" rel="noopener noreferrer">View my resume <span aria-hidden="true">↗</span></a>
       </div>
     </article>
   );
