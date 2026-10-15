@@ -74,18 +74,23 @@
   }
 
   function initHeroReady() {
-    window.addEventListener("load", () => {
-      SELECTORS.body.classList.add("hero-ready");
-      window.setTimeout(() => animateCounters(), 900);
-      updateActiveSections();
-    });
+    // This deferred script runs after HTML parsing; media may still be loading.
+    SELECTORS.body.classList.add("hero-ready");
+    window.setTimeout(() => animateCounters(), 900);
+    updateActiveSections();
   }
 
   /* =========================================================
      THREE.JS HERO: ROYAL BLUE & NITRO ORANGE TELEMETRY
      ========================================================= */
   function initThreeHero() {
-    if (!window.THREE || !SELECTORS.heroCanvas) return;
+    if (!SELECTORS.heroCanvas) return;
+    if (!window.THREE) {
+      // The optional background must not delay content or page controls.
+      const script = document.getElementById("three-script");
+      if (script) script.addEventListener("load", initThreeHero, { once: true });
+      return;
+    }
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -96,11 +101,17 @@
     );
     camera.position.z = 6.5;
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: SELECTORS.heroCanvas,
-      alpha: true,
-      antialias: true,
-    });
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        canvas: SELECTORS.heroCanvas,
+        alpha: true,
+        antialias: true,
+      });
+    } catch (error) {
+      console.warn("Hero background unavailable:", error);
+      return;
+    }
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
