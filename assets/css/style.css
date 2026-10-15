@@ -125,6 +125,8 @@ body::before {
 
 .spotlight {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 520px;
   height: 520px;
   border-radius: 50%;
@@ -886,8 +888,8 @@ body.hero-ready .scroll-indicator { animation: fadeSlideUp 0.8s 1.15s var(--ease
 }
 
 @keyframes heroAvatarIn {
-  from { opacity: 0; transform: translateY(40px) scale(0.94); filter: blur(10px); }
-  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  from { opacity: 0; transform: translateY(40px) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* =========================================================
@@ -2030,6 +2032,15 @@ footer {
 
   nav {
     padding: 0 1.25rem;
+    backdrop-filter: blur(8px);
+  }
+
+  body::before {
+    display: none;
+  }
+
+  .cv-card {
+    backdrop-filter: none;
   }
 
   #hero {
@@ -2095,6 +2106,10 @@ footer {
   body.hero-ready nav,
   body.hero-ready #hero * {
     animation: none;
+  }
+
+  .spotlight {
+    display: none;
   }
 
   .instagram-photo img {

@@ -25,6 +25,7 @@
     modalDesc: document.getElementById("modal-desc"),
     contactForm: document.getElementById("contact-form"),
     heroCanvas: document.getElementById("hero-canvas"),
+    hero: document.getElementById("hero"),
   };
 
   const SECTION_IDS = [
@@ -44,6 +45,7 @@
 
   const state = {
     countersAnimated: false,
+    activeSection: null,
     threeMouseX: 0,
     threeMouseY: 0,
     spotlightMouseX: window.innerWidth / 2,
@@ -61,15 +63,13 @@
     initVideoControls();
     initThemeToggle();
     initReveal();
-    initBackToTop();
-    initNavScrollState();
+    initScrollState();
     initSpotlight();
     initParallax();
     initPortfolioTilt();
     initPortfolioModal();
     initMobileMenu();
     initSmoothAnchorScroll();
-    initActiveSections();
     initContactForm();
   }
 
@@ -77,7 +77,6 @@
     // This deferred script runs after HTML parsing; media may still be loading.
     SELECTORS.body.classList.add("hero-ready");
     window.setTimeout(() => animateCounters(), 900);
-    updateActiveSections();
   }
 
   /* =========================================================
@@ -91,6 +90,10 @@
       if (script) script.addEventListener("load", initThreeHero, { once: true });
       return;
     }
+
+    const compact = window.matchMedia("(max-width: 900px), (pointer: coarse)").matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const saveData = navigator.connection?.saveData === true;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -106,19 +109,20 @@
       renderer = new THREE.WebGLRenderer({
         canvas: SELECTORS.heroCanvas,
         alpha: true,
-        antialias: true,
+        antialias: !compact,
+        powerPreference: "low-power",
       });
     } catch (error) {
       console.warn("Hero background unavailable:", error);
       return;
     }
 
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, compact ? 1 : 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Royal Blue Particles
     const geoRoyal = new THREE.BufferGeometry();
-    const countRoyal = 950;
+    const countRoyal = compact ? 260 : 600;
     const posRoyal = new Float32Array(countRoyal * 3);
     for (let i = 0; i < countRoyal * 3; i += 1) {
       posRoyal[i] = (Math.random() - 0.5) * 24;
@@ -137,7 +141,7 @@
 
     // Nitro Orange Accent Sparks
     const geoNitro = new THREE.BufferGeometry();
-    const countNitro = 260;
+    const countNitro = compact ? 70 : 160;
     const posNitro = new Float32Array(countNitro * 3);
     for (let i = 0; i < countNitro * 3; i += 1) {
       posNitro[i] = (Math.random() - 0.5) * 20;
@@ -173,23 +177,27 @@
       opacity: 0.13,
     });
     const tor = new THREE.Mesh(
-      new THREE.TorusGeometry(1.25, 0.14, 12, 60),
+      new THREE.TorusGeometry(1.25, 0.14, compact ? 6 : 12, compact ? 32 : 60),
       torMat
     );
     tor.position.set(-3.5, -1, -3);
     tor.rotation.x = 0.8;
     scene.add(tor);
 
-    window.addEventListener("mousemove", (event) => {
+    SELECTORS.hero.addEventListener("mousemove", (event) => {
       state.threeMouseX = (event.clientX / window.innerWidth) * 2 - 1;
       state.threeMouseY = -(event.clientY / window.innerHeight) * 2 + 1;
     });
 
-    const clock = new THREE.Clock();
+    let frameId = null;
+    let inView = true;
+    let lastFrame = null;
+    let elapsed = 0;
+    const frameInterval = 1000 / (compact ? 30 : 60);
 
-    function animate() {
-      window.requestAnimationFrame(animate);
-      const t = clock.getElapsedTime();
+    function render(delta) {
+      elapsed += delta;
+      const t = elapsed;
 
       ptsRoyal.rotation.y = t * 0.016;
       ptsRoyal.rotation.x = t * 0.005;
@@ -197,9 +205,9 @@
       ptsNitro.rotation.y = -t * 0.022;
       ptsNitro.rotation.z = t * 0.008;
 
-      ico.rotation.x += 0.002;
-      ico.rotation.y += 0.003;
-      tor.rotation.z += 0.004;
+      ico.rotation.x += delta * 0.12;
+      ico.rotation.y += delta * 0.18;
+      tor.rotation.z += delta * 0.24;
 
       camera.position.x += (state.threeMouseX * 0.3 - camera.position.x) * 0.03;
       camera.position.y += (state.threeMouseY * 0.15 - camera.position.y) * 0.03;
@@ -208,12 +216,44 @@
       renderer.render(scene, camera);
     }
 
-    animate();
+    function animate(now) {
+      frameId = null;
+      if (!inView || document.hidden) return;
+      const delta = lastFrame === null ? frameInterval : now - lastFrame;
+      if (delta >= frameInterval - 0.5) {
+        render(Math.min(delta / 1000, 0.1));
+        lastFrame = now;
+      }
+      if (!reducedMotion.matches && !saveData) {
+        frameId = window.requestAnimationFrame(animate);
+      }
+    }
+
+    function syncAnimation() {
+      if (frameId !== null) window.cancelAnimationFrame(frameId);
+      frameId = null;
+      lastFrame = null;
+      if (inView && !document.hidden) {
+        frameId = window.requestAnimationFrame(animate);
+      }
+    }
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+        syncAnimation();
+      });
+      observer.observe(SELECTORS.hero);
+    }
+    document.addEventListener("visibilitychange", syncAnimation);
+    reducedMotion.addEventListener?.("change", syncAnimation);
+    syncAnimation();
 
     window.addEventListener("resize", () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      syncAnimation();
     });
   }
 
@@ -291,53 +331,73 @@
     SELECTORS.revealEls.forEach((el) => observer.observe(el));
   }
 
-  function initBackToTop() {
-    if (!SELECTORS.backToTop) return;
-
-    window.addEventListener("scroll", () => {
-      SELECTORS.backToTop.classList.toggle("show", window.scrollY > 500);
-    });
-  }
-
-  function initNavScrollState() {
-    window.addEventListener("scroll", () => {
-      if (!SELECTORS.nav) return;
-      SELECTORS.nav.classList.toggle("scrolled", window.scrollY > 24);
-    });
+  function initScrollState() {
+    let scheduled = false;
+    function update() {
+      scheduled = false;
+      updateActiveSections();
+      SELECTORS.backToTop?.classList.toggle("show", window.scrollY > 500);
+      SELECTORS.nav?.classList.toggle("scrolled", window.scrollY > 24);
+    }
+    function scheduleUpdate() {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(update);
+    }
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    update();
   }
 
   function initSpotlight() {
-    if (window.innerWidth <= 900 || !SELECTORS.spotlight) return;
+    if (!canUsePointerEffects() || !SELECTORS.spotlight) return;
+    let frameId = null;
+
+    function animateSpotlight() {
+      frameId = null;
+      if (document.hidden) return;
+      state.spotlightX += (state.spotlightMouseX - state.spotlightX) * 0.08;
+      state.spotlightY += (state.spotlightMouseY - state.spotlightY) * 0.08;
+      SELECTORS.spotlight.style.transform =
+        `translate3d(${state.spotlightX}px, ${state.spotlightY}px, 0) translate(-50%, -50%)`;
+      if (Math.abs(state.spotlightMouseX - state.spotlightX) > 0.5 ||
+          Math.abs(state.spotlightMouseY - state.spotlightY) > 0.5) {
+        frameId = window.requestAnimationFrame(animateSpotlight);
+      }
+    }
 
     window.addEventListener("mousemove", (event) => {
       state.spotlightMouseX = event.clientX;
       state.spotlightMouseY = event.clientY;
+      if (frameId === null) frameId = window.requestAnimationFrame(animateSpotlight);
     });
-
-    function animateSpotlight() {
-      state.spotlightX += (state.spotlightMouseX - state.spotlightX) * 0.08;
-      state.spotlightY += (state.spotlightMouseY - state.spotlightY) * 0.08;
-      SELECTORS.spotlight.style.left = `${state.spotlightX}px`;
-      SELECTORS.spotlight.style.top = `${state.spotlightY}px`;
-      window.requestAnimationFrame(animateSpotlight);
-    }
-
     animateSpotlight();
   }
 
+  function canUsePointerEffects() {
+    return window.innerWidth > 900 &&
+      !window.matchMedia("(pointer: coarse), (prefers-reduced-motion: reduce)").matches;
+  }
+
   function initParallax() {
-    if (window.innerWidth <= 900 || !SELECTORS.parallaxEls.length) return;
+    if (!canUsePointerEffects() || !SELECTORS.parallaxEls.length) return;
+    let frameId = null;
+    let x = 0;
+    let y = 0;
 
-    window.addEventListener("mousemove", (event) => {
-      const x = event.clientX / window.innerWidth - 0.5;
-      const y = event.clientY / window.innerHeight - 0.5;
-
+    function update() {
+      frameId = null;
       SELECTORS.parallaxEls.forEach((el) => {
         const speed = Number.parseFloat(el.dataset.parallax || "0.1");
         const tx = x * 40 * speed;
         const ty = y * 30 * speed;
         el.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
       });
+    }
+    SELECTORS.hero.addEventListener("mousemove", (event) => {
+      x = event.clientX / window.innerWidth - 0.5;
+      y = event.clientY / window.innerHeight - 0.5;
+      if (frameId === null) frameId = window.requestAnimationFrame(update);
     });
   }
 
@@ -348,6 +408,10 @@
     SELECTORS.counterEls.forEach((el) => {
       const target = Number.parseInt(el.dataset.count || "0", 10);
       const suffix = el.dataset.countSuffix ?? "+";
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        el.textContent = `${target}${suffix}`;
+        return;
+      }
       const duration = 1200;
       const start = performance.now();
 
@@ -368,23 +432,33 @@
   }
 
   function initPortfolioTilt() {
-    if (window.innerWidth <= 900) return;
+    if (!canUsePointerEffects()) return;
 
     SELECTORS.workCards.forEach((card) => {
+      let frameId = null;
+      let pointerX = 0;
+      let pointerY = 0;
       card.addEventListener("mousemove", (event) => {
-        const rect = card.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        const rx = (y / rect.height - 0.5) * -6;
-        const ry = (x / rect.width - 0.5) * 8;
-
-        card.style.transform =
-          `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
-        card.style.setProperty("--mx", `${x}px`);
-        card.style.setProperty("--my", `${y}px`);
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+        if (frameId !== null) return;
+        frameId = window.requestAnimationFrame(() => {
+          frameId = null;
+          const rect = card.getBoundingClientRect();
+          const x = pointerX - rect.left;
+          const y = pointerY - rect.top;
+          const rx = (y / rect.height - 0.5) * -6;
+          const ry = (x / rect.width - 0.5) * 8;
+          card.style.transform =
+            `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+          card.style.setProperty("--mx", `${x}px`);
+          card.style.setProperty("--my", `${y}px`);
+        });
       });
 
       card.addEventListener("mouseleave", () => {
+        if (frameId !== null) window.cancelAnimationFrame(frameId);
+        frameId = null;
         card.style.transform = "";
       });
     });
@@ -538,11 +612,6 @@
     window.addEventListener("hashchange", alignCurrentHash);
   }
 
-  function initActiveSections() {
-    window.addEventListener("scroll", updateActiveSections, { passive: true });
-    window.addEventListener("resize", updateActiveSections);
-  }
-
   function updateActiveSections() {
     let current = "";
     const navHeight = SELECTORS.nav ? SELECTORS.nav.offsetHeight : 68;
@@ -565,6 +634,9 @@
     if (!current && window.scrollY < window.innerHeight * 0.4) {
       current = "";
     }
+
+    if (state.activeSection === current) return;
+    state.activeSection = current;
 
     SELECTORS.navLinks.forEach((link) => {
       link.classList.toggle(
