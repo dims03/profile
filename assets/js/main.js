@@ -63,6 +63,7 @@
     initVideoControls();
     initThemeToggle();
     initReveal();
+    initTimelineFlow();
     initScrollState();
     initSpotlight();
     initParallax();
@@ -329,6 +330,25 @@
     );
 
     SELECTORS.revealEls.forEach((el) => observer.observe(el));
+  }
+
+  function initTimelineFlow() {
+    const timeline = document.querySelector(".exp-zigzag");
+    if (!timeline || !("IntersectionObserver" in window)) return;
+
+    const disabled = window.matchMedia("(max-width: 900px), (prefers-reduced-motion: reduce)");
+    let inView = false;
+    function update() {
+      timeline.classList.toggle("is-animating", inView && !document.hidden &&
+        !disabled.matches && navigator.connection?.saveData !== true);
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      update();
+    });
+    observer.observe(timeline);
+    document.addEventListener("visibilitychange", update);
+    disabled.addEventListener?.("change", update);
   }
 
   function initScrollState() {
