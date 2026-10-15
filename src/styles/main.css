@@ -87,13 +87,27 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 1px soli
 .drawer-label, .drawer-social { transform: translateY(16px); }
 .is-open .drawer-label, .is-open .drawer-link, .is-open .drawer-social { opacity: 1; transform: translateY(0); }
 
-.content-dialog { position: fixed; inset: 0; width: min(1100px, calc(100% - 80px)); max-width: none; max-height: calc(100dvh - 80px); padding: 0; border: 0; color: #efeee9; background: #181818; }
+.content-dialog { position: fixed; inset: 0; width: min(1100px, calc(100% - 80px)); max-width: none; max-height: calc(100dvh - 80px); padding: 0; border: 0; overflow: hidden; color: #efeee9; background: #181818; color-scheme: dark; }
 .content-dialog::backdrop { background: rgba(0, 0, 0, .68); backdrop-filter: blur(12px); }
-.content-dialog[open] { animation: fade-up .45s cubic-bezier(.22, 1, .36, 1) both; }
-.content-panel { padding: 28px 40px; }
+.content-dialog[open] { display: flex; flex-direction: column; animation: fade-up .45s cubic-bezier(.22, 1, .36, 1) both; }
+.content-panel { min-height: 0; padding: 0 40px 28px; overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; scroll-padding-block: 24px; }
+.content-panel:focus-visible { outline: 1px solid #efeee950; outline-offset: -1px; }
+.content-panel, .drawer-panel { overscroll-behavior-y: contain; scrollbar-width: thin; scrollbar-color: #74736b #181818; color-scheme: dark; }
+/* Use rounded, arrow-free scrollbars where supported; Firefox uses the thin native style. */
+@supports selector(::-webkit-scrollbar) {
+  .content-panel, .drawer-panel { scrollbar-width: auto; scrollbar-color: auto; }
+  .content-panel::-webkit-scrollbar, .drawer-panel::-webkit-scrollbar { width: 10px; height: 10px; }
+  .content-panel::-webkit-scrollbar-track, .drawer-panel::-webkit-scrollbar-track { background: #181818; }
+  .content-panel::-webkit-scrollbar-thumb, .drawer-panel::-webkit-scrollbar-thumb { min-height: 48px; border: 2px solid #181818; border-radius: 999px; background: #74736b; }
+  .content-panel::-webkit-scrollbar-thumb:hover, .drawer-panel::-webkit-scrollbar-thumb:hover { background: #a5a397; }
+  .content-panel::-webkit-scrollbar-thumb:active, .drawer-panel::-webkit-scrollbar-thumb:active { background: #ceccc1; }
+  .content-panel::-webkit-scrollbar-button, .drawer-panel::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+  .content-panel::-webkit-scrollbar-corner, .drawer-panel::-webkit-scrollbar-corner { background: #181818; }
+}
 .panel-topline, .panel-bottomline { display: flex; justify-content: space-between; align-items: center; gap: 20px; font-size: 12px; }
-.panel-topline { padding-bottom: 24px; border-bottom: 1px solid #efeee940; }
-.panel-close { display: flex; align-items: center; gap: 12px; }
+.panel-topline { flex-shrink: 0; padding: 16px 40px; border-bottom: 1px solid #efeee940; background: #181818; }
+.panel-close { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; margin-right: -8px; padding-inline: 8px; color: #efeee9b3; transition: color .2s; }
+.panel-close:hover, .panel-close:focus-visible { color: #efeee9; }
 .panel-close span { font-family: Arial, sans-serif; font-size: 25px; line-height: 1; }
 .panel-bottomline { margin-top: 56px; padding-top: 24px; border-top: 1px solid #efeee940; color: #efeee980; }
 .panel-bottomline a:hover { color: #efeee9; }
@@ -156,7 +170,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 1px soli
   }
   .hero-footer p:last-child { justify-self: end; }
   .content-dialog { width: calc(100% - 24px); max-height: calc(100dvh - 24px); }
-  .content-panel { padding: 22px; }
+  .panel-topline { padding: 12px 22px; }
+  .content-panel { padding: 0 22px 22px; }
   .story-content, .work-content { padding-top: 36px; }
   .work-heading { align-items: start; flex-direction: column; gap: 14px; margin-bottom: 28px; }
   .project summary { gap: 15px; padding: 22px 0; }

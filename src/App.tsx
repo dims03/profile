@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { X } from 'lucide-react';
-import portrait from '../img/cartoon.png';
-import resume from '../resume.pdf?url';
-import projectData from './projects.json';
-import techStack from './tech-stack.json';
-import { workHistory } from './work-history';
+import portrait from './assets/cartoon.png';
+import resume from './assets/resume.pdf?url';
+import projectData from './data/projects.json';
+import techStack from './data/tech-stack.json';
+import { workHistory } from './data/work-history';
 
 type Panel = 'story' | 'tech' | 'history' | 'work' | null;
 const navigation = [
@@ -15,10 +15,10 @@ const navigation = [
   { label: 'Message', panel: null },
 ] as const;
 const panelLabels = { story: 'A bit about me', tech: 'Tech stack', history: 'Experience', work: 'Project' };
-const projectImages = import.meta.glob<string>('../assets/img/portfolio/*.webp', {
+const projectImages = import.meta.glob<string>('./assets/projects/*.webp', {
   eager: true, query: '?url', import: 'default',
 });
-const techImages = import.meta.glob<string>(['../img/*.{png,svg}', '!../img/cartoon.png'], {
+const techImages = import.meta.glob<string>('./assets/tech/*.{png,svg}', {
   eager: true, query: '?url', import: 'default',
 });
 const socials = [
@@ -34,6 +34,7 @@ export default function App() {
   const menuRef = useRef<HTMLDivElement>(null);
   const menuToggle = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const panelScrollRef = useRef<HTMLDivElement>(null);
   const lastTrigger = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -71,6 +72,7 @@ export default function App() {
 
   useEffect(() => {
     const dialog = dialogRef.current;
+    if (panel && panelScrollRef.current) panelScrollRef.current.scrollTop = 0;
     if (panel && !dialog?.open) dialog?.showModal();
     if (!panel && dialog?.open) dialog.close();
   }, [panel]);
@@ -191,8 +193,8 @@ export default function App() {
       </div>
 
       <dialog ref={dialogRef} className="content-dialog" aria-labelledby="panel-title" onCancel={(event) => { event.preventDefault(); closePanel(); }} onClick={(event) => { if (event.target === event.currentTarget) closePanel(); }}>
-        <div className="content-panel">
-          <div className="panel-topline"><span>Dims / {panel ? panelLabels[panel] : ''}</span><button type="button" onClick={closePanel} className="panel-close" aria-label="Close panel">Close <span aria-hidden="true">×</span></button></div>
+        <div className="panel-topline"><span>Dims / {panel ? panelLabels[panel] : ''}</span><button type="button" onClick={closePanel} className="panel-close" aria-label="Close panel"><span aria-hidden="true">×</span></button></div>
+        <div ref={panelScrollRef} className="content-panel" role="region" aria-label={panel ? `${panelLabels[panel]} content` : 'Panel content'} tabIndex={0}>
           {panel === 'story' ? (
             <article className="story-content">
               <p className="eyebrow">Samarinda, Indonesia</p>
@@ -209,7 +211,7 @@ export default function App() {
               <p className="panel-intro">The technologies I use to build, ship, and keep things running.</p>
               <ul className="tech-list">
                 {techStack.map((tech) => (
-                  <li key={tech.name}><img src={techImages[tech.image]} alt="" width={36} height={36} loading="lazy" /><span>{tech.name}</span></li>
+                  <li key={tech.name}><img src={techImages[`./assets/tech/${tech.image}`]} alt="" width={36} height={36} loading="lazy" /><span>{tech.name}</span></li>
                 ))}
               </ul>
             </article>
@@ -242,7 +244,7 @@ export default function App() {
                 {[...projectData].reverse().map((project, index) => (
                   <details className="project" key={project.title}>
                     <summary><span className="project-number">{String(index + 1).padStart(2, '0')}</span><h3>{project.title}</h3><span className="project-symbol" aria-hidden="true">+</span></summary>
-                    <div className="project-detail"><img src={projectImages[project.image]} alt={`${project.title} project screenshot`} loading="lazy" /><p>{project.description}</p></div>
+                    <div className="project-detail"><img src={projectImages[`./assets/projects/${project.image}`]} alt={`${project.title} project screenshot`} loading="lazy" /><p>{project.description}</p></div>
                   </details>
                 ))}
               </div>

@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Tailwind",
+    "image": "tailwind-css.png"
+  },
+  {
+    "name": "Laravel",
+    "image": "laravel.png"
+  },
+  {
+    "name": "Livewire",
+    "image": "livewire.png"
+  },
+  {
+    "name": "Alpine.js",
+    "image": "alpine.png"
+  },
+  {
+    "name": "PHP",
+    "image": "php.png"
+  },
+  {
+    "name": "Vue.js",
+    "image": "vuejs.svg"
+  },
+  {
+    "name": "MySQL",
+    "image": "mysql.png"
+  },
+  {
+    "name": "PostgreSQL",
+    "image": "postgresql.png"
+  },
+  {
+    "name": "JavaScript",
+    "image": "java-script.png"
+  },
+  {
+    "name": "HTML5",
+    "image": "html5.png"
+  },
+  {
+    "name": "CSS3",
+    "image": "css3.png"
+  },
+  {
+    "name": "Figma",
+    "image": "figma.png"
+  },
+  {
+    "name": "Git",
+    "image": "git.png"
+  },
+  {
+    "name": "NPM",
+    "image": "npm.png"
+  },
+  {
+    "name": "Bootstrap",
+    "image": "bootstrap.png"
+  },
+  {
+    "name": "Vite",
+    "image": "vite.png"
+  },
+  {
+    "name": "Postman",
+    "image": "postman.png"
+  },
+  {
+    "name": "Bruno",
+    "image": "bruno.svg"
+  },
+  {
+    "name": "JSON",
+    "image": "json.png"
+  },
+  {
+    "name": "Capacitor.js",
+    "image": "capacitor.svg"
+  },
+  {
+    "name": "FileZilla",
+    "image": "file-zilla.png"
+  },
+  {
+    "name": "TablePlus",
+    "image": "tableplus.png"
+  },
+  {
+    "name": "Termius",
+    "image": "termius.svg"
+  },
+  {
+    "name": "Codex",
+    "image": "codex.png"
+  }
+]
