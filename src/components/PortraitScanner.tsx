@@ -74,7 +74,7 @@ export default function PortraitScanner() {
         ref={image}
         src={portrait}
         srcSet={`${portraitSmall} 640w, ${portrait} 1024w`}
-        sizes="(max-width: 639px) and (max-height: 700px) max(100px, calc(66.67dvh - 266.67px)), (max-width: 639px) max(100px, calc(66.67dvh - 330.67px)), (max-width: 1023px) 45vw, 58vh"
+        sizes="(orientation: landscape) and (max-width: 1023px) and (max-height: 600px) min(320px, max(211px, calc(66.67dvh - 42.67px))), (orientation: landscape) and (max-width: 1366px) and (max-height: 1024px) min(57.34dvh, calc(66.67dvh - 80px)), (max-width: 639px) and (max-height: 700px) max(100px, calc(66.67dvh - 266.67px)), (max-width: 639px) max(100px, calc(66.67dvh - 330.67px)), (max-width: 1023px) 45vw, 58vh"
         alt="Cartoon portrait of Dimas Prayogi"
         className="portrait-original"
         width={1024}

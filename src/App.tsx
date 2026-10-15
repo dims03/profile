@@ -75,7 +75,7 @@ export default function App() {
       controls[(current + (event.shiftKey ? -1 : 1) + controls.length) % controls.length]?.focus();
     }
     function handleResize() {
-      if (window.innerWidth >= 640) setMenuOpen(false);
+      if (menuToggle.current && getComputedStyle(menuToggle.current).display === 'none') setMenuOpen(false);
     }
     document.addEventListener('keydown', handleKeys);
     window.addEventListener('resize', handleResize);
@@ -141,9 +141,9 @@ export default function App() {
           </div>
           <div className="hero-shade absolute inset-0" aria-hidden="true" />
 
-          <header className="absolute inset-x-0 top-0 z-30 flex items-start justify-between px-6 pt-6 sm:px-10 sm:pt-8">
+          <header className="hero-header absolute inset-x-0 top-0 z-30 flex items-start justify-between px-6 pt-6 sm:px-10 sm:pt-8">
             <a href="./" className="anim-fade-up font-display text-lg font-medium tracking-tight" style={delay(800)} aria-label="Dimas Prayogi — home">{'</dims>'}</a>
-            <div className="hidden items-start gap-16 sm:flex lg:gap-24">
+            <div className="desktop-navigation hidden items-start gap-16 sm:flex lg:gap-24">
               <span className="anim-fade-up text-sm" style={delay(900)}>&copy; 2026</span>
               <nav className="flex flex-col gap-0.5 text-sm" aria-label="Site index">{navLinks()}</nav>
               <nav className="flex flex-col gap-0.5 text-sm" aria-label="Find me">
