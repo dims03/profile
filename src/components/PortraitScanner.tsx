@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
 import portrait from '../assets/cartoon.webp';
 import portraitSmall from '../assets/cartoon-640.webp';
-import portraitXray from '../assets/cartoon-xray.webp';
+import portraitXray from '../assets/cartoon-xray-brain.webp';
 
 const scannerMedia = '(min-width: 640px) and (hover: hover) and (pointer: fine)';
 
@@ -31,7 +31,6 @@ export default function PortraitScanner() {
     const source = image.current;
     if (!element || !source?.complete || !source.naturalWidth) return;
 
-    // Sample the already-loaded portrait once; transparent canvas margins are not hover targets.
     if (!alphaMap.current) {
       const canvas = document.createElement('canvas');
       canvas.width = 128;
