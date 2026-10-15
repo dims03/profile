@@ -1,0 +1,98 @@
+[
+    {
+        "name":  "Tailwind",
+        "image":  "../img/tailwind-css.png"
+    },
+    {
+        "name":  "Laravel",
+        "image":  "../img/laravel.png"
+    },
+    {
+        "name":  "Livewire",
+        "image":  "../img/livewire.png"
+    },
+    {
+        "name":  "Alpine.js",
+        "image":  "../img/alpine.png"
+    },
+    {
+        "name":  "PHP",
+        "image":  "../img/php.png"
+    },
+    {
+        "name":  "Vue.js",
+        "image":  "../img/vuejs.svg"
+    },
+    {
+        "name":  "MySQL",
+        "image":  "../img/mysql.png"
+    },
+    {
+        "name":  "PostgreSQL",
+        "image":  "../img/postgresql.png"
+    },
+    {
+        "name":  "JavaScript",
+        "image":  "../img/java-script.png"
+    },
+    {
+        "name":  "HTML5",
+        "image":  "../img/html5.png"
+    },
+    {
+        "name":  "CSS3",
+        "image":  "../img/css3.png"
+    },
+    {
+        "name":  "Figma",
+        "image":  "../img/figma.png"
+    },
+    {
+        "name":  "Git",
+        "image":  "../img/git.png"
+    },
+    {
+        "name":  "NPM",
+        "image":  "../img/npm.png"
+    },
+    {
+        "name":  "Bootstrap",
+        "image":  "../img/bootstrap.png"
+    },
+    {
+        "name":  "Vite",
+        "image":  "../img/vite.png"
+    },
+    {
+        "name":  "Postman",
+        "image":  "../img/postman.png"
+    },
+    {
+        "name":  "Bruno",
+        "image":  "../img/bruno.svg"
+    },
+    {
+        "name":  "JSON",
+        "image":  "../img/json.png"
+    },
+    {
+        "name":  "Capacitor.js",
+        "image":  "../img/capacitor.svg"
+    },
+    {
+        "name":  "FileZilla",
+        "image":  "../img/file-zilla.png"
+    },
+    {
+        "name":  "TablePlus",
+        "image":  "../img/tableplus.png"
+    },
+    {
+        "name":  "Termius",
+        "image":  "../img/termius.svg"
+    },
+    {
+        "name":  "Codex",
+        "image":  "../img/codex.png"
+    }
+]
