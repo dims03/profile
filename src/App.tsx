@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { X } from 'lucide-react';
-import portrait from './assets/cartoon.png';
 import resume from './assets/resume.pdf?url';
 import ProjectShowcase from './components/ProjectShowcase';
 import ContactPanel from './components/ContactPanel';
+import PortraitScanner from './components/PortraitScanner';
+import projectData from './data/projects.json';
 import techStack from './data/tech-stack.json';
 import { workHistory } from './data/work-history';
 
 type Panel = 'story' | 'tech' | 'history' | 'work' | 'contact' | null;
 const contactEmail = 'dimasp95@icloud.com';
 const linkedinUrl = 'https://www.linkedin.com/in/dimas-prayogi-4628111b2/';
+const firstFeaturedProject = projectData.find((project) => project.featuredOrder === 1);
 const navigation = [
   { label: 'Story', panel: 'story' },
   { label: 'Tech Stack', panel: 'tech' },
@@ -138,18 +140,23 @@ export default function App() {
           </div>
 
           <div className="mobile-identity anim-fade-up" style={delay(500)} aria-hidden="true">
-            <p className="mobile-name">Dimas &mdash; Prayogi</p>
-            <p className="eyebrow">Software Engineer</p>
+            <p className="mobile-kicker"><span />Software Engineer</p>
+            <p className="mobile-name"><span>Dimas</span><span>Prayogi</span></p>
+          </div>
+
+          <div className="mobile-focus anim-fade-up" style={delay(1050)}>
+            <p className="eyebrow">Core stack</p>
+            <p>Tailwindcss<br />Alpine.js<br />Laravel<br />Livewire</p>
           </div>
 
           <div className="cartoon-stage anim-rise-in" style={delay(300)}>
-            <img src={portrait} alt="Black and white cartoon portrait of Dimas Prayogi" className="cartoon-figure" width={1024} height={1536} fetchPriority="high" />
+            <PortraitScanner />
           </div>
           <div className="mobile-shade pointer-events-none absolute inset-0 z-20 sm:hidden" aria-hidden="true" />
 
           <div className="hero-intro anim-fade-up" style={delay(1350)}>
             <p className="eyebrow">Software Engineer</p>
-            <p className="hero-statement">Building reliable web applications and internal tools.</p>
+            <p className="hero-statement"><span className="desktop-statement">Building reliable web applications and internal tools.</span><span className="mobile-statement">Thoughtful code.<br />Useful applications.</span></p>
             <div className="hero-actions">
               <a href="#work" onClick={(event) => { event.preventDefault(); openPanel('work'); }}>View Projects <span aria-hidden="true">↗</span></a>
               <a href="#contact" onClick={(event) => { event.preventDefault(); openPanel('contact'); }}>Let's talk <span aria-hidden="true">↗</span></a>
@@ -158,6 +165,14 @@ export default function App() {
 
           <div className="hero-rule anim-line absolute inset-x-6 bottom-[5.5rem] z-10 h-0.5 bg-cream sm:inset-x-10 sm:bottom-28" style={delay(1200)} aria-hidden="true" />
           <footer className="hero-footer absolute inset-x-0 bottom-0 z-30 flex items-end justify-between px-6 pb-5 text-xs leading-relaxed sm:z-10 sm:px-10 sm:pb-8 sm:text-sm">
+            <div className="mobile-footer">
+              <a className="mobile-project-teaser" href="#work" onClick={(event) => { event.preventDefault(); openPanel('work'); }}>
+                <span className="mobile-project-index" aria-hidden="true">01</span>
+                <span className="mobile-project-copy"><span className="eyebrow">Last project</span><strong>{firstFeaturedProject?.title ?? 'Explore my work'}</strong><span className="mobile-project-category">{firstFeaturedProject?.category}</span></span>
+                <span className="mobile-project-arrow" aria-hidden="true">↗</span>
+              </a>
+              <div className="mobile-footer-meta"><span>Samarinda, Indonesia</span><span>&copy; 2026</span></div>
+            </div>
             <p className="anim-fade-up" style={delay(1400)}>
               Software Engineer<br />Digital Crafter<br />Runner &amp; Cyclist
             </p>

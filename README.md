@@ -25,7 +25,10 @@ The production files are generated in `build/`, which is excluded from Git. For 
 public/favicon.png           Static favicon
 src/
   assets/
-    cartoon.png              Transparent hero portrait
+    cartoon.webp             Full-resolution transparent hero portrait
+    cartoon-640.webp         Smaller responsive hero portrait
+    cartoon-xray.webp        Hover-only anatomical illustration
+    cartoon.png              Original source (not loaded by the website)
     resume.pdf               Downloadable resume
     projects/                Project screenshots (WebP)
     tech/                    Technology icons (PNG/SVG)
@@ -36,6 +39,7 @@ src/
   components/
     ProjectShowcase.tsx      Featured projects and the remaining project archive
     ContactPanel.tsx         Email, copy action, LinkedIn, and resume
+    PortraitScanner.tsx      Pointer-following X-ray reveal
   styles/main.css            Layout, responsive styles, and animations
   App.tsx                    Portfolio layout and interactive panels
   main.tsx                   React entry point
@@ -50,8 +54,9 @@ index.html                   Vite HTML entry point
 - Edit `src/data/work-history.ts` for experience.
 - Edit `src/App.tsx` for profile text, navigation, and social links.
 - The hero's View Projects and Let's talk links open the corresponding panels. Message opens the contact panel, where visitors can copy the email address, open email or LinkedIn, or view the resume.
-- Edit `src/styles/main.css` for styling. The cartoon is displayed in black and white through CSS; its original image is preserved.
-- Typography uses Space Grotesk for names/headings and Manrope for body text, loaded from Google Fonts with `display=swap`. Mobile uses a complete, stationary name above the portrait and two clear action buttons; the scrolling name remains on larger screens.
+- Edit `src/styles/main.css` for styling. The cartoon keeps its original colors and transparency. The hero uses responsive WebP files (640px and 1024px wide); the original PNG is retained as a source and is not included in the production build.
+- On screens at least 640px wide with a mouse, hovering over the cartoon reveals a circular X-ray illustration. The additional 224 KiB WebP is requested only on the first hover over the visible character. Touch/mobile visitors keep the normal portrait without this extra download. Reduced-motion preferences disable the reveal transition. Asset provenance and the generation prompt are in [docs/portrait-xray.md](docs/portrait-xray.md).
+- Typography uses Space Grotesk for names/headings and Manrope for body text, loaded from Google Fonts with `display=swap`. Mobile uses an asymmetric editorial layout: stacked name, portrait on the right, core stack, warm accent, and a featured-project link above the footer metadata. The scrolling name remains on larger screens.
 
 ## GitHub Pages
 
