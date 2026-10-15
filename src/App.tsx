@@ -16,9 +16,10 @@ const navigation = [
   { label: 'Story', panel: 'story' },
   { label: 'Tech Stack', panel: 'tech' },
   { label: 'Experience', panel: 'history' },
-  { label: 'Project', panel: 'work' },
-  { label: 'Message', panel: 'contact' },
+  { label: 'Projects', panel: 'work' },
+  { label: 'Contact', panel: 'contact' },
 ] as const;
+const desktopNavigation = navigation.filter(({ panel }) => panel !== 'work' && panel !== 'contact');
 const panelLabels = { story: 'A bit about me', tech: 'Tech stack', history: 'Experience', work: 'Project', contact: 'Get in touch' };
 const techImages = import.meta.glob<string>('./assets/tech/*.{png,svg}', {
   eager: true, query: '?url', import: 'default',
@@ -117,7 +118,7 @@ export default function App() {
   }
 
   function navLinks(mobile = false) {
-    return navigation.map(({ label, panel: targetPanel }, index) => (
+    return (mobile ? navigation : desktopNavigation).map(({ label, panel: targetPanel }, index) => (
       <a
         key={label}
         href={`#${targetPanel}`}
@@ -135,7 +136,9 @@ export default function App() {
     <>
       <main inert={menuOpen}>
         <section className="hero relative h-[100dvh] w-full overflow-hidden bg-[#141414] text-cream" aria-label="Dimas Prayogi portfolio">
-          <div className="hero-background anim-fade-in absolute inset-0" aria-hidden="true" />
+          <div className="hero-background anim-fade-in absolute inset-0" aria-hidden="true">
+            <div className="hero-contours" />
+          </div>
           <div className="hero-shade absolute inset-0" aria-hidden="true" />
 
           <header className="absolute inset-x-0 top-0 z-30 flex items-start justify-between px-6 pt-6 sm:px-10 sm:pt-8">
@@ -194,7 +197,7 @@ export default function App() {
               <div className="mobile-footer-meta"><span>Samarinda, Indonesia</span><span>&copy; 2026</span></div>
             </div>
             <p className="anim-fade-up" style={delay(1400)}>
-              Software Engineer<br />Digital Crafter<br />Runner &amp; Cyclist
+              Software Engineer<br />Runner &amp; Cyclist
             </p>
             <p className="anim-fade-up text-right" style={delay(1550)}>
               Based in<br />Samarinda, Indonesia

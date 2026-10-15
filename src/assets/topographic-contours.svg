@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <defs>
+    <path id="contour" vector-effect="non-scaling-stroke" d="M8-282C90-292 142-239 176-171C208-108 270-81 281-12C296 73 234 119 205 170C170 228 107 237 42 260C-38 286-99 250-142 205C-187 158-251 127-271 58C-292-15-242-71-228-135C-211-214-147-235-86-262C-49-278-20-278 8-282Z"/>
+  </defs>
+  <g stroke="#e0d8c7" stroke-opacity=".72" stroke-width="1" stroke-linejoin="round">
+    <g transform="translate(1400 475) rotate(-22)">
+      <use href="#contour" transform="scale(.38)"/>
+      <use href="#contour" transform="scale(.49)"/>
+      <use href="#contour" transform="scale(.60)"/>
+      <use href="#contour" transform="scale(.71)"/>
+      <use href="#contour" transform="scale(.82)"/>
+      <use href="#contour" transform="scale(.93)"/>
+      <use href="#contour" transform="scale(1.04)"/>
+      <use href="#contour" transform="scale(1.15)"/>
+      <use href="#contour" transform="scale(1.26)"/>
+      <use href="#contour" transform="scale(1.37)"/>
+      <use href="#contour" transform="scale(1.48)"/>
+      <use href="#contour" transform="scale(1.59)"/>
+      <use href="#contour" transform="scale(1.70)"/>
+    </g>
+    <g transform="translate(-85 810) rotate(34) scale(1.1 .9)" stroke-opacity=".7">
+      <use href="#contour" transform="scale(.40)"/>
+      <use href="#contour" transform="scale(.54)"/>
+      <use href="#contour" transform="scale(.68)"/>
+      <use href="#contour" transform="scale(.82)"/>
+      <use href="#contour" transform="scale(.96)"/>
+      <use href="#contour" transform="scale(1.10)"/>
+      <use href="#contour" transform="scale(1.24)"/>
+      <use href="#contour" transform="scale(1.38)"/>
+      <use href="#contour" transform="scale(1.52)"/>
+    </g>
+    <g transform="translate(660 -170) rotate(68) scale(1.2 .8)" stroke-opacity=".55">
+      <use href="#contour" transform="scale(.40)"/>
+      <use href="#contour" transform="scale(.55)"/>
+      <use href="#contour" transform="scale(.70)"/>
+      <use href="#contour" transform="scale(.85)"/>
+      <use href="#contour" transform="scale(1.00)"/>
+      <use href="#contour" transform="scale(1.15)"/>
+      <use href="#contour" transform="scale(1.30)"/>
+    </g>
+  </g>
+</svg>
