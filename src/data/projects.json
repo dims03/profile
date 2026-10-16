@@ -15,6 +15,7 @@
   },
   {
     "title": "Istana Laundry Profile Website",
+    "url": "https://istana-laundry.vercel.app",
     "description": "A profile website for Istana Laundry, showcasing their services and offerings.",
     "image": "istana.webp",
     "imageWidth": 960,
