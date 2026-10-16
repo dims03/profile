@@ -91,7 +91,8 @@
   },
   {
     "title": "CVKita",
-    "description": "A free CV and cover letter builder. Users enter their details in a guided editor, choose a template or create their own design, preview the documents, and download watermark-free PDFs. Document generation runs entirely in the browser, with no account or backend required.",
+    "description": "A free, open-source CV and cover letter builder. Users enter their details in a guided editor, choose a template or create their own design, preview the documents, and download watermark-free PDFs. Document generation runs entirely in the browser, with no account or backend required.",
+    "url": "https://cvkita-free.vercel.app/",
     "image": "cvkita.webp",
     "featuredOrder": 1,
     "category": "CV & cover letter builder",

@@ -4,6 +4,7 @@ type Project = {
   title: string;
   description: string;
   image: string;
+  url?: string;
   featuredOrder?: number;
   category?: string;
   role?: string;
@@ -34,6 +35,11 @@ export default function ProjectShowcase() {
               <img src={imageUrl(project)} alt={`${project.title} application screenshot`} width={960} height={640} loading="lazy" />
               <div className="featured-copy">
                 <p>{project.description}</p>
+                {project.url && (
+                  <a className="editorial-link" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title} website (opens in a new tab)`}>
+                    Visit website <span aria-hidden="true">&#8599;</span>
+                  </a>
+                )}
                 <dl className="project-facts">
                   <div><dt>Role</dt><dd>{project.role}</dd></div>
                   <div><dt>Stack</dt><dd>{project.stack?.join(' · ')}</dd></div>
