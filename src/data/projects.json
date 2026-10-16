@@ -46,6 +46,7 @@
   },
   {
     "title": "Delivery Force Automation",
+    "url": "https://dfa-dashboard.laut-timur.com",
     "description": "A delivery team management portal built with Laravel 10, Filament, and SQL databases for operational visibility, dashboards, and team performance analysis.",
     "image": "dfa.webp",
     "imageWidth": 960,
