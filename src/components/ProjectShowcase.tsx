@@ -1,3 +1,4 @@
+import { useId, useState } from 'react';
 import { Globe } from 'lucide-react';
 import projects from '../data/projects.json';
 
@@ -5,6 +6,8 @@ type Project = {
   title: string;
   description: string;
   image: string;
+  imageWidth?: number;
+  imageHeight?: number;
   url?: string;
   featuredOrder?: number;
   category?: string;
@@ -29,6 +32,32 @@ function ProjectWebsiteLink({ project }: { project: Project }) {
     <a className="editorial-link" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title} website (opens in a new tab)`}>
       Visit website <Globe size={16} strokeWidth={1.5} aria-hidden="true" />
     </a>
+  );
+}
+
+function ProjectAccordion({ project, number }: { project: Project; number: number }) {
+  const [expanded, setExpanded] = useState(false);
+  const id = useId();
+
+  return (
+    <section className={`project${expanded ? ' is-expanded' : ''}`}>
+      <h4>
+        <button className="project-toggle" id={`${id}-toggle`} type="button" aria-expanded={expanded} aria-controls={`${id}-detail`} onClick={() => setExpanded(value => !value)}>
+          <span className="project-number">{String(number).padStart(2, '0')}</span>
+          <span className="project-title">{project.title}</span>
+          <span className="project-symbol" aria-hidden="true">+</span>
+        </button>
+      </h4>
+      <div className="project-reveal" id={`${id}-detail`} aria-labelledby={`${id}-toggle`} inert={!expanded}>
+        <div className="project-reveal-inner">
+          <div className="project-detail">
+            <img src={imageUrl(project)} alt={`${project.title} project screenshot`} width={project.imageWidth} height={project.imageHeight} loading="lazy" />
+            <p>{project.description}</p>
+            <ProjectWebsiteLink project={project} />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -62,14 +91,7 @@ export default function ProjectShowcase() {
         <div className="more-projects-heading"><h3 id="more-projects-title">More projects.</h3><span>{moreProjects.length} projects</span></div>
         <div className="project-list">
           {moreProjects.map((project, index) => (
-            <details className="project" key={project.title}>
-              <summary><span className="project-number">{String(index + featured.length + 1).padStart(2, '0')}</span><h4>{project.title}</h4><span className="project-symbol" aria-hidden="true">+</span></summary>
-              <div className="project-detail">
-                <img src={imageUrl(project)} alt={`${project.title} project screenshot`} loading="lazy" />
-                <p>{project.description}</p>
-                <ProjectWebsiteLink project={project} />
-              </div>
-            </details>
+            <ProjectAccordion project={project} number={index + featured.length + 1} key={project.title} />
           ))}
         </div>
       </section>

@@ -159,12 +159,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 1px soli
 .work-heading > span { color: #efeee980; font-size: 12px; white-space: nowrap; }
 .project { border-top: 1px solid #efeee930; }
 .project:last-child { border-bottom: 1px solid #efeee930; }
-.project summary { display: flex; align-items: center; gap: 24px; padding: 24px 0; list-style: none; cursor: pointer; }
-.project summary::-webkit-details-marker { display: none; }
+.project-toggle { display: flex; align-items: center; gap: 24px; width: 100%; padding: 24px 0; text-align: left; cursor: pointer; }
 .project-number { font-size: 11px; color: #efeee980; }
-.project h4 { flex: 1; font-size: clamp(17px, 2.1vw, 24px); font-weight: 400; letter-spacing: -.025em; }
-.project-symbol { font-size: 23px; font-weight: 300; transition: transform .3s; }
-.project[open] .project-symbol { transform: rotate(45deg); }
+.project h4 { font-size: clamp(17px, 2.1vw, 24px); font-weight: 400; letter-spacing: -.025em; }
+.project-title { flex: 1; }
+.project-symbol { font-size: 23px; font-weight: 300; transition: transform .4s cubic-bezier(.22, 1, .36, 1); }
+.project.is-expanded .project-symbol { transform: rotate(45deg); }
+.project-reveal { display: grid; grid-template-rows: 0fr; visibility: hidden; opacity: 0; transition: grid-template-rows .4s cubic-bezier(.22, 1, .36, 1), opacity .3s ease, visibility 0s .4s; }
+.project.is-expanded .project-reveal { grid-template-rows: 1fr; visibility: visible; opacity: 1; transition-delay: 0s; }
+.project-reveal-inner { min-height: 0; overflow: hidden; }
 .project-detail { padding: 4px 0 28px 40px; }
 .project-detail img { width: 100%; height: auto; }
 .project-detail p { max-width: 650px; margin-top: 22px; color: #efeee9b3; font-size: 14px; line-height: 1.8; }
@@ -280,7 +283,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 1px soli
   .content-panel { padding: 0 22px 22px; }
   .story-content, .work-content { padding-top: 36px; }
   .work-heading { align-items: start; flex-direction: column; gap: 14px; margin-bottom: 28px; }
-  .project summary { gap: 15px; padding: 22px 0; }
+  .project-toggle { gap: 15px; padding: 22px 0; }
   .project-detail { padding-left: 0; }
   .featured-layout { grid-template-columns: 1fr; gap: 22px; }
   .featured-project { padding: 26px 0 32px; }
