@@ -91,7 +91,7 @@
   },
   {
     "title": "CVKita",
-    "description": "A free Indonesian CV and cover letter builder. Users enter their details in a guided editor, choose a template or create their own design, preview the documents, and download watermark-free PDFs. Document generation runs entirely in the browser, with no account or backend required.",
+    "description": "A free CV and cover letter builder. Users enter their details in a guided editor, choose a template or create their own design, preview the documents, and download watermark-free PDFs. Document generation runs entirely in the browser, with no account or backend required.",
     "image": "cvkita.webp",
     "featuredOrder": 1,
     "category": "CV & cover letter builder",
