@@ -128,7 +128,7 @@
     "featuredOrder": 1,
     "category": "CV & cover letter builder",
     "role": "Developer",
-    "stack": ["React 19", "JavaScript", "Vite", "CSS", "jsPDF", "Lottie"],
+    "stack": ["React", "JavaScript", "Vite", "CSS", "jsPDF", "Lottie"],
     "highlights": [
       "Responsive editor for personal details, work experience, education, skills, certifications, and languages, with document preview and validation before download",
       "Five ready-made templates and a custom design studio for colors, typography, photo placement, section order, and decorative image layers",
