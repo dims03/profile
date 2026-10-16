@@ -22,6 +22,16 @@ const featured = allProjects.filter((project) => project.featuredOrder !== undef
 const moreProjects = allProjects.filter((project) => project.featuredOrder === undefined).reverse();
 const imageUrl = (project: Project) => images[`../assets/projects/${project.image}`];
 
+function ProjectWebsiteLink({ project }: { project: Project }) {
+  if (!project.url) return null;
+
+  return (
+    <a className="editorial-link" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title} website (opens in a new tab)`}>
+      Visit website <Globe size={16} strokeWidth={1.5} aria-hidden="true" />
+    </a>
+  );
+}
+
 export default function ProjectShowcase() {
   return (
     <article className="work-content">
@@ -36,11 +46,7 @@ export default function ProjectShowcase() {
               <img src={imageUrl(project)} alt={`${project.title} application screenshot`} width={960} height={640} loading="lazy" />
               <div className="featured-copy">
                 <p>{project.description}</p>
-                {project.url && (
-                  <a className="editorial-link" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title} website (opens in a new tab)`}>
-                    Visit website <Globe size={16} strokeWidth={1.5} aria-hidden="true" />
-                  </a>
-                )}
+                <ProjectWebsiteLink project={project} />
                 <dl className="project-facts">
                   <div><dt>Role</dt><dd>{project.role}</dd></div>
                   <div><dt>Stack</dt><dd>{project.stack?.join(' · ')}</dd></div>
@@ -58,7 +64,11 @@ export default function ProjectShowcase() {
           {moreProjects.map((project, index) => (
             <details className="project" key={project.title}>
               <summary><span className="project-number">{String(index + featured.length + 1).padStart(2, '0')}</span><h4>{project.title}</h4><span className="project-symbol" aria-hidden="true">+</span></summary>
-              <div className="project-detail"><img src={imageUrl(project)} alt={`${project.title} project screenshot`} loading="lazy" /><p>{project.description}</p></div>
+              <div className="project-detail">
+                <img src={imageUrl(project)} alt={`${project.title} project screenshot`} loading="lazy" />
+                <p>{project.description}</p>
+                <ProjectWebsiteLink project={project} />
+              </div>
             </details>
           ))}
         </div>

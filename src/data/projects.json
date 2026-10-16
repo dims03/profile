@@ -21,11 +21,13 @@
   },
   {
     "title": "Wedding Invitation Website",
+    "url": "https://dims03.github.io/wedding",
     "description": "Build wedding website with custom design and functionality, using basic html, css & javascript.",
     "image": "p1.webp"
   },
   {
     "title": "PT Laut Timur IT Portal",
+    "url": "https://myit.laut-timur.com/",
     "description": "An internal IT portal developed using Laravel 10, Livewire, and Filament to centralize IT workflows and operations.",
     "image": "myit.webp"
   },
@@ -41,6 +43,7 @@
   },
   {
     "title": "Asset Dashboard",
+    "url": "https://assetv2.laut-timur.com/admin/login",
     "description": "Asset dashboard with QR barcode generation for detailed asset history tracking, built with Laravel 12, TailwindCSS 4, Alpine JS, Livewire 3.5 and Filament v4.",
     "image": "asetv2.webp"
   },
@@ -56,6 +59,7 @@
   },
   {
     "title": "Digital Signature Pad",
+    "url": "https://myit.laut-timur.com/signature-upload",
     "description": "A digital signature pad for managing company digital signature approvals and document validation.",
     "image": "digital_signature.webp"
   },
@@ -81,6 +85,7 @@
   },
   {
     "title": "POS",
+    "url": "https://rc-pos.wasmer.app/",
     "description": "A point-of-sale system for managing sales transactions and inventory. Built with TALL Stack (Tailwind, Alpine, Laravel, Livewire).",
     "image": "pos.webp",
     "featuredOrder": 4,
