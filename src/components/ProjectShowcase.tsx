@@ -24,7 +24,7 @@ export default function ProjectShowcase() {
   return (
     <article className="work-content">
       <div className="work-heading"><h2 id="panel-title">Project.</h2><span>{allProjects.length} projects</span></div>
-      <p className="panel-intro">A closer look at the systems I build, from people and operations to sales and inventory.</p>
+      <p className="panel-intro">A closer look at the applications I build, from CV creation to people, operations, sales, and inventory.</p>
       <section aria-label="Featured projects">
         {featured.map((project, index) => (
           <article className="featured-project" key={project.title}>

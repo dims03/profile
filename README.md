@@ -49,7 +49,7 @@ index.html                   Vite HTML entry point
 ## Editing content
 
 - Edit `src/data/projects.json` for projects. Place screenshots in `src/assets/projects/` and use the filename in the `image` field.
-- Featured projects have a numeric `featuredOrder`, plus `category`, `role`, `stack`, and `highlights`. The three selected projects show the confirmed Lead Developer role. Other projects remain in the expandable list.
+- Featured projects have a numeric `featuredOrder`, plus `category`, `role`, `stack`, and `highlights`. CVKita, VARS, HRIS, and POS are featured with the Developer role. Other projects remain in the expandable list. The project with `featuredOrder: 1` also appears in the mobile Last project teaser.
 - Edit `src/data/tech-stack.json` for technologies. Place icons in `src/assets/tech/` and use the filename in the `image` field.
 - Edit `src/data/work-history.ts` for experience.
 - Edit `src/App.tsx` for profile text, navigation, and social links.

@@ -63,7 +63,7 @@
     "title": "VARS",
     "description": "A dashboard & PWA system for managing and monitoring company asset data and vehicle operational activities including P2H, refueling, and vehicle maintenance.",
     "image": "vars.webp",
-    "featuredOrder": 1,
+    "featuredOrder": 2,
     "category": "Assets & vehicle operations",
     "role": "Developer",
     "stack": ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "PWA"],
@@ -73,7 +73,7 @@
     "title": "HRIS",
     "description": "A human resources information system for managing employee data, payroll, and HR workflows. Built with TALL Stack and Vue.js with Capacitor for mobile support.",
     "image": "hris.webp",
-    "featuredOrder": 2,
+    "featuredOrder": 3,
     "category": "People & HR operations",
     "role": "Developer",
     "stack": ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "Vue.js", "Capacitor"],
@@ -83,10 +83,26 @@
     "title": "POS",
     "description": "A point-of-sale system for managing sales transactions and inventory. Built with TALL Stack (Tailwind, Alpine, Laravel, Livewire).",
     "image": "pos.webp",
-    "featuredOrder": 3,
+    "featuredOrder": 4,
     "category": "Sales & inventory",
     "role": "Developer",
     "stack": ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS"],
     "highlights": ["Point-of-sale transactions", "Inventory management", "Built with the TALL Stack"]
+  },
+  {
+    "title": "CVKita",
+    "description": "A free Indonesian CV and cover letter builder. Users enter their details in a guided editor, choose a template or create their own design, preview the documents, and download watermark-free PDFs. Document generation runs entirely in the browser, with no account or backend required.",
+    "image": "cvkita.webp",
+    "featuredOrder": 1,
+    "category": "CV & cover letter builder",
+    "role": "Developer",
+    "stack": ["React 19", "JavaScript", "Vite", "CSS", "jsPDF", "Lottie"],
+    "highlights": [
+      "Responsive editor for personal details, work experience, education, skills, certifications, and languages, with document preview and validation before download",
+      "Five ready-made templates and a custom design studio for colors, typography, photo placement, section order, and decorative image layers",
+      "Optional cover letters and drawn signatures, exported as separate PDF documents",
+      "A4 PDF export with selectable text, automatic pagination, and support for photos and decorative images",
+      "Drafts saved automatically in localStorage; CV data, photos, and signatures stay in the user's browser"
+    ]
   }
 ]
