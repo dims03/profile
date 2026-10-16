@@ -1,3 +1,4 @@
+import { Globe } from 'lucide-react';
 import projects from '../data/projects.json';
 
 type Project = {
@@ -37,7 +38,7 @@ export default function ProjectShowcase() {
                 <p>{project.description}</p>
                 {project.url && (
                   <a className="editorial-link" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title} website (opens in a new tab)`}>
-                    Visit website <span aria-hidden="true">&#8599;</span>
+                    Visit website <Globe size={16} strokeWidth={1.5} aria-hidden="true" />
                   </a>
                 )}
                 <dl className="project-facts">
