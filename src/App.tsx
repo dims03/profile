@@ -156,7 +156,7 @@ export default function App() {
 
           <h1 className="sr-only">Dimas Prayogi — Software Engineer</h1>
           <div className="hero-marquee anim-fade-up absolute inset-x-0 top-[16vh] z-10 overflow-hidden sm:top-[14vh]" style={delay(500)} aria-hidden="true">
-            <div className="marquee flex w-max whitespace-nowrap font-display text-[16vh] leading-none text-cream sm:text-[26vh]">
+            <div className="marquee flex w-max whitespace-nowrap text-[16vh] leading-none text-cream sm:text-[26vh]">
               <span className="pr-[6vw]">Dimas &mdash; Prayogi&nbsp;</span>
               <span className="pr-[6vw]">Dimas &mdash; Prayogi&nbsp;</span>
             </div>
@@ -250,8 +250,8 @@ export default function App() {
               <p className="eyebrow">Samarinda, Indonesia</p>
               <h2 id="panel-title">Engineer by trade.<br />Curious by nature.</h2>
               <div className="story-body">
-                <p>I'm Dimas Prayogi, a software engineer building reliable internal systems, dashboards, and operational tools. My work brings together full-stack development, thoughtful interfaces, and practical problem solving.</p>
-                <p>Beyond the screen, you'll find me cycling, running, taking photographs, or operating live stadium visuals with Borneo FC Samarinda. Constantly optimizing both my code and my human hardware through data and movement.</p>
+                <p>I'm Dimas Prayogi, a software engineer developing reliable internal systems, dashboards, and operational tools. My work brings together full-stack development, thoughtful interfaces, and practical problem solving.</p>
+                <p>Beyond the screen, you'll find me running, cycling, taking photographs, or operating live stadium visuals with Borneo FC Samarinda. Constantly optimizing both my code and my human hardware through data and movement.</p>
                 <a className="editorial-link" href={resume} target="_blank" rel="noopener noreferrer">View my resume <span aria-hidden="true">↗</span></a>
               </div>
             </article>
@@ -261,7 +261,7 @@ export default function App() {
               <p className="panel-intro">The technologies I use to build, ship, and keep things running.</p>
               <ul className="tech-list">
                 {techStack.map((tech) => (
-                  <li key={tech.name}><img src={techImages[`./assets/tech/${tech.image}`]} alt="" width={36} height={36} loading="lazy" /><span>{tech.name}</span></li>
+                  <li key={tech.name}><img className={tech.monochrome ? 'tech-icon-monochrome' : undefined} src={techImages[`./assets/tech/${tech.image}`]} alt="" width={36} height={36} loading="lazy" /><span>{tech.name}</span></li>
                 ))}
               </ul>
             </article>

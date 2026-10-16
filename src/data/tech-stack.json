@@ -89,10 +89,12 @@
   },
   {
     "name": "Termius",
-    "image": "termius.svg"
+    "image": "termius.svg",
+    "monochrome": true
   },
   {
     "name": "Codex",
-    "image": "codex.png"
+    "image": "codex.png",
+    "monochrome": true
   }
 ]
