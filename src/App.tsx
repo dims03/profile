@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
-import { X } from 'lucide-react';
+import { House, X } from 'lucide-react';
 import resume from './assets/Dimas-Prayogi-Resume-ID.pdf?url';
 import ProjectShowcase from './components/ProjectShowcase';
 import ContactPanel from './components/ContactPanel';
@@ -142,7 +142,13 @@ export default function App() {
           <div className="hero-shade absolute inset-0" aria-hidden="true" />
 
           <header className="hero-header absolute inset-x-0 top-0 z-30 flex items-start justify-between px-6 pt-6 sm:px-10 sm:pt-8">
-            <a href="./" className="anim-fade-up font-display text-lg font-medium tracking-tight" style={delay(800)} aria-label="Dimas Prayogi — home">{'</dims>'}</a>
+            <div className="hero-brand">
+              <a href="./" className="anim-fade-up font-display text-lg font-medium tracking-tight" style={delay(800)} aria-label="Dimas Prayogi — home">{'</dims>'}</a>
+              <a className="workspace-link anim-fade-up" style={delay(950)} href="https://dims-virtualhome.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Enter my virtual workspace (opens in a new tab)">
+                <House className="workspace-icon" size={16} strokeWidth={1.5} aria-hidden="true" />
+                <span>Virtual Workspace</span>
+              </a>
+            </div>
             <div className="desktop-navigation hidden items-start gap-16 sm:flex lg:gap-24">
               <span className="anim-fade-up text-sm" style={delay(900)}>&copy; 2026</span>
               <nav className="flex flex-col gap-0.5 text-sm" aria-label="Site index">{navLinks()}</nav>
