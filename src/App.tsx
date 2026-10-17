@@ -146,7 +146,7 @@ export default function App() {
               <a href="./" className="anim-fade-up font-display text-lg font-medium tracking-tight" style={delay(800)} aria-label="Dimas Prayogi — home">{'</dims>'}</a>
               <a className="workspace-link anim-fade-up" style={delay(950)} href="https://dims-virtualhome.vercel.app/" aria-label="Enter my virtual workspace">
                 <House className="workspace-icon" size={16} strokeWidth={1.5} aria-hidden="true" />
-                <span>Virtual Workspace</span>
+                <span>Virtual Home</span>
               </a>
             </div>
             <div className="desktop-navigation hidden items-start gap-16 sm:flex lg:gap-24">
