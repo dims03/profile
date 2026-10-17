@@ -144,7 +144,7 @@ export default function App() {
           <header className="hero-header absolute inset-x-0 top-0 z-30 flex items-start justify-between px-6 pt-6 sm:px-10 sm:pt-8">
             <div className="hero-brand">
               <a href="./" className="anim-fade-up font-display text-lg font-medium tracking-tight" style={delay(800)} aria-label="Dimas Prayogi — home">{'</dims>'}</a>
-              <a className="workspace-link anim-fade-up" style={delay(950)} href="https://dims-virtualhome.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Enter my virtual workspace (opens in a new tab)">
+              <a className="workspace-link anim-fade-up" style={delay(950)} href="https://dims-virtualhome.vercel.app/" aria-label="Enter my virtual workspace">
                 <House className="workspace-icon" size={16} strokeWidth={1.5} aria-hidden="true" />
                 <span>Virtual Workspace</span>
               </a>
