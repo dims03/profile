@@ -93,7 +93,7 @@
     "title": "VARS",
     "description": "A dashboard & PWA system for managing and monitoring company asset data and vehicle operational activities including P2H, refueling, and vehicle maintenance.",
     "image": "vars.webp",
-    "featuredOrder": 2,
+    "featuredOrder": 3,
     "category": "Assets & vehicle operations",
     "role": "Developer",
     "stack": ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "PWA"],
@@ -103,29 +103,30 @@
     "title": "HRIS",
     "description": "A human resources information system for managing employee data, payroll, and HR workflows. Built with TALL Stack and Vue.js with Capacitor for mobile support.",
     "image": "hris.webp",
-    "featuredOrder": 3,
+    "featuredOrder": 4,
     "category": "People & HR operations",
     "role": "Developer",
     "stack": ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "Vue.js", "Capacitor"],
     "highlights": ["Employee data and HR workflows", "Payroll management", "Mobile support with Vue.js and Capacitor"]
   },
   {
-    "title": "POS",
-    "url": "https://rc-pos.wasmer.app/",
-    "description": "A point-of-sale system for managing sales transactions and inventory. Built with TALL Stack (Tailwind, Alpine, Laravel, Livewire).",
-    "image": "pos.webp",
-    "featuredOrder": 4,
-    "category": "Sales & inventory",
+    "title": "Satisfy Watch Face 45",
+    "description": "A custom watch face for the Garmin Forerunner 45, developed with Python and Codex assistance. Displays time, date, battery level, and activity metrics in a clean monochrome layout.",
+    "image": "satisfy watch face 45.png",
+    "imageWidth": 1852,
+    "imageHeight": 1007,
+    "featuredOrder": 1,
+    "category": "Custom watch face",
     "role": "Developer",
-    "stack": ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS"],
-    "highlights": ["Point-of-sale transactions", "Inventory management", "Built with the TALL Stack"]
+    "stack": ["Python", "Codex"],
+    "highlights": ["Custom watch face for Garmin Forerunner 45", "Time, date, and battery level at a glance", "Activity metrics in a clean monochrome layout"]
   },
   {
     "title": "CVKita",
     "description": "A free, open-source CV and cover letter builder. Users enter their details in a guided editor, choose a template or create their own design, preview the documents, and download watermark-free PDFs. Document generation runs entirely in the browser, with no account or backend required.",
     "url": "https://cvkita-free.vercel.app/",
     "image": "cvkita.webp",
-    "featuredOrder": 1,
+    "featuredOrder": 2,
     "category": "CV & cover letter builder",
     "role": "Developer",
     "stack": ["React", "JavaScript", "Vite", "CSS", "jsPDF", "Lottie"],
@@ -138,13 +139,13 @@
     ]
   },
   {
-    "title": "Satisfy Watch Face 45",
-    "description": "A custom watch face for the Garmin Forerunner 45, developed with Python and Codex assistance. Displays time, date, battery level, and activity metrics in a clean monochrome layout.",
-    "image": "satisfy watch face 45.png",
-    "imageWidth": 1852,
-    "imageHeight": 1007,
-    "category": "Custom watch face",
+    "title": "POS",
+    "url": "https://rc-pos.wasmer.app/",
+    "description": "A point-of-sale system for managing sales transactions and inventory. Built with TALL Stack (Tailwind, Alpine, Laravel, Livewire).",
+    "image": "pos.webp",
+    "category": "Sales & inventory",
     "role": "Developer",
-    "stack": ["Python", "Codex"]
+    "stack": ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS"],
+    "highlights": ["Point-of-sale transactions", "Inventory management", "Built with the TALL Stack"]
   }
 ]
