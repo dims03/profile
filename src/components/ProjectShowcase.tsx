@@ -16,7 +16,7 @@ type Project = {
   highlights?: string[];
 };
 
-const images = import.meta.glob<string>('../assets/projects/*.webp', {
+const images = import.meta.glob<string>('../assets/projects/*.{webp,png}', {
   eager: true, query: '?url', import: 'default',
 });
 const allProjects: Project[] = projects;

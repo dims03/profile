@@ -136,5 +136,15 @@
       "A4 PDF export with selectable text, automatic pagination, and support for photos and decorative images",
       "Drafts saved automatically in localStorage; CV data, photos, and signatures stay in the user's browser"
     ]
+  },
+  {
+    "title": "Satisfy Watch Face 45",
+    "description": "A custom watch face for the Garmin Forerunner 45, developed with Python and Codex assistance. Displays time, date, battery level, and activity metrics in a clean monochrome layout.",
+    "image": "satisfy watch face 45.png",
+    "imageWidth": 1852,
+    "imageHeight": 1007,
+    "category": "Custom watch face",
+    "role": "Developer",
+    "stack": ["Python", "Codex"]
   }
 ]
