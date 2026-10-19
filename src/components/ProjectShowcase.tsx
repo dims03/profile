@@ -77,7 +77,6 @@ export default function ProjectShowcase() {
                 <p>{project.description}</p>
                 <ProjectWebsiteLink project={project} />
                 <dl className="project-facts">
-                  <div><dt>Role</dt><dd>{project.role}</dd></div>
                   <div><dt>Stack</dt><dd>{project.stack?.join(' · ')}</dd></div>
                 </dl>
                 <h4 className="eyebrow">What it does</h4>
