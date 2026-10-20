@@ -111,14 +111,14 @@
   },
   {
     "title": "Satisfy Watch Face 45",
-    "description": "A custom watch face for the Garmin Forerunner 45, developed with Python and Codex assistance. Displays time, date, battery level, and activity metrics in a clean monochrome layout.",
+    "description": "A custom watch face for the Garmin Forerunner 45, built with Monkey C and Garmin Connect IQ, with Python and Pillow for asset creation. Displays time, date, battery level, and activity metrics in a clean monochrome layout.",
     "image": "satisfy watch face 45.png",
     "imageWidth": 1852,
     "imageHeight": 1007,
     "featuredOrder": 1,
     "category": "Custom watch face",
     "role": "Developer",
-    "stack": ["Python", "Codex"],
+    "stack": ["Monkey C", "Garmin Connect IQ (FR45 API 1.4.5)", "Connect IQ SDK 9.2.0", "WatchUi", "Graphics", "ActivityMonitor", "XML", "Monkey Jungle", "Bitmap PNG + FNT", "Python + Pillow", "PowerShell", "Java", "RSA 4096-bit"],
     "highlights": ["Custom watch face for Garmin Forerunner 45", "Time, date, and battery level at a glance", "Activity metrics in a clean monochrome layout"]
   },
   {
